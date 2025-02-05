@@ -1,7 +1,12 @@
 const hand = ["グー", "チョキ", "パー"];
 const jField = document.querySelector(".jankenField");
 const results = document.querySelector(".results");
-let counter = 10;
+let counter = {
+  rounds: 10,
+  win: 0,
+  lose: 0,
+  drew: 0,
+};
 
 hand.forEach((value, index) => {
   const radio = document.createElement("input");
@@ -28,8 +33,9 @@ jSubmit.appendChild(jankenButton);
 function checking() {
   const systemHand = Math.floor(Math.random() * 3);
   const selectedRadio = document.querySelector("input[name='janken']:checked");
+  const counterInfo = document.createElement("p");
 
-  if (counter > 0) {
+  if (counter.rounds > 0) {
     if (selectedRadio) {
       const userHand = hand.indexOf(selectedRadio.value);
       const resultLabel = document.createElement("p");
@@ -39,22 +45,32 @@ function checking() {
         const drew = document.createElement("p");
         drew.textContent = `引き分けです。コンピューターは${hand[systemHand]}を出しました。`;
         results.appendChild(drew);
+        counter.drew++;
       } else if (systemHand - userHand === 1 || systemHand - userHand === -2) {
         const win = document.createElement("p");
         win.textContent = `勝ちました！コンピューターは${hand[systemHand]}を出しました。`;
         results.appendChild(win);
+        counter.win++;
       } else {
         const lose = document.createElement("p");
         lose.textContent = `負けました・・・コンピューターは${hand[systemHand]}を出しました。`;
         results.appendChild(lose);
+        counter.lose++;
       }
     } else {
       console.log("No hand selected");
     }
+    counterInfo.textContent = `あと${counter.rounds - 1}回`;
+    results.appendChild(counterInfo);
   } else {
+    const shouritsu = counter.win/10;
+    counterInfo.textContent = `勝ち：${counter.win}回\n引き分け：${counter.drew}回\n負け：${counter.lose}回\n勝率：${shouritsu*100}%`
+    results.appendChild(counterInfo);
     setGameOver();
   }
-  counter--;
+  counter.rounds--;
+
+
 }
 
 jankenButton.addEventListener("click", checking);
@@ -71,7 +87,7 @@ function setGameOver() {
 }
 
 function resetGame() {
-    counter = 10;
+    counter.rounds = 10;
     results.innerHTML = "";
     document.querySelector("button").remove();
     jankenButton.disabled = false;
