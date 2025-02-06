@@ -6,10 +6,6 @@
     a {
         --primary-color: darkblue;
     }
-    #login-container{
-        --background-color: white;
-        --box-shadow: rgba(0, 0, 0, 0.1)
-    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,23 +16,104 @@
     a {
         --primary-color: lightblue;
     }
-    #login-container{
-        --background-color: black;
-        --box-shadow: rgba(255,255,255,0.9);
-    }
-
 }
 
 body {
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
     color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 a {
     color: var(--primary-color);
 }
 
-ul {
-    font-size: larger;
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+}
+
+.jankenField {
+    display: flex;
+    flex-direction: row; /* Change to row to align buttons horizontally */
+    height: 20vh;
+    width: 64vw;
+    margin: 2rem;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.jankenField button {
+    display: block;
+    height: 8vw;
+    width: 8vw;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 0.5rem solid darkblue;
+    border-radius: 0.25rem;
+    font-size: 2rem;
+}
+
+.jankenField button[data-selected="false"] {
+    background-color: gray;
+}
+
+.jankenField button[data-selected="true"] {
+    background-color: white;
+    border: 0.5rem solid darkred;
+}
+
+.jankenSubmit {
+    display: flex;
+    height: 20vh;
+    width: 40vw;
+    margin: 1rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.jankenSubmit input {
+    height: 10vh;
+    width: 20vw;
+    background-color: lightcyan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-size: large;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    width: 80vw;
+    margin: 2rem auto; /* Center horizontally */
+    padding: 2rem;
+    border: 0.2rem solid var(--primary-color);
+    border-radius: 0.5rem;
+}
+
+.results button {
+    display: block;
+    height: 5vh;
+    width: 10vw;
+    margin: 1rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    background-color: lightcoral;
+    border: 0.2rem solid var(--primary-color);
+    border-radius: 0.25rem;
 }
