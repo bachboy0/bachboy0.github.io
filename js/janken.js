@@ -10,10 +10,11 @@ const counterInfo = document.createElement("p");
 const userHandLabel = document.createElement("p");
 // 승패 정보를 표시하는 p 요소 생성
 const resultLabel = document.createElement("p");
-
+// 총 게임 횟수
+const rounds = 10;
 // 카운터 오브젝트로 일괄 선언; 게임 횟수, 승리 횟수, 패배 횟수, 무승부 횟수 선언
 let counter = {
-  rounds: 10, // 총 게임 횟수
+  roundsRemain: rounds, // 총 게임 횟수
   win: 0,     // 승리 횟수
   lose: 0,    // 패배 횟수
   drew: 0     // 무승부 횟수
@@ -64,7 +65,7 @@ function checking() {
   );
 
   // 게임 라운드가 남아있는지 확인
-  if (counter.rounds > 1) {
+  if (counter.roundsRemain > 1) {
     // 유저가 손을 선택했는지 확인
     if (selectedButton) {
       // 유저의 손을 인덱스로 변환
@@ -99,18 +100,18 @@ function checking() {
       // 결과 영역에 승패 정보를 추가
       results.appendChild(resultLabel);
       // 남은 게임 횟수를 업데이트
-      counterInfo.textContent = `あと${counter.rounds - 1}回`;
+      counterInfo.textContent = `あと${counter.roundsRemain - 1}回`;
       // 남은 게임 횟수를 표시하는 p 요소를 생성
       results.appendChild(counterInfo);
       // 게임 라운드를 감소
-      counter.rounds--;
+      counter.roundsRemain--;
     } else {
       // 유저가 손을 선택하지 않은 경우 경고 메시지 표시
       alert("手を選んでください");
     }
   } else {
     // 모든 라운드가 끝난 경우 승률을 계산
-    const winningRate = counter.win / 10;
+    const winningRate = counter.win / rounds;
     // counterInfo 영역 내부의 p 요소의 내용을 저장
     counterInfo.textContent = `勝ち：${counter.win}回\n
       引き分け：${counter.drew}回\n
@@ -148,7 +149,7 @@ function setGameOver() {
 function resetGame() {
   // 카운터 초기화
   counter = {
-    rounds: 10, // 총 게임 횟수
+    roundsRemain: rounds, // 총 게임 횟수
     win: 0,     // 승리 횟수
     lose: 0,    // 패배 횟수
     drew: 0     // 무승부 횟수

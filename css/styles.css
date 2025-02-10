@@ -1,161 +1,182 @@
-/* 사용자가 밝은 테마를 선호할 때 적용되는 스타일 */
+/* Light mode color scheme */
 @media (prefers-color-scheme: light) {
-    body {
-        --background-color: white; /* 배경색을 흰색으로 설정 */
-        --font-color: black; /* 글자색을 검은색으로 설정 */
+    body { /* Background and font color for light mode */
+        --background-color: white;
+        --font-color: black;
     }
-    a {
-        --primary-color: darkblue; /* 링크 색상을 짙은 파란색으로 설정 */
+    a { /* Primary color for links in light mode */
+        --primary-color: darkblue;
     }
 }
 
-/* 사용자가 어두운 테마를 선호할 때 적용되는 스타일 */
+/* Dark mode color scheme */
 @media (prefers-color-scheme: dark) {
-    body {
-        --background-color: black; /* 배경색을 검은색으로 설정 */
-        --font-color: white; /* 글자색을 흰색으로 설정 */
+    body { /* Background and font color for dark mode */
+        --background-color: black;
+        --font-color: white;
     }
-    a {
-        --primary-color: lightblue; /* 링크 색상을 밝은 파란색으로 설정 */
+    a { /* Primary color for links in dark mode */
+        --primary-color: lightblue;
     }
 }
 
-/* 기본 body 스타일 설정 */
-body {
-    font-family: Arial, sans-serif; /* 글꼴을 Arial로 설정 */
-    background-color: var(--background-color); /* 배경색을 변수로 설정 */
-    color: var(--font-color); /* 글자색을 변수로 설정 */
-    display: flex; /* Flexbox 레이아웃 사용 */
-    flex-direction: column; /* Flexbox 방향을 세로로 설정 */
-    align-items: center; /* 모든 항목을 가로 중앙 정렬 */
-    justify-content: center; /* 모든 항목을 세로 중앙 정렬 */
-    min-height: 100vh; /* 최소 높이를 화면 전체 높이로 설정 */
-    margin: 0; /* 기본 여백을 제거 */
+/* Responsive design for screens with max width of 800px */
+@media (max-width: 800px) {
+    .jankenField { /* Adjust layout for jankenField on small screens */
+        flex-direction: column;
+        height: auto;
+        width: 90vw;
+    }
+
+    .jankenField button { /* Adjust button size in jankenField on small screens */
+        height: 20vw;
+        width: 20vw;
+    }
+
+    .jankenSubmit { /* Adjust layout for jankenSubmit on small screens */
+        height: auto;
+        width: 90vw;
+    }
+
+    .jankenSubmit input { /* Adjust input size in jankenSubmit on small screens */
+        height: 8vh;
+        width: 80vw;
+    }
+
+    .results { /* Adjust layout for results on small screens */
+        height: auto;
+        width: 90vw;
+    }
+
+    .results button { /* Adjust button size in results on small screens */
+        height: 8vh;
+        width: 80vw;
+    }
 }
 
-/* 링크 스타일 설정 */
-a {
-    color: var(--primary-color); /* 링크 색상을 변수로 설정 */
+body { /* General body styles */
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-/* 모든 div 요소에 대한 기본 스타일 설정 */
-div {
-    display: flex; /* Flexbox 레이아웃 사용 */
-    flex-direction: column; /* Flexbox 방향을 세로로 설정 */
-    align-items: center; /* 모든 항목을 가로 중앙 정렬 */
-    justify-content: center; /* 모든 항목을 세로 중앙 정렬 */
-    margin: 1rem auto; /* 위아래 여백을 1rem, 좌우 여백을 자동으로 설정 */
-}
-/* 가위바위보 필드 스타일 설정 */
-.jankenField {
-    display: flex; /* Flexbox 레이아웃 사용 */
-    flex-direction: row; /* Flexbox 방향을 가로로 설정 */
-    height: 20vh; /* 높이를 화면 높이의 20%로 설정 */
-    width: 64vw; /* 너비를 화면 너비의 64%로 설정 */
-    margin: 2rem; /* 여백을 2rem로 설정 */
-    padding: 2rem; /* 패딩을 2rem로 설정 */
-    justify-content: center; /* 모든 항목을 가로 중앙 정렬 */
+a { /* Link color */
+    color: var(--primary-color);
 }
 
-/* 가위바위보 버튼 스타일 설정 */
-.jankenField button {
-    display: block; /* 블록 레벨 요소로 설정 */
-    height: 8vw; /* 높이를 화면 너비의 8%로 설정 */
-    width: 8vw; /* 너비를 화면 너비의 8%로 설정 */
-    margin: 0.5rem; /* 여백을 0.5rem로 설정 */
-    padding: 0.5rem; /* 패딩을 0.5rem로 설정 */
-    border: 0.5rem solid darkblue; /* 테두리를 짙은 파란색으로 설정 */
-    border-radius: 1rem; /* 테두리 모서리를 둥글게 설정 */
-    font-size: 2rem; /* 글자 크기를 2rem로 설정 */
-    transition: background-color 0.25s; /* 배경색 전환을 0.25초로 설정 */
+div { /* General div styles */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
 }
 
-/* 선택되지 않은 버튼 스타일 설정 */
-.jankenField button[data-selected="false"] {
-    background-color: gray; /* 배경색을 회색으로 설정 */
+.jankenField { /* Styles for jankenField container */
+    display: flex;
+    flex-direction: row;
+    height: 20vh;
+    width: 64vw;
+    margin: 2rem;
+    padding: 2rem;
+    justify-content: center;
 }
 
-/* 선택되지 않은 버튼에 마우스를 올렸을 때 스타일 설정 */
-.jankenField button[data-selected="false"]:hover:enabled {
-    background-color: lightgray; /* 배경색을 밝은 회색으로 설정 */
+.jankenField button { /* Styles for buttons in jankenField */
+    display: block;
+    height: 10rem;
+    width: 10rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 0.5rem solid darkblue;
+    border-radius: 1rem;
+    font-size: 4rem;
+    transition: background-color 0.25s;
 }
 
-/* 선택된 버튼 스타일 설정 */
-.jankenField button[data-selected="true"] {
-    background-color: white; /* 배경색을 흰색으로 설정 */
-    border: 0.5rem solid darkred; /* 테두리를 짙은 빨간색으로 설정 */
+.jankenField button[data-selected="false"] { /* Styles for unselected buttons in jankenField */
+    background-color: gray;
 }
 
-/* 제출 버튼 컨테이너 스타일 설정 */
-.jankenSubmit {
-    display: flex; /* Flexbox 레이아웃 사용 */
-    height: 20vh; /* 높이를 화면 높이의 20%로 설정 */
-    width: 40vw; /* 너비를 화면 너비의 40%로 설정 */
-    margin: 1rem; /* 여백을 1rem로 설정 */
-    padding: 1rem; /* 패딩을 1rem로 설정 */
-    justify-content: center; /* 모든 항목을 가로 중앙 정렬 */
-    align-items: center; /* 모든 항목을 세로 중앙 정렬 */
+.jankenField button[data-selected="true"] { /* Styles for selected buttons in jankenField */
+    background-color: white;
+    border: 0.5rem solid darkred;
 }
 
-/* 제출 버튼 스타일 설정 */
-.jankenSubmit input {
-    height: 10vh; /* 높이를 화면 높이의 10%로 설정 */
-    width: 20vw; /* 너비를 화면 너비의 20%로 설정 */
-    background-color: lightcyan; /* 배경색을 밝은 청록색으로 설정 */
-    display: flex; /* Flexbox 레이아웃 사용 */
-    justify-content: center; /* 모든 항목을 가로 중앙 정렬 */
-    align-items: center; /* 모든 항목을 세로 중앙 정렬 */
-    margin: auto; /* 여백을 자동으로 설정 */
-    border-radius: 1em; /* 테두리 모서리를 둥글게 설정 */
-    font-size: large; /* 글자 크기를 크게 설정 */
-    font-weight: bold; /* 글자 굵기를 굵게 설정 */
-    transition: background-color 0.3s, border-color 0.3s; /* 배경색과 테두리색 전환을 0.3초로 설정 */
+.jankenSubmit { /* Styles for jankenSubmit container */
+    display: flex;
+    height: auto;
+    width: auto;
+    margin: 1rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
 }
 
-/* 제출 버튼에 마우스를 올렸을 때 스타일 설정 */
-.jankenSubmit input:hover:enabled {
-    background-color: aquamarine; /* 배경색을 연한 청록색으로 설정 */
-    border-color: darkblue; /* 테두리색을 짙은 파란색으로 설정 */
+.jankenSubmit input { /* Styles for input in jankenSubmit */
+    height: 10vh;
+    width: auto;
+    background-color: lightcyan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25em;
+    margin: auto;
+    border-radius: 1em;
+    font-size: 3em;
+    font-weight: bold;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* 제출 버튼을 클릭했을 때 스타일 설정 */
-.jankenSubmit input:active:enabled {
-    background-color: lightgreen; /* 배경색을 밝은 녹색으로 설정 */
-    border-color: darkgreen; /* 테두리색을 짙은 녹색으로 설정 */
+.jankenSubmit input:hover:enabled { /* Hover effect for enabled input in jankenSubmit */
+    background-color: aquamarine;
+    border-color: darkblue;
 }
 
-/* 결과 표시 영역 스타일 설정 */
-.results {
-    display: flex; /* Flexbox 레이아웃 사용 */
-    flex-direction: column; /* Flexbox 방향을 세로로 설정 */
-    align-items: center; /* 모든 항목을 가로 중앙 정렬 */
-    justify-content: center; /* 모든 항목을 세로 중앙 정렬 */
-    height: 30vh; /* 높이를 화면 높이의 30%로 설정 */
-    width: 80vw; /* 너비를 화면 너비의 80%로 설정 */
-    margin: 2rem auto; /* 위아래 여백을 2rem, 좌우 여백을 자동으로 설정 */
-    padding: 2rem; /* 패딩을 2rem로 설정 */
-    border: 0.2rem solid var(--primary-color); /* 테두리를 기본 색상으로 설정 */
-    border-radius: 0.5rem; /* 테두리 모서리를 둥글게 설정 */
-    font-size: larger; /* 글자 크기를 크게 설정 */
+.jankenSubmit input:active:enabled { /* Active effect for enabled input in jankenSubmit */
+    background-color: lightgreen;
+    border-color: darkgreen;
 }
 
-/* 결과 버튼 스타일 설정 */
-.results button {
-    display: block; /* 블록 레벨 요소로 설정 */
-    height: 5vh; /* 높이를 화면 높이의 5%로 설정 */
-    width: 12vw; /* 너비를 화면 너비의 12%로 설정 */
-    margin: 1rem; /* 여백을 1rem로 설정 */
-    padding: 0.5rem; /* 패딩을 0.5rem로 설정 */
-    font-size: 1.5rem; /* 글자 크기를 1.5rem로 설정 */
-    font-weight: bold; /* 글자 굵기를 굵게 설정 */
-    background-color: lightcoral; /* 배경색을 밝은 산호색으로 설정 */
-    border: 0.2rem solid var(--primary-color); /* 테두리를 기본 색상으로 설정 */
-    border-radius: 0.25rem; /* 테두리 모서리를 둥글게 설정 */
-    transition: background-color 0.25s, border-color 0.25s; /* 배경색과 테두리색 전환을 0.25초로 설정 */
+.results { /* Styles for results container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    width: 80vw;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 0.2rem solid var(--primary-color);
+    border-radius: 0.5rem;
 }
 
-/* 결과 버튼에 마우스를 올렸을 때 스타일 설정 */
-.results button:hover {
-    background-color: coral; /* 배경색을 산호색으로 설정 */
-    border-color: darkred; /* 테두리색을 짙은 빨간색으로 설정 */
+.results p {
+    font-size: 2rem;
+    font-weight: 100;
+}
+
+.results button { /* Styles for buttons in results */
+    display: block;
+    height: 5vh;
+    width: auto;
+    margin: 1rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: lightcoral;
+    border: 0.2rem solid var(--primary-color);
+    border-radius: 0.25rem;
+    transition: background-color 0.25s, border-color 0.25s;
+}
+
+.results button:hover { /* Hover effect for buttons in results */
+    background-color: coral;
+    border-color: darkred;
 }
