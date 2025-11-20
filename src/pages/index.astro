@@ -4,46 +4,127 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
-
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+
+        <main>
+            <!-- HERO / QUICK LINKS -->
+            <section id="hero" aria-labelledby="hero-title">
+                <h1 id="hero-title">Hi, I'm {SITE_TITLE}</h1>
+                <p>
+					Taxi driver in Osaka. Passionate about the automotive industry and open-source — building fast,
+					simple web projects and developer tools. Find my work on GitHub.
+                </p>
+                <p>
+                    <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    · <a href="/blog">Blog</a>
+                    · <a href="/about">About</a>
+                </p>
+            </section>
+
+            <!-- ENGLISH PROFILE -->
+            <section id="profile-en" aria-labelledby="profile-en-title">
+                <h2 id="profile-en-title">About — English</h2>
+                <p>
+                    I'm passionate about Full-stack Development with a deep interest in the automotive industry. I hold a degree in Applied
+                    Informatics from Kwansei Gakuin University.
+                </p>
+                <ul>
+                    <li>🌱 Currently learning: Python, React</li>
+                    <li>🎯 Career goal: Secure a technical role that leverages my skills and provides a competitive income</li>
+                    <li>🔭 Future interests: Digital nomad lifestyle, microservice operations, freelance coding</li>
+                </ul>
+
+                <h3>Skills & Expertise</h3>
+                <ul>
+                    <li>Programming: Python, JavaScript</li>
+                    <li>Web: Node.js, React, Astro</li>
+                    <li>Strengths: visual-spatial thinking, customer service, self-learning</li>
+                    <li>Preparing for: Applied Information Technology Engineer Examination</li>
+                </ul>
+
+                <h3>Career</h3>
+                <ul>
+					<li>Taxi Driver (2025-) Full-time in Osaka — honed people skills and driving</li>
+                    <li>Contract Employee (2023–2025): AI data annotation at a large venture</li>
+                    <li>Taxi Driver (2019–2023): Full-time in Osaka — honed people skills and driving</li>
+                </ul>
+
+                <h3>Featured Projects</h3>
+                <ul>
+                    <li>Nginx Log Analyzer (2025)</li>
+                    <li>Monte Carlo Simulation Program (2025)</li>
+                    <li>Korean Language Learning Website (2024)</li>
+                    <li>VR Application (2018)</li>
+                    <li>Python Calculator using Tkinter(2018)</li>
+                </ul>
+            </section>
+
+            <!-- JAPANESE PROFILE -->
+            <section id="profile-ja" aria-labelledby="profile-ja-title">
+                <h2 id="profile-ja-title">私について — 日本語</h2>
+                <p>
+                    フルスタック開発に情熱を持ち、自動車産業に深い興味があります。関西学院大学 メディア情報学科 卒業。
+                </p>
+                <ul>
+                    <li>🌱 現在学習中: Python, React, Next.js</li>
+                    <li>🎯 キャリア目標: 技術を活かし堅実で競争力ある年収を得ること</li>
+                    <li>🔭 将来の興味: デジタルノマド、マイクロサービス運用、フリーランス開発</li>
+                </ul>
+            </section>
+
+            <!-- KOREAN PROFILE -->
+            <section id="profile-ko" aria-labelledby="profile-ko-title">
+                <h2 id="profile-ko-title">소개 — 한국어</h2>
+                <p>
+                    풀스택 개발에 열정을 가지고 있으며 자동차에 깊은 관심이 있습니다. 간세이가쿠인대학 미디어정보학과 졸업.
+                </p>
+                <ul>
+                    <li>🌱 현재 학습: Python, React, Next.js</li>
+                    <li>🎯 경력 목표: 기술을 활용해 안정적이고 경쟁력 있는 연봉을 확보하는 기술직</li>
+                    <li>🔭 미래 관심사: 디지털 노마드, 마이크로서비스 운영, 프리랜서 코딩</li>
+                </ul>
+            </section>
+
+            <!-- INTERESTS & CONTACT -->
+            <section id="interests" aria-labelledby="interests-title">
+                <h2 id="interests-title">Interests & Contact</h2>
+                <p>
+                    Interests: cars (owner of a 2014 Mazda 3 2.2L Diesel, manual), trains/buses/planes (especially sounds), Cities:
+                    Skylines, Geoguessr, music (Tropical house, EDM, K-pop, J-pop), long drives between Osaka and Tokyo.
+                </p>
+
+                <h3>Connect</h3>
+                <ul>
+                    <li>Email: <a href="mailto:rkdeodnr@gmail.com">rkdeodnr@gmail.com</a></li>
+                    <li>GitHub: <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">github.com/bachboy0</a></li>
+                    <li>LinkedIn: <a href="https://www.linkedin.com/in/daewook-kang/" target="_blank" rel="noopener noreferrer">Daewook Kang</a></li>
+                </ul>
+
+                <h3>GitHub Stats</h3>
+                <p>
+                    <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">
+                        <img alt="bachboy0's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=bachboy0" />
+                    </a>
+                </p>
+                <p>
+                    <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">
+                        <img alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bachboy0" />
+                    </a>
+                </p>
+                <p>
+                    <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">
+                        <img alt="trophies" src="https://github-profile-trophy.vercel.app/?username=bachboy0" />
+                    </a>
+                </p>
+            </section>
+        </main>
+
+        <Footer />
+    </body>
 </html>
