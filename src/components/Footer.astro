@@ -1,5 +1,5 @@
 ---
-import InstagramIcon from '../assets/icons/Instagram_Glyph_Black.svg';
+import InstagramIcon from '../assets/icons/instagram-glyph-black.svg';
 import GitHubIcon from '../assets/icons/github-mark.svg';
 const today = new Date();
 ---
@@ -7,15 +7,17 @@ const today = new Date();
 <footer>
 	&copy; {today.getFullYear()} Kang Daewook. All rights reserved.
 	<div class="social-links">
-        <a href="https://www.instagram.com/teu_kan1016/" target="_blank">
-            <span class="sr-only">Follow Me on Instagram</span>
+		<a href="https://www.instagram.com/teu_kan1016/" target="_blank">
+			<span class="sr-only">Follow Me on Instagram</span>
             <InstagramIcon width="32" height="32" astro-icon="social/instagram" />
-        </a>
-        <a href="https://github.com/bachboy0" target="_blank">
-            <span class="sr-only">Go to Astro's GitHub repo</span>
+
+		</a>
+		<a href="https://github.com/bachboy0" target="_blank">
+			<span class="sr-only">Go to My GitHub repo</span>
             <GitHubIcon width="32" height="32" astro-icon="social/github" />
-        </a>
-    </div>
+
+		</a>
+	</div>
 </footer>
 <style>
     /* Footer - ヘッダーの構成に合わせ、見た目とレスポンシブを改善 */
