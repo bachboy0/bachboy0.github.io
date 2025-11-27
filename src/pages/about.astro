@@ -1,63 +1,86 @@
 ---
 import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
 import Layout from '../layouts/BlogPost.astro';
+import { SITE_TITLE } from '../consts';
+
 ---
 
 <Layout
 	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
+	description="Learn more about Daewook Kang, a taxi driver in Osaka with a passion for the automotive industry and open-source projects."
+	pubDate={new Date('2025/11/28')}
 	heroImage={AboutHeroImage}
 >
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+	<!-- HERO / QUICK LINKS -->
+	<section id="hero" aria-labelledby="hero-title">
+		<h1 id="hero-title">Hi, I'm {SITE_TITLE}</h1>
+		<p>
+			Taxi driver in Osaka. Passionate about the automotive industry and open-source — building fast,
+			simple web projects and developer tools. Find my work on GitHub.
+		</p>
+	</section>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+	<!-- ENGLISH PROFILE -->
+	<section id="profile-en" aria-labelledby="profile-en-title">
+		<h2 id="profile-en-title">About me</h2>
+		<h4>🚕 More Than Just a Ride: Bringing Smiles to Osaka's Streets!</h4>
+		
+		<p>Driving a taxi in Osaka isn’t just about getting you from point A to point B—it's about creating the ultimate customer experience.</p>
+		<p>I believe that my conduct directly reflects the image of the City of Osaka and the taxi profession. That is why I approach every trip with pride and care.</p>
+		<p>My goal is simple: to delight you.</p>
+		<p>I put my heart into every drive to ensure your journey is safe, comfortable, and memorable, leaving you with a lasting positive impression of this city.</p>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+		<h3>Skills & Expertise</h3>
+		<ul>
+			<li>Programming: Python, JavaScript</li>
+			<li>Web: Node.js; React; Next.js, Astro</li>
+			<li>Tools: Windows 10, Ubuntu 24.04LTS, Visual Studio Code</li>
+			<li>Strengths: visual-spatial thinking, customer service, self-learning, driving</li>
+			<li>Preparing for: Applied Information Technology Engineer Examination</li>
+		</ul>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+		<h3>Career</h3>
+		<ul>
+			<li>Taxi Driver (2025-) Full-time in Osaka — honed people skills and driving</li>
+			<li>Contract Employee (2023–2025): AI data annotation at a large venture</li>
+			<li>Taxi Driver (2019–2023): Full-time in Osaka — honed people skills and driving</li>
+		</ul>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
+		<h3>Featured Projects</h3>
+		<ul>
+			<li>Nginx Log Analyzer (2025)</li>
+			<li>Monte Carlo Simulation Program (2025)</li>
+			<li>Korean Language Learning Website (2024)</li>
+			<li>VR Application (2018)</li>
+			<li>Python Calculator using Tkinter(2018)</li>
+		</ul>
+	</section>
+
+	<!-- INTERESTS & CONTACT -->
+	<section id="interests" aria-labelledby="interests-title">
+		<h2 id="interests-title">Interests & Contact</h2>
+		<p>
+			Interests: cars (owner of a 2014 Mazda 3 2.2L Diesel, manual), trains/buses/planes (especially sounds), Cities:
+			Skylines, Geoguessr, music (Tropical house, EDM, K-pop, J-pop), long drives between Osaka and Tokyo.
+		</p>
+
+		<h3>Contact</h3>
+		<ul>
+			<li>Email: <a href="mailto:rkdeodnr@gmail.com">rkdeodnr@gmail.com</a></li>
+			<li>GitHub: <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">github.com/bachboy0</a></li>
+			<li>LinkedIn: <a href="https://www.linkedin.com/in/daewook-kang/" target="_blank" rel="noopener noreferrer">Daewook Kang</a></li>
+		</ul>
+
+		<h3>GitHub Stats</h3>
+		<p>
+			<a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">
+				<img alt="bachboy0's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=bachboy0" />
+			</a>
+		</p>
+		<p>
+			<a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">
+				<img alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bachboy0" />
+			</a>
+		</p>
+	</section>
 </Layout>
