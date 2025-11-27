@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -12,85 +13,120 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
     <body>
         <Header />
 
-        <main>
-            <!-- HERO / QUICK LINKS -->
-            <section id="hero" aria-labelledby="hero-title">
-                <h1 id="hero-title">Hi, I'm {SITE_TITLE}</h1>
-                <p>
-					Taxi driver in Osaka. Passionate about the automotive industry and open-source — building fast,
-					simple web projects and developer tools. Find my work on GitHub.
-                </p>
-                <p>
-                    <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    · <a href="/blog">Blog</a>
-                    · <a href="/about">About</a>
+        <main class="flex flex-col gap-16">
+            <!-- HERO SECTION -->
+            <section id="hero" class="min-h-[60vh] flex items-center justify-center text-center px-4 py-12">
+                <div class="hero-content">
+                    <h1 id="hero-title" class="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
+                        Hi, I'm {SITE_TITLE}
+                    </h1>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+                        Full-stack developer & open-source enthusiast. Building fast, simple web projects and developer tools.
+                    </p>
+                    <div class="flex gap-4 justify-center flex-wrap">
+                        <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:shadow-lg hover:-translate-y-0.5">
+                            View on GitHub
+                        </a>
+                        <a href="/blog" class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gray-200 dark:bg-gray-700 text-blue-700 dark:text-white border-2 border-blue-300 hover:bg-blue-300 hover:-translate-y-0.5">
+                            Read Blog
+                        </a>
+                        <a href="/about" class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-transparent text-blue-500 border-2 border-blue-300 hover:bg-blue-300 hover:text-white">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FEATURED PROJECTS SECTION -->
+            <section id="projects" class="px-4 py-8">
+                <h2 class="text-3xl font-bold text-center mb-12">Featured Work</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <article class="p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1">
+                        <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mt-0">Nginx Log Analyzer</h3>
+                        <p class="text-gray-600 dark:text-gray-400 my-2">Tool for analyzing and visualizing web server logs with real-time insights.</p>
+                        <span class="inline-block px-3 py-1 rounded-full bg-blue-500 text-white text-sm font-semibold">Python</span>
+                    </article>
+                    <article class="p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1">
+                        <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mt-0">Monte Carlo Simulation</h3>
+                        <p class="text-gray-600 dark:text-gray-400 my-2">Statistical simulation program using numpy and Matplotlib for probability analysis.</p>
+                        <span class="inline-block px-3 py-1 rounded-full bg-blue-500 text-white text-sm font-semibold">Python</span>
+                    </article>
+                    <article class="p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1">
+                        <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mt-0">Korean Learning Platform</h3>
+                        <p class="text-gray-600 dark:text-gray-400 my-2">Educational web platform for Korean language learners with interactive content.</p>
+                        <span class="inline-block px-3 py-1 rounded-full bg-blue-500 text-white text-sm font-semibold">Web Dev</span>
+                    </article>
+                </div>
+                <p class="text-center text-lg mt-8">
+                    <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer" class="text-blue-500 font-semibold hover:text-blue-700 transition-colors duration-200">
+                        See all projects →
+                    </a>
                 </p>
             </section>
 
-            <!-- ENGLISH PROFILE -->
-            <section id="profile-en" aria-labelledby="profile-en-title">
-                <h2 id="profile-en-title">About me</h2>
-                <h4>🚕 More Than Just a Ride: Bringing Smiles to Osaka's Streets!</h4>
-                
-                <p>Driving a taxi in Osaka isn’t just about getting you from point A to point B—it's about creating the ultimate customer experience.</p>
-                <p>I believe that my conduct directly reflects the image of the City of Osaka and the taxi profession. That is why I approach every trip with pride and care.</p>
-                <p>My goal is simple: to delight you.</p>
-                <p>I put my heart into every drive to ensure your journey is safe, comfortable, and memorable, leaving you with a lasting positive impression of this city.</p>
-
-                <h3>Skills & Expertise</h3>
-                <ul>
-                    <li>Programming: Python, JavaScript</li>
-                    <li>Web: Node.js; React; Next.js, Astro</li>
-                    <li>Tools: Windows 10, Ubuntu 24.04LTS, Visual Studio Code</li>
-                    <li>Strengths: visual-spatial thinking, customer service, self-learning, driving</li>
-                    <li>Preparing for: Applied Information Technology Engineer Examination</li>
-                </ul>
-
-                <h3>Career</h3>
-                <ul>
-					<li>Taxi Driver (2025-) Full-time in Osaka — honed people skills and driving</li>
-                    <li>Contract Employee (2023–2025): AI data annotation at a large venture</li>
-                    <li>Taxi Driver (2019–2023): Full-time in Osaka — honed people skills and driving</li>
-                </ul>
-
-                <h3>Featured Projects</h3>
-                <ul>
-                    <li>Nginx Log Analyzer (2025)</li>
-                    <li>Monte Carlo Simulation Program (2025)</li>
-                    <li>Korean Language Learning Website (2024)</li>
-                    <li>VR Application (2018)</li>
-                    <li>Python Calculator using Tkinter(2018)</li>
-                </ul>
+            <!-- SKILLS SECTION -->
+            <section id="skills" class="px-4 py-8 bg-gray-100 dark:bg-gray-800/50 rounded-xl mx-4">
+                <h2 class="text-3xl font-bold text-center mb-8">Skills & Expertise</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div>
+                        <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mb-4">Languages</h3>
+                        <ul class="list-none p-0 m-0">
+                            <li class="list-none py-2 text-gray-800 dark:text-gray-200"><span class="text-green-600 font-bold mr-2">✓</span>Python</li>
+                            <li class="list-none py-2 text-gray-800 dark:text-gray-200"><span class="text-green-600 font-bold mr-2">✓</span>JavaScript</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mb-4">Web Development</h3>
+                        <ul class="list-none p-0 m-0">
+                            <li class="list-none py-2 text-gray-800 dark:text-gray-200"><span class="text-green-600 font-bold mr-2">✓</span>React</li>
+                            <li class="list-none py-2 text-gray-800 dark:text-gray-200"><span class="text-green-600 font-bold mr-2">✓</span>Node.js</li>
+                            <li class="list-none py-2 text-gray-800 dark:text-gray-200"><span class="text-green-600 font-bold mr-2">✓</span>Next.js</li>
+                            <li class="list-none py-2 text-gray-800 dark:text-gray-200"><span class="text-green-600 font-bold mr-2">✓</span>Astro</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mb-4">Tools & Platforms</h3>
+                        <ul class="list-none p-0 m-0">
+                            <li class="list-none py-2 text-gray-800 dark:text-gray-200"><span class="text-green-600 font-bold mr-2">✓</span>Ubuntu / Windows</li>
+                            <li class="list-none py-2 text-gray-800 dark:text-gray-200"><span class="text-green-600 font-bold mr-2">✓</span>VS Code</li>
+                            <li class="list-none py-2 text-gray-800 dark:text-gray-200"><span class="text-green-600 font-bold mr-2">✓</span>Git</li>
+                        </ul>
+                    </div>
+                </div>
             </section>
 
-            <!-- INTERESTS & CONTACT -->
-            <section id="interests" aria-labelledby="interests-title">
-                <h2 id="interests-title">Interests & Contact</h2>
-                <p>
-                    Interests: cars (owner of a 2014 Mazda 3 2.2L Diesel, manual), trains/buses/planes (especially sounds), Cities:
-                    Skylines, Geoguessr, music (Tropical house, EDM, K-pop, J-pop), long drives between Osaka and Tokyo.
+            <!-- BLOG PREVIEW SECTION -->
+            <section id="blog-preview" class="text-center px-4 py-8">
+                <h2 class="text-3xl font-bold mb-4">Latest Articles</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-6">Sharing insights on web development, open source, and technology.</p>
+                <p class="mt-6">
+                    <a href="/blog" class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gray-200 dark:bg-gray-700 text-blue-700 dark:text-white border-2 border-blue-300 hover:bg-blue-300 hover:-translate-y-0.5">
+                        View All Articles
+                    </a>
                 </p>
+            </section>
 
-                <h3>Connect</h3>
-                <ul>
-                    <li>Email: <a href="mailto:rkdeodnr@gmail.com">rkdeodnr@gmail.com</a></li>
-                    <li>GitHub: <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">github.com/bachboy0</a></li>
-                    <li>LinkedIn: <a href="https://www.linkedin.com/in/daewook-kang/" target="_blank" rel="noopener noreferrer">Daewook Kang</a></li>
+            <!-- CONTACT / CTA SECTION -->
+            <section id="contact" class="text-center px-4 py-8 bg-gradient-to-br from-blue-100/50 to-blue-900/5 dark:from-blue-900/15 dark:to-blue-800/5 rounded-xl mx-4">
+                <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+                <p class="text-gray-700 dark:text-gray-300 mb-6">Interested in collaborating or just want to say hello? Reach out!</p>
+                <ul class="flex justify-center gap-6 list-none p-0 m-0 mt-6 flex-wrap">
+                    <li>
+                        <a href="mailto:rkdeodnr@gmail.com" class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white">📧 Email</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white">🐙 GitHub</a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/daewook-kang/" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white">💼 LinkedIn</a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/teu_kan1016/" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white">📸 Instagram</a>
+                    </li>
                 </ul>
-
-                <h3>GitHub Stats</h3>
-                <p>
-                    <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">
-                        <img alt="bachboy0's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=bachboy0" />
-                    </a>
-                </p>
-                <p>
-                    <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">
-                        <img alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bachboy0" />
-                    </a>
-                </p>
             </section>
         </main>
+
         <Footer />
     </body>
 </html>
