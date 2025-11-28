@@ -17,14 +17,14 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
             <!-- HERO SECTION -->
             <section id="hero" class="min-h-[60vh] flex items-center justify-center text-center px-4 py-12">
                 <div class="hero-content">
-                    <h1 id="hero-title" class="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
+                    <h1 id="hero-title" class="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-linear-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
                         Hi, I'm {SITE_TITLE}
                     </h1>
                     <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
                         Full-stack developer & open-source enthusiast. Building fast, simple web projects and developer tools.
                     </p>
                     <div class="flex gap-4 justify-center flex-wrap">
-                        <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:shadow-lg hover:-translate-y-0.5">
+                        <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-linear-to-r from-blue-500 to-blue-700 text-white hover:shadow-lg hover:-translate-y-0.5">
                             View on GitHub
                         </a>
                         <a href="/blog" class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gray-200 dark:bg-gray-700 text-blue-700 dark:text-white border-2 border-blue-300 hover:bg-blue-300 hover:-translate-y-0.5">
@@ -36,22 +36,43 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
                     </div>
                 </div>
             </section>
+            <section id="support" class="min-h-[10vh] flex items-center justify-center text-center px-4 py-12">
+                    <div class="flex gap-4 justify-center">
+                        <a href="/dcalc" class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gray-200 dark:bg-gray-700 text-blue-700 dark:text-white border-2 border-blue-300 hover:bg-blue-300 hover:-translate-y-0.5">
+                            ドライバー用簡易計算機
+                        </a>
+                        <a href="/osakainfo" class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-transparent text-blue-500 border-2 border-blue-300 hover:bg-blue-300 hover:text-white">
+                            Spots in Osaka
+                        </a>
+                    </div>
+            </section>
+
+            <!-- BLOG PREVIEW SECTION -->
+            <section id="blog-preview" class="text-center px-4 py-8">
+                <h2 class="text-3xl font-bold mb-4">Latest Articles</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-6">Sharing insights on web development, open source, and technology.</p>
+                <p class="mt-6">
+                    <a href="/blog" class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gray-200 dark:bg-gray-700 text-blue-700 dark:text-white border-2 border-blue-300 hover:bg-blue-300 hover:-translate-y-0.5">
+                        View All Articles
+                    </a>
+                </p>
+            </section>
 
             <!-- FEATURED PROJECTS SECTION -->
             <section id="projects" class="px-4 py-8">
                 <h2 class="text-3xl font-bold text-center mb-12">Featured Work</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                    <article class="p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1">
+                    <article class="p-6 rounded-xl bg-linear-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1">
                         <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mt-0">Nginx Log Analyzer</h3>
                         <p class="text-gray-600 dark:text-gray-400 my-2">Tool for analyzing and visualizing web server logs with real-time insights.</p>
                         <span class="inline-block px-3 py-1 rounded-full bg-blue-500 text-white text-sm font-semibold">Python</span>
                     </article>
-                    <article class="p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1">
+                    <article class="p-6 rounded-xl bg-linear-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1">
                         <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mt-0">Monte Carlo Simulation</h3>
                         <p class="text-gray-600 dark:text-gray-400 my-2">Statistical simulation program using numpy and Matplotlib for probability analysis.</p>
                         <span class="inline-block px-3 py-1 rounded-full bg-blue-500 text-white text-sm font-semibold">Python</span>
                     </article>
-                    <article class="p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1">
+                    <article class="p-6 rounded-xl bg-linear-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1">
                         <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mt-0">Korean Learning Platform</h3>
                         <p class="text-gray-600 dark:text-gray-400 my-2">Educational web platform for Korean language learners with interactive content.</p>
                         <span class="inline-block px-3 py-1 rounded-full bg-blue-500 text-white text-sm font-semibold">Web Dev</span>
@@ -95,32 +116,21 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
                 </div>
             </section>
 
-            <!-- BLOG PREVIEW SECTION -->
-            <section id="blog-preview" class="text-center px-4 py-8">
-                <h2 class="text-3xl font-bold mb-4">Latest Articles</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">Sharing insights on web development, open source, and technology.</p>
-                <p class="mt-6">
-                    <a href="/blog" class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gray-200 dark:bg-gray-700 text-blue-700 dark:text-white border-2 border-blue-300 hover:bg-blue-300 hover:-translate-y-0.5">
-                        View All Articles
-                    </a>
-                </p>
-            </section>
-
             <!-- CONTACT / CTA SECTION -->
-            <section id="contact" class="text-center px-4 py-8 bg-gradient-to-br from-blue-100/50 to-blue-900/5 dark:from-blue-900/15 dark:to-blue-800/5 rounded-xl mx-4">
+            <section id="contact" class="text-center px-4 py-8 bg-linear-to-br from-blue-100/50 to-blue-900/5 dark:from-blue-900/15 dark:to-blue-800/5 rounded-xl mx-4">
                 <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
                 <p class="text-gray-700 dark:text-gray-300 mb-6">Interested in collaborating or just want to say hello? Reach out!</p>
-                <ul class="flex justify-center gap-6 list-none p-0 m-0 mt-6 flex-wrap">
-                    <li>
+                <ul class="flex justify-center gap-6 p-0 m-0 mt-6 flex-wrap">
+                    <li class="list-none">
                         <a href="mailto:rkdeodnr@gmail.com" class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white">📧 Email</a>
                     </li>
-                    <li>
+                    <li class="list-none">
                         <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white">🐙 GitHub</a>
                     </li>
-                    <li>
+                    <li class="list-none">
                         <a href="https://www.linkedin.com/in/daewook-kang/" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white">💼 LinkedIn</a>
                     </li>
-                    <li>
+                    <li class="list-none">
                         <a href="https://www.instagram.com/teu_kan1016/" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white">📸 Instagram</a>
                     </li>
                 </ul>
