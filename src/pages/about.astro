@@ -1,86 +1,135 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
-import { SITE_TITLE } from '../consts';
-
+import AboutHeroImage from "../assets/blog-placeholder-about.jpg";
+import Layout from "../layouts/BlogPost.astro";
+import { SITE_TITLE } from "../consts";
 ---
 
 <Layout
-	title="About Me"
-	description="Learn more about Daewook Kang, a taxi driver in Osaka with a passion for the automotive industry and open-source projects."
-	pubDate={new Date('2025/11/28')}
-	heroImage={AboutHeroImage}
+  title="About Me"
+  description="Learn more about Daewook Kang, a taxi driver in Osaka with a passion for the automotive industry and open-source projects."
+  pubDate={new Date("2025/11/28")}
+  heroImage={AboutHeroImage}
 >
-	<!-- HERO / QUICK LINKS -->
-	<section id="hero" aria-labelledby="hero-title">
-		<h1 id="hero-title">Hi, I'm {SITE_TITLE}</h1>
-		<p>
-			Taxi driver in Osaka. Passionate about the automotive industry and open-source — building fast,
-			simple web projects and developer tools. Find my work on GitHub.
-		</p>
-	</section>
+  <!-- HERO / QUICK LINKS -->
+  <section id="hero" aria-labelledby="hero-title">
+    <h1 id="hero-title">Hi, I'm {SITE_TITLE}</h1>
+    <p>
+      Taxi driver in Osaka. Passionate about the automotive industry and
+      open-source — building fast, simple web projects and developer tools. Find
+      my work on GitHub.
+    </p>
+  </section>
 
-	<!-- ENGLISH PROFILE -->
-	<section id="profile-en" aria-labelledby="profile-en-title">
-		<h2 id="profile-en-title">About me</h2>
-		<h4>🚕 More Than Just a Ride: Bringing Smiles to Osaka's Streets!</h4>
-		
-		<p>Driving a taxi in Osaka isn’t just about getting you from point A to point B—it's about creating the ultimate customer experience.</p>
-		<p>I believe that my conduct directly reflects the image of the City of Osaka and the taxi profession. That is why I approach every trip with pride and care.</p>
-		<p>My goal is simple: to delight you.</p>
-		<p>I put my heart into every drive to ensure your journey is safe, comfortable, and memorable, leaving you with a lasting positive impression of this city.</p>
+  <!-- ENGLISH PROFILE -->
+  <section id="profile-en" aria-labelledby="profile-en-title">
+    <h2 id="profile-en-title">About me</h2>
+    <h4>🚕 More Than Just a Ride: Bringing Smiles to Osaka's Streets!</h4>
 
-		<h3>Skills & Expertise</h3>
-		<ul>
-			<li>Programming: Python, JavaScript</li>
-			<li>Web: Node.js; React; Next.js, Astro</li>
-			<li>Tools: Windows 10, Ubuntu 24.04LTS, Visual Studio Code</li>
-			<li>Strengths: visual-spatial thinking, customer service, self-learning, driving</li>
-			<li>Preparing for: Applied Information Technology Engineer Examination</li>
-		</ul>
+    <p>
+      Driving a taxi in Osaka isn’t just about getting you from point A to point
+      B—it's about creating the ultimate customer experience.
+    </p>
+    <p>
+      I believe that my conduct directly reflects the image of the City of Osaka
+      and the taxi profession. That is why I approach every trip with pride and
+      care.
+    </p>
+    <p>My goal is simple: to delight you.</p>
+    <p>
+      I put my heart into every drive to ensure your journey is safe,
+      comfortable, and memorable, leaving you with a lasting positive impression
+      of this city.
+    </p>
 
-		<h3>Career</h3>
-		<ul>
-			<li>Taxi Driver (2025-) Full-time in Osaka — honed people skills and driving</li>
-			<li>Contract Employee (2023–2025): AI data annotation at a large venture</li>
-			<li>Taxi Driver (2019–2023): Full-time in Osaka — honed people skills and driving</li>
-		</ul>
+    <h3>Skills & Expertise</h3>
+    <ul>
+      <li>Programming: Python, JavaScript</li>
+      <li>Web: Node.js; React; Next.js, Astro</li>
+      <li>Tools: Windows 10, Ubuntu 24.04LTS, Visual Studio Code</li>
+      <li>
+        Strengths: visual-spatial thinking, customer service, self-learning,
+        driving
+      </li>
+      <li>
+        Preparing for: Applied Information Technology Engineer Examination
+      </li>
+    </ul>
 
-		<h3>Featured Projects</h3>
-		<ul>
-			<li>Nginx Log Analyzer (2025)</li>
-			<li>Monte Carlo Simulation Program (2025)</li>
-			<li>Korean Language Learning Website (2024)</li>
-			<li>VR Application (2018)</li>
-			<li>Python Calculator using Tkinter(2018)</li>
-		</ul>
-	</section>
+    <h3>Career</h3>
+    <ul>
+      <li>
+        Taxi Driver (2025-) Full-time in Osaka — honed people skills and driving
+      </li>
+      <li>
+        Contract Employee (2023–2025): AI data annotation at a large venture
+      </li>
+      <li>
+        Taxi Driver (2019–2023): Full-time in Osaka — honed people skills and
+        driving
+      </li>
+    </ul>
 
-	<!-- INTERESTS & CONTACT -->
-	<section id="interests" aria-labelledby="interests-title">
-		<h2 id="interests-title">Interests & Contact</h2>
-		<p>
-			Interests: cars (owner of a 2014 Mazda 3 2.2L Diesel, manual), trains/buses/planes (especially sounds), Cities:
-			Skylines, Geoguessr, music (Tropical house, EDM, K-pop, J-pop), long drives between Osaka and Tokyo.
-		</p>
+    <h3>Featured Projects</h3>
+    <ul>
+      <li>Nginx Log Analyzer (2025)</li>
+      <li>Monte Carlo Simulation Program (2025)</li>
+      <li>Korean Language Learning Website (2024)</li>
+      <li>VR Application (2018)</li>
+      <li>Python Calculator using Tkinter(2018)</li>
+    </ul>
+  </section>
 
-		<h3>Contact</h3>
-		<ul>
-			<li>Email: <a href="mailto:rkdeodnr@gmail.com">rkdeodnr@gmail.com</a></li>
-			<li>GitHub: <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">github.com/bachboy0</a></li>
-			<li>LinkedIn: <a href="https://www.linkedin.com/in/daewook-kang/" target="_blank" rel="noopener noreferrer">Daewook Kang</a></li>
-		</ul>
+  <!-- INTERESTS & CONTACT -->
+  <section id="interests" aria-labelledby="interests-title">
+    <h2 id="interests-title">Interests & Contact</h2>
+    <p>
+      Interests: cars (owner of a 2014 Mazda 3 2.2L Diesel, manual),
+      trains/buses/planes (especially sounds), Cities: Skylines, Geoguessr,
+      music (Tropical house, EDM, K-pop, J-pop), long drives between Osaka and
+      Tokyo.
+    </p>
 
-		<h3>GitHub Stats</h3>
-		<p>
-			<a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">
-				<img alt="bachboy0's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=bachboy0" />
-			</a>
-		</p>
-		<p>
-			<a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer">
-				<img alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bachboy0" />
-			</a>
-		</p>
-	</section>
+    <h3>Contact</h3>
+    <ul>
+      <li>Email: <a href="mailto:rkdeodnr@gmail.com">rkdeodnr@gmail.com</a></li>
+      <li>
+        GitHub: <a
+          href="https://github.com/bachboy0"
+          target="_blank"
+          rel="noopener noreferrer">github.com/bachboy0</a>
+      </li>
+      <li>
+        LinkedIn: <a
+          href="https://www.linkedin.com/in/daewook-kang/"
+          target="_blank"
+          rel="noopener noreferrer">Daewook Kang</a>
+      </li>
+    </ul>
+
+    <h3>GitHub Stats</h3>
+    <p>
+      <a
+        href="https://github.com/bachboy0"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          alt="bachboy0's GitHub stats"
+          src="https://github-readme-stats.vercel.app/api?username=bachboy0"
+        />
+      </a>
+    </p>
+    <p>
+      <a
+        href="https://github.com/bachboy0"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          alt="Top languages"
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=bachboy0"
+        />
+      </a>
+    </p>
+  </section>
 </Layout>
