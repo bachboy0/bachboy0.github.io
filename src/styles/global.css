@@ -92,7 +92,7 @@ strong, b {
     font-weight: 700;
     color: var(--accent-dark);
 }
-
+/*
 a {
     color: var(--accent);
     text-decoration: none;
@@ -108,7 +108,7 @@ a:focus {
     outline: 2px solid var(--accent-light);
     outline-offset: 2px;
 }
-
+*/
 p {
     margin-bottom: 1.5em;
     color: rgb(var(--gray-dark));
@@ -279,7 +279,7 @@ html.dark {
 .dark p {
     color: #d1d5db;
 }
-
+/*
 .dark a {
     color: var(--accent-light);
 }
@@ -287,7 +287,7 @@ html.dark {
 .dark a:hover {
     color: #93c5fd;
 }
-
+*/
 .dark blockquote {
     background-color: rgba(31, 41, 55, 0.5);
     border-left-color: var(--accent-light);
