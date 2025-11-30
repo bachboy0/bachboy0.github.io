@@ -2,65 +2,23 @@
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import ThemeIcon from './ThemeIcon.astro';
-import InstagramIcon from '../assets/icons/instagram-glyph-black.svg';
-import GitHubIcon from '../assets/icons/github-mark.svg';
 ---
 
-<header>
-	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/tourosaka">Osaka Info</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div>
-		<div class="social-links">
-			<a href="https://www.instagram.com/teu_kan1016/" target="_blank">
-				<span class="sr-only">Follow Me on Instagram</span>
-				<InstagramIcon width="32" height="32" astro-icon="social/instagram" />
-			</a>
-			<a href="https://github.com/bachboy0" target="_blank">
-				<span class="sr-only">Go to my GitHub repo</span>
-				<GitHubIcon width="32" height="32" astro-icon="social/github" />
-			</a>
-			<ThemeIcon />
-		</div>
-	</nav>
+<header class="m-0 px-4 shadow-md">
+    <nav class="flex items-center justify-between">
+        <h2 class="m-0 text-base">
+            <a href="/" class="no-underline text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
+                {SITE_TITLE}
+            </a>
+        </h2>
+        <div class="flex gap-4">
+            <HeaderLink href="/">Home</HeaderLink>
+            <HeaderLink href="/tourosaka">Osaka Info</HeaderLink>
+            <HeaderLink href="/blog">Blog</HeaderLink>
+            <HeaderLink href="/about">About</HeaderLink>
+        </div>
+        <div class="flex">
+            <ThemeIcon />
+        </div>
+    </nav>
 </header>
-<style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	}
-	.social-links,
-	.social-links a {
-		display: flex;
-	}
-
-</style>
