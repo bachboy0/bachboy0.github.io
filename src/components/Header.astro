@@ -7,18 +7,49 @@ import ThemeIcon from './ThemeIcon.astro';
 <header class="m-0 px-4 shadow-md">
     <nav class="flex items-center justify-between">
         <h2 class="m-0 text-base">
-            <a href="/" class="no-underline text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
+            <a href="/" class="no-underline text-black dark:text-white" style="color: inherit;">
                 {SITE_TITLE}
             </a>
         </h2>
-        <div class="flex gap-4">
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-4">
             <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/tourosaka">Osaka Info</HeaderLink>
             <HeaderLink href="/blog">Blog</HeaderLink>
             <HeaderLink href="/about">About</HeaderLink>
         </div>
-        <div class="flex">
+
+        <!-- Mobile Controls (Right side) -->
+        <div class="md:hidden flex items-center gap-2 ml-auto">
+            <ThemeIcon />
+            <button id="menu-btn" class="flex flex-col gap-1.5 p-2">
+                <span class="w-6 h-0.5 bg-black dark:bg-white transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-black dark:bg-white transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-black dark:bg-white transition-all duration-300"></span>
+            </button>
+        </div>
+
+        <!-- Desktop ThemeIcon -->
+        <div class="hidden md:flex">
             <ThemeIcon />
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden flex flex-col gap-4 py-4 border-t border-gray-200 dark:border-gray-700">
+        <HeaderLink href="/">Home</HeaderLink>
+        <HeaderLink href="/tourosaka">Osaka Info</HeaderLink>
+        <HeaderLink href="/blog">Blog</HeaderLink>
+        <HeaderLink href="/about">About</HeaderLink>
+    </div>
 </header>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+    });
+</script>
