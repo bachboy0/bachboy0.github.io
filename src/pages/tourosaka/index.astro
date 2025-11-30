@@ -1,0 +1,60 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title="Osaka Tourist Information" description="Discover the vibrant culture, delicious food, and historic landmarks of Osaka, Japan's kitchen" />
+    </head>
+    <body>
+        <Header />
+
+        <main class="flex flex-col gap-16 px-4 py-8 max-w-4xl mx-auto">
+            <section class="text-center py-12 bg-linear-to-br from-purple-500 to-pink-600 text-white rounded-lg">
+                <h1 class="text-4xl font-bold mb-4">Welcome to Osaka</h1>
+                <p class="text-xl">Discover the vibrant culture, delicious food, and historic landmarks of Japan's kitchen</p>
+            </section>
+
+            <section class="my-12">
+                <h2 class="text-3xl font-bold mb-8">Top Attractions</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="border border-gray-300 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h3 class="text-xl font-bold mb-2">Osaka Castle</h3>
+                        <p class="text-gray-700 dark:text-gray-300">One of Japan's most famous landmarks with stunning views of the city</p>
+                    </article>
+                    <article class="border border-gray-300 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h3 class="text-xl font-bold mb-2">Dotonbori</h3>
+                        <p class="text-gray-700 dark:text-gray-300">Vibrant entertainment district known for street food and neon lights</p>
+                    </article>
+                    <article class="border border-gray-300 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <h3 class="text-xl font-bold mb-2">Sumiyoshi Taisha</h3>
+                        <p class="text-gray-700 dark:text-gray-300">Historic Shinto shrine with unique architectural style dating back 1,800 years</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="my-12">
+                <h2 class="text-3xl font-bold mb-8">Plan Your Visit</h2>
+                <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                    <li class="flex items-start">
+                        <span class="mr-3">•</span>
+                        <span><strong>Best time to visit:</strong> Spring (cherry blossoms) and autumn</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3">•</span>
+                        <span><strong>Getting around:</strong> Use the Osaka Metro and JR trains</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3">•</span>
+                        <span><strong>Local cuisine:</strong> Takoyaki, okonomiyaki, and kushikatsu</span>
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <Footer />
+    </body>
+</html>

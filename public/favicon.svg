@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 { fill: #f0f0f0; } /* 背景色（今回は使わないが定義） */
+      .cls-2 { fill: #222222; } /* タクシーの黒色 */
+      .cls-3 { fill: #ffcc00; } /* タクシーランプの色 */
+      .cls-4 { fill: #ffffff; } /* 窓の色 */
+    </style>
+  </defs>
+  <rect class="cls-2" x="15" y="40" width="70" height="25" rx="5" ry="5"/>
+  <rect class="cls-2" x="25" y="30" width="50" height="15" rx="3" ry="3"/>
+  <rect class="cls-3" x="45" y="25" width="10" height="8" rx="2" ry="2"/>
+  <rect class="cls-4" x="30" y="43" width="15" height="15" rx="2" ry="2"/>
+  <rect class="cls-4" x="55" y="43" width="15" height="15" rx="2" ry="2"/>
+  <circle class="cls-2" cx="30" cy="65" r="7"/>
+  <circle class="cls-2" cx="70" cy="65" r="7"/>
+</svg>

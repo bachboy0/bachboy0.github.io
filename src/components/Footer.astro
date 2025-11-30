@@ -1,0 +1,71 @@
+---
+import InstagramIcon from '../assets/icons/instagram-glyph-black.svg';
+import GitHubIcon from '../assets/icons/github-mark.svg';
+const today = new Date();
+---
+
+<footer>
+	&copy; {today.getFullYear()} Kang Daewook. All rights reserved.
+    <div class="social-links">
+        <a href="https://www.instagram.com/teu_kan1016/" target="_blank">
+            <span class="sr-only">Follow Me on Instagram</span>
+            <InstagramIcon width="32" height="32" astro-icon="social/instagram" />
+
+		</a>
+		<a href="https://github.com/bachboy0" target="_blank">
+			<span class="sr-only">Go to My GitHub repo</span>
+            <GitHubIcon width="32" height="32" astro-icon="social/github" />
+
+		</a>
+	</div>
+</footer>
+<style>
+    /* Footer - ヘッダーの構成に合わせ、見た目とレスポンシブを改善 */
+    footer {
+        margin: 0;
+        padding: 2em 1em 6em 1em;
+        text-align: center;
+        box-shadow: 0 -2px 8px rgba(var(--black), 5%);
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+        margin-top: 1em;
+        align-items: center;
+    }
+
+    .social-links a {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        transition: color 0.18s ease, background-color 0.18s ease, transform 0.12s ease;
+    }
+
+    .social-links a:hover,
+    .social-links a:focus {
+        transform: translateY(-2px);
+    }
+
+    .social-links svg {
+        width: 32px;
+        height: 32px;
+        display: block;
+        fill: currentColor;
+    }
+
+    /* モバイルでのレイアウト調整（Header と同様の方針） */
+    @media (max-width: 720px) {
+        footer {
+            padding-bottom: 4em;
+        }
+        .social-links {
+            gap: 0.75em;
+        }
+    }
+</style>
