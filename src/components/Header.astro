@@ -4,14 +4,10 @@ import HeaderLink from "./HeaderLink.astro";
 import ThemeIcon from "./ThemeIcon.astro";
 ---
 
-<header class="m-0 px-4 shadow-md">
+<header class="bg-white dark:bg-gray-900 m-0 px-4 shadow-md">
   <nav class="flex items-center justify-between">
     <h2 class="m-0 text-base">
-      <a
-        href="/"
-        class="no-underline text-black dark:text-white"
-        style="color: inherit;"
-      >
+      <a href="/" class="no-underline text-black dark:text-white">
         {SITE_TITLE}
       </a>
     </h2>
@@ -27,14 +23,10 @@ import ThemeIcon from "./ThemeIcon.astro";
     <!-- Mobile Controls (Right side) -->
     <div class="md:hidden flex items-center gap-2 ml-auto">
       <ThemeIcon />
-      <button
-        id="menu-btn"
-        class="flex flex-col gap-1.5 p-2 text-black dark:text-white"
-        style="color: inherit;"
-      >
-        <span class="w-6 h-0.5 bg-current transition-all duration-300"></span>
-        <span class="w-6 h-0.5 bg-current transition-all duration-300"></span>
-        <span class="w-6 h-0.5 bg-current transition-all duration-300"></span>
+      <button id="menu-btn" class="flex flex-col gap-1.5 p-2">
+        <span class="w-6 h-0.5 bg-black dark:bg-white"></span>
+        <span class="w-6 h-0.5 bg-black dark:bg-white"></span>
+        <span class="w-6 h-0.5 bg-black dark:bg-white"></span>
       </button>
     </div>
 
