@@ -34,6 +34,14 @@
   font-display: swap;
 }
 
+header {
+  background-color: var(--color-white);
+  color: white;
+  padding: 1em 2em;
+  box-shadow: var(--box-shadow);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 body {
   font-family: "Atkinson", sans-serif;
   margin: 0;
@@ -263,6 +271,11 @@ ol {
 html.dark {
   color-scheme: dark;
   color: rgb(var(--gray-light));
+}
+
+.dark header {
+  background-color: var(--gray-dark);
+  color: white;
 }
 
 .dark body {
