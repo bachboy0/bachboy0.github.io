@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
-/* Tailwind v4 では @theme ブロックで変数を定義します。 */
+/* Tailwind v4 向けにダークモードの判定ロジックを明示的に定義します。
+  これにより、htmlタグに 'dark' クラスがある場合に dark: 修飾子が有効になります。
+*/
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Colors */
   --color-accent: #3b82f6;
@@ -35,7 +39,6 @@
   font-display: swap;
 }
 
-/* @layer base を使用して、基本的なHTMLタグにTailwindのスタイルを適用します。 */
 @layer base {
   body {
     @apply font-display m-0 p-0 text-left break-words leading-[1.75] text-[16px] transition-colors duration-300;
