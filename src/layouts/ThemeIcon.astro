@@ -1,11 +1,9 @@
 ---
 ---
 <button
-  id="themeToggle"
-  class="p-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+  class="theme-toggle p-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
   aria-label="Toggle Dark Mode"
 >
-  <!-- Light Mode Icon (Sun) -->
   <svg
     xmlns="http://www.w3.org/2000/svg"
     class="sun-icon w-6 h-6"
@@ -18,9 +16,9 @@
       stroke-linejoin="round"
       stroke-width="2"
       d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707.707M6.343 6.343l-.707.707m12.728 0l.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-    />
+   
+  />
   </svg>
-  <!-- Dark Mode Icon (Moon) -->
   <svg
     xmlns="http://www.w3.org/2000/svg"
     class="moon-icon w-6 h-6 hidden"
@@ -34,52 +32,43 @@
       stroke-width="2"
       d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
     />
-  </svg>
+  
+ </svg>
 </button>     
 
 <script>
-  // このスクリプトはボタンのレンダリング後に実行される
-  const button = document.getElementById('themeToggle');
-  const rootElement = document.documentElement;
+  const buttons = document.querySelectorAll('.theme-toggle');
   const themeKey = 'theme';
-  
-  // アイコン要素を取得
-  const sunIcon = button?.querySelector('.sun-icon');
-  const moonIcon = button?.querySelector('.moon-icon');
 
   /**
-   * 現在のテーマに基づいてアイコンの表示/非表示を同期する関数
+   * 現在のテーマに基づいて全てのボタンのアイコン表示を同期する関数
    * @param {boolean} isDark - 現在ダークモードであるか
    */
-  function syncIcon(isDark: boolean) {
-    if (sunIcon && moonIcon) {
-      // ダークモードの場合: 太陽(lightのアイコン)を非表示にし、月(darkのアイコン)を表示
-      sunIcon.classList.toggle('hidden', isDark);
-      // ダークモードでない場合: 月(darkのアイコン)を非表示にし、太陽(lightのアイコン)を表示
-      moonIcon.classList.toggle('hidden', !isDark);
-    }
-  }
-
-  if (button) {
-    // 💡 1. 初期ロード時のアイコン状態同期
-    // <head>で設定された <html> の .dark クラスに基づいてアイコンを初期化
-    const initialIsDark = rootElement.classList.contains('dark');
-    syncIcon(initialIsDark);
-
-    // 2. クリック時の処理
-    button.addEventListener('click', () => {
-      // <html>タグの dark クラスをトグル
-      const isDark = rootElement.classList.toggle('dark');
-      
-      // LocalStorageに新しいテーマを保存
-      if (isDark) {
-        localStorage.setItem(themeKey, 'dark');
-      } else {
-        localStorage.setItem(themeKey, 'light');
+  function syncIcons(isDark: boolean) {
+    buttons.forEach(button => {
+      const sunIcon = button.querySelector('.sun-icon');
+      const moonIcon = button.querySelector('.moon-icon');
+      if (sunIcon && moonIcon) {
+        sunIcon.classList.toggle('hidden', isDark);
+        moonIcon.classList.toggle('hidden', !isDark);
       }
-
-      // 💡 3. クリック後のアイコン状態同期
-      syncIcon(isDark);
     });
   }
+
+  // 1. 初期ロード時のアイコン状態同期
+  // <head>のスクリプトですでに設定されたクラスを確認
+  const initialIsDark = document.documentElement.classList.contains('dark');
+  syncIcons(initialIsDark);
+
+  // 2. クリック時の処理（全てのボタンにイベントリスナーを追加）
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      
+      localStorage.setItem(themeKey, isDark ? 'dark' : 'light');
+      
+      // 全てのアイコンを更新
+      syncIcons(isDark);
+    });
+  });
 </script>
