@@ -108,19 +108,19 @@ b {
 }
 
 a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.2s ease, text-decoration 0.2s ease;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 a:hover {
-    color: var(--accent-dark);
-    text-decoration: underline;
+  color: var(--accent-dark);
+  text-decoration: underline;
 }
 
 a:focus {
-    outline: 2px solid var(--accent-light);
-    outline-offset: 2px;
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
 }
 
 p {
@@ -267,7 +267,14 @@ ol {
   white-space: nowrap;
 }
 
-/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+/* --- Dark Mode Styles (Tailwind's 'class' mode relies on this) --- */
+
 html.dark {
   color-scheme: dark;
   color: rgb(var(--gray-light));
@@ -278,61 +285,61 @@ html.dark {
   color: white;
 }
 
-.dark body {
-  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
-  color: rgb(var(--gray-light));
-}
+  .dark body {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+    color: rgb(var(--gray-light));
+  }
 
-.dark h1,
-.dark h2,
-.dark h3,
-.dark h4,
-.dark h5,
-.dark h6 {
-  color: #f3f4f6;
-}
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    color: #f3f4f6;
+  }
 
-.dark h2 {
-  border-bottom-color: var(--accent-light);
-}
+  .dark h2 {
+    border-bottom-color: var(--accent-light);
+  }
 
-.dark p {
-  color: #d1d5db;
-}
+  .dark p {
+    color: #d1d5db;
+  }
 
-.dark a {
+  .dark a {
     color: var(--accent-light);
-}
+  }
 
-.dark a:hover {
+  .dark a:hover {
     color: #93c5fd;
-}
+  }
 
-.dark blockquote {
-  background-color: rgba(31, 41, 55, 0.5);
-  border-left-color: var(--accent-light);
-  color: #d1d5db;
-}
+  .dark blockquote {
+    background-color: rgba(31, 41, 55, 0.5);
+    border-left-color: var(--accent-light);
+    color: #d1d5db;
+  }
 
-.dark code {
-  background-color: rgba(31, 41, 55, 0.8);
-  color: #60a5fa;
-}
+  .dark code {
+    background-color: rgba(31, 41, 55, 0.8);
+    color: #60a5fa;
+  }
 
-.dark pre {
-  background-color: #0f172a;
-  color: #e2e8f0;
-  border: 1px solid #334155;
-}
+  .dark pre {
+    background-color: #0f172a;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+  }
 
-.dark table th {
-  background-color: var(--accent-dark);
-}
+  .dark table th {
+    background-color: var(--accent-dark);
+  }
 
-.dark table tr:hover {
-  background-color: rgba(59, 130, 246, 0.1);
-}
+  .dark table tr:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
 
-.dark hr {
-  border-top-color: var(--accent-light);
-}
+  .dark hr {
+    border-top-color: var(--accent-light);
+  }
