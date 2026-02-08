@@ -17,9 +17,9 @@ const { title, description, mainClass = "" } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body>
+  <body class="font-['Atkinson',sans-serif] m-0 p-0 text-left bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 break-words text-gray-700 dark:text-gray-300 text-base leading-7 transition-colors duration-300">
     <Header />
-    <main class={mainClass}>
+    <main class={`w-[720px] max-w-[calc(100%-2rem)] mx-auto py-12 px-4 ${mainClass}`}>
       <slot />
     </main>
     <Footer />
