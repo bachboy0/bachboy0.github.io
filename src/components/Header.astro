@@ -17,7 +17,6 @@ const navLinks = [
       <a
         href="/"
         class="no-underline text-black dark:text-white"
-        style="color: inherit;"
       >
         {SITE_TITLE}
       </a>
@@ -34,7 +33,6 @@ const navLinks = [
       <button
         id="menu-btn"
         class="flex flex-col gap-1.5 p-2 text-black dark:text-white"
-        style="color: inherit;"
       >
         <span class="w-6 h-0.5 bg-current transition-all duration-300"></span>
         <span class="w-6 h-0.5 bg-current transition-all duration-300"></span>
@@ -57,7 +55,7 @@ const navLinks = [
   </div>
 </header>
 
-<script>
+<script is:inline>
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
 

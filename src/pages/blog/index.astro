@@ -12,9 +12,6 @@ const posts = (await getCollection('blog')).sort(
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<style>
-		.blog-container {
-			width: 960px;
-		}
 		ul {
 			display: flex;
 			flex-wrap: wrap;
@@ -83,7 +80,7 @@ const posts = (await getCollection('blog')).sort(
 			}
 		}
 	</style>
-	<div class="blog-container">
+	<div class="max-w-[960px] mx-auto">
 		<section>
 		<ul>
 			{
