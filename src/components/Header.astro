@@ -5,61 +5,116 @@ import ThemeIcon from "./ThemeIcon.astro";
 
 const navLinks = [
   { href: "/", text: "Home" },
-  { href: "/tourosaka", text: "Osaka Info" },
   { href: "/blog", text: "Blog" },
   { href: "/about", text: "About" },
+  { href: "/tourosaka", text: "Osaka Info" },
 ];
 ---
 
-<header class="m-0 px-4 shadow-md">
-  <nav class="flex items-center justify-between">
-    <h2 class="m-0 text-base">
+<header class="sticky top-0 z-50 m-0 px-4 py-3 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-gray-200/50 dark:border-gray-700/50 shadow-lg shadow-gray-200/50 dark:shadow-gray-900/50 transition-all duration-300">
+  <nav class="max-w-6xl mx-auto flex items-center justify-between">
+    <h2 class="m-0 text-lg font-bold">
       <a
         href="/"
-        class="no-underline text-black dark:text-white"
+        class="no-underline text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 hover:from-pink-600 hover:via-purple-600 hover:to-blue-600 dark:hover:from-pink-400 dark:hover:via-purple-400 dark:hover:to-blue-400 transition-all duration-500"
       >
         {SITE_TITLE}
       </a>
     </h2>
 
     <!-- Desktop Menu -->
-    <div class="hidden md:flex gap-4">
+    <div class="hidden md:flex gap-1 items-center">
       {navLinks.map((link) => (<HeaderLink href={link.href}>{link.text}</HeaderLink>))}
+      <div class="ml-2 pl-2 border-l border-gray-300 dark:border-gray-600">
+        <ThemeIcon />
+      </div>
     </div>
 
     <!-- Mobile Controls (Right side) -->
-    <div class="md:hidden flex items-center gap-2 ml-auto">
+    <div class="md:hidden flex items-center gap-3 ml-auto">
       <ThemeIcon />
       <button
         id="menu-btn"
-        class="flex flex-col gap-1.5 p-2 text-black dark:text-white"
+        class="relative flex flex-col gap-1.5 p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 group"
+        aria-label="Toggle menu"
       >
-        <span class="w-6 h-0.5 bg-current transition-all duration-300"></span>
-        <span class="w-6 h-0.5 bg-current transition-all duration-300"></span>
-        <span class="w-6 h-0.5 bg-current transition-all duration-300"></span>
+        <span class="menu-line w-6 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 rounded-full transition-all duration-300"></span>
+        <span class="menu-line w-6 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 rounded-full transition-all duration-300"></span>
+        <span class="menu-line w-6 h-0.5 bg-gradient-to-r from-pink-600 to-blue-600 dark:from-pink-400 dark:to-blue-400 rounded-full transition-all duration-300"></span>
       </button>
-    </div>
-
-    <!-- Desktop ThemeIcon -->
-    <div class="hidden md:flex">
-      <ThemeIcon />
     </div>
   </nav>
 
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden flex flex-col gap-4 py-4 border-t border-gray-200 dark:border-gray-700"
+    class="mobile-menu md:hidden overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0"
   >
-    {navLinks.map((link) => (<HeaderLink href={link.href}>{link.text}</HeaderLink>))}
+    <div class="flex flex-col gap-2 pt-4 pb-2 animate-fade-in">
+      {navLinks.map((link) => (
+        <div class="transform transition-all duration-300 hover:translate-x-1">
+          <HeaderLink href={link.href}>{link.text}</HeaderLink>
+        </div>
+      ))}
+    </div>
   </div>
 </header>
+
+<style>
+  .mobile-menu.open {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  #menu-btn.open .menu-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  #menu-btn.open .menu-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+
+  #menu-btn.open .menu-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+</style>
 
 <script is:inline>
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
 
   menuBtn?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("hidden");
+    menuBtn.classList.toggle("open");
+    mobileMenu?.classList.toggle("open");
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!menuBtn?.contains(e.target) && !mobileMenu?.contains(e.target)) {
+      menuBtn?.classList.remove("open");
+      mobileMenu?.classList.remove("open");
+    }
+  });
+
+  // Close mobile menu when navigating
+  document.addEventListener("astro:page-load", () => {
+    menuBtn?.classList.remove("open");
+    mobileMenu?.classList.remove("open");
   });
 </script>
