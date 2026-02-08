@@ -1,16 +1,74 @@
 ---
-title: 'Third post'
-description: 'Lorem ipsum dolor sit amet'
+title: 'Oh My Zsh + Powerlevel10k'
+description: 'Customizing Your Terminal: Oh My Zsh + Powerlevel10k'
 pubDate: 'Jul 22 2022'
 heroImage: '../../assets/blog-placeholder-2.jpg'
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+# Customizing Your Terminal: Oh My Zsh + Powerlevel10k
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+This guide outlines the process for setting up a productive and visually appealing terminal environment using **zsh**, **Oh My Zsh**, and the **Powerlevel10k** theme.
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+## 1. Install Zsh
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+First, you need to install the Zsh shell itself. Zsh is highly compatible with Bash but offers much better auto-completion and plugin support.
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+```bash
+sudo apt install zsh
+
+```
+
+## 2. Change Default Shell to Zsh
+
+Once installed, switch your default shell from Bash to Zsh so it opens automatically every time you start your terminal.
+
+```bash
+chsh -s $(which zsh)
+
+```
+
+## 3. Restart Zsh
+
+Apply the change immediately by replacing the current shell process with a new Zsh instance.
+
+```bash
+exec zsh
+
+```
+
+## 4. Install Oh My Zsh
+
+Oh My Zsh is a framework that makes managing your Zsh configuration (plugins, themes, etc.) much easier. Use the official install script:
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+```
+
+## 5. Install Recommended Fonts (For Local Machine)
+
+Powerlevel10k uses special icons (glyphs) that require a Nerd Font to display correctly. **You must install this on your host machine (Windows/Mac)** and set it as your terminal font.
+
+* [MesloLGS NF Regular](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)
+
+## 6. Install Powerlevel10k Theme
+
+Next, clone the Powerlevel10k repository into your Oh My Zsh custom themes folder. This is one of the fastest and most flexible themes available.
+
+```bash
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+
+```
+
+## 7. Restart Zsh Again
+
+Restart the shell one more time to let Oh My Zsh recognize the newly downloaded theme.
+
+```bash
+exec zsh
+
+```
+
+## 8. Done!
+
+The Powerlevel10k configuration wizard should start automatically. Simply follow the on-screen prompts to customize your prompt style (e.g., Rainbow, Lean, or Classic).

@@ -12,11 +12,22 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 <a 
     href={href} 
     class:list={[
-        'inline-block no-underline text-black dark:text-white',
-        { 'font-bold underline': isActive },
+        'relative inline-block px-4 py-2 no-underline rounded-lg font-medium transition-all duration-300',
+        'hover:scale-105 hover:shadow-sm',
+        'before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-r before:from-blue-100 before:to-purple-100 dark:before:from-blue-900/30 dark:before:to-purple-900/30',
+        'before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100',
+        isActive ? [
+            'text-gray-900 dark:text-white font-bold',
+            'after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-3/4 after:h-0.5 after:rounded-full after:bg-gradient-to-r after:from-blue-600 after:to-purple-600 dark:after:from-blue-400 dark:after:to-purple-400'
+        ] : [
+            'text-gray-700 dark:text-gray-300',
+            'hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400'
+        ],
         className
     ]} 
     {...props}
 >
-    <slot />
+    <span class="relative z-10">
+        <slot />
+    </span>
 </a>
