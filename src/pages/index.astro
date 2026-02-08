@@ -1,20 +1,11 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
-
-    <main class="flex flex-col gap-16">
-      <!-- HERO SECTION -->
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION} mainClass="flex flex-col gap-16">
+  <!-- HERO SECTION -->
       <section
         id="hero"
         class="min-h-[60vh] flex items-center justify-center text-center px-4 py-12"
@@ -36,13 +27,13 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
               href="https://github.com/bachboy0"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-700 text-white! hover:shadow-lg hover:-translate-y-0.5"
+              class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:shadow-lg hover:-translate-y-0.5"
             >
               My GitHub
             </a>
             <a
               href="/blog"
-              class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gray-200 dark:bg-gray-700 text-blue-100! dark:text-white border-2 border-blue-300 hover:bg-blue-300 hover:-translate-y-0.5"
+              class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white border-2 border-blue-300 hover:bg-blue-300 hover:text-white hover:-translate-y-0.5"
             >
               Read Blog
             </a>
@@ -56,7 +47,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
           <div class="flex gap-4 justify-center flex-wrap mt-6">
             <a
               href="/tourosaka"
-              class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-red-500 to-red-700 hover:shadow-lg hover:-translate-y-0.5 text-white!"
+              class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-red-500 to-red-700 hover:shadow-lg hover:-translate-y-0.5 text-white"
             >
               Osaka Tourist Info
             </a>
@@ -83,51 +74,21 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
       <section id="projects" class="px-4 py-8">
         <h2 class="text-3xl font-bold text-center mb-12">Featured Work</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          <article
-            class="p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1"
-          >
-            <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mt-0">
-              Nginx Log Analyzer
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400 my-2">
-              Tool for analyzing and visualizing web server logs with real-time
-              insights.
-            </p>
-            <span
-              class="inline-block px-3 py-1 rounded-full bg-blue-500 text-white text-sm font-semibold"
-              >Python</span
-            >
-          </article>
-          <article
-            class="p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1"
-          >
-            <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mt-0">
-              Monte Carlo Simulation
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400 my-2">
-              Statistical simulation program using numpy and Matplotlib for
-              probability analysis.
-            </p>
-            <span
-              class="inline-block px-3 py-1 rounded-full bg-blue-500 text-white text-sm font-semibold"
-              >Python</span
-            >
-          </article>
-          <article
-            class="p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1"
-          >
-            <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mt-0">
-              Korean Learning Platform
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400 my-2">
-              Educational web platform for Korean language learners with
-              interactive content.
-            </p>
-            <span
-              class="inline-block px-3 py-1 rounded-full bg-blue-500 text-white text-sm font-semibold"
-              >Web Dev</span
-            >
-          </article>
+          <ProjectCard 
+            title="Nginx Log Analyzer"
+            description="Tool for analyzing and visualizing web server logs with real-time insights."
+            tag="Python"
+          />
+          <ProjectCard 
+            title="Monte Carlo Simulation"
+            description="Statistical simulation program using numpy and Matplotlib for probability analysis."
+            tag="Python"
+          />
+          <ProjectCard 
+            title="Korean Learning Platform"
+            description="Educational web platform for Korean language learners with interactive content."
+            tag="Web Dev"
+          />
         </div>
         <p class="text-center text-lg mt-8">
           <a
@@ -246,8 +207,4 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
           </li>
         </ul>
       </section>
-    </main>
-
-    <Footer />
-  </body>
-</html>
+</BaseLayout>
