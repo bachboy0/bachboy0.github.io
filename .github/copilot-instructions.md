@@ -70,6 +70,7 @@ const { title } = Astro.props;
 - Use `@apply` for reusable patterns if needed
 - Keep global styles minimal in `src/styles/global.css`
 - Respect dark mode classes (likely using `dark:` prefix)
+- Do not use inline styles unless absolutely necessary
 
 ### TypeScript
 
