@@ -4,9 +4,8 @@ import ProjectCard from "../components/ProjectCard.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <div class="flex flex-col gap-16">
-      <!-- HERO SECTION -->
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION} mainClass="flex flex-col gap-16">
+  <!-- HERO SECTION -->
       <section
         id="hero"
         class="min-h-[60vh] flex items-center justify-center text-center px-4 py-12"
@@ -208,5 +207,4 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
           </li>
         </ul>
       </section>
-    </div>
 </BaseLayout>

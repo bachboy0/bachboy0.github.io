@@ -12,7 +12,7 @@ const posts = (await getCollection('blog')).sort(
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<style>
-		main {
+		.blog-container {
 			width: 960px;
 		}
 		ul {
@@ -83,7 +83,8 @@ const posts = (await getCollection('blog')).sort(
 			}
 		}
 	</style>
-	<section>
+	<div class="blog-container">
+		<section>
 		<ul>
 			{
 				posts.map((post) => (
@@ -102,4 +103,5 @@ const posts = (await getCollection('blog')).sort(
 			}
 		</ul>
 	</section>
+	</div>
 </BaseLayout>

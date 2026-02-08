@@ -6,9 +6,10 @@ import Header from "../components/Header.astro";
 interface Props {
   title: string;
   description: string;
+  mainClass?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, mainClass = "" } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,7 +19,7 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <Header />
-    <main>
+    <main class={mainClass}>
       <slot />
     </main>
     <Footer />
