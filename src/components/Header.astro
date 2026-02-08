@@ -35,7 +35,7 @@ const navLinks = [
       <ThemeIcon />
       <button
         id="menu-btn"
-        class="relative flex flex-col gap-1.5 p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 group"
+        class="relative flex flex-col gap-1.5 p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 group [&.open_.menu-line:nth-child(1)]:translate-y-[8px] [&.open_.menu-line:nth-child(1)]:rotate-45 [&.open_.menu-line:nth-child(2)]:opacity-0 [&.open_.menu-line:nth-child(2)]:translate-x-2 [&.open_.menu-line:nth-child(3)]:-translate-y-[8px] [&.open_.menu-line:nth-child(3)]:-rotate-45"
         aria-label="Toggle menu"
       >
         <span class="menu-line w-6 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 rounded-full transition-all duration-300"></span>
@@ -48,9 +48,9 @@ const navLinks = [
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="mobile-menu md:hidden overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0"
+    class="md:hidden overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 [&.open]:max-h-96 [&.open]:opacity-100"
   >
-    <div class="flex flex-col gap-2 pt-4 pb-2 animate-fade-in">
+    <div class="flex flex-col gap-2 pt-4 pb-2">
       {navLinks.map((link) => (
         <div class="transform transition-all duration-300 hover:translate-x-1">
           <HeaderLink href={link.href}>{link.text}</HeaderLink>
@@ -59,41 +59,6 @@ const navLinks = [
     </div>
   </div>
 </header>
-
-<style>
-  .mobile-menu.open {
-    max-height: 500px;
-    opacity: 1;
-  }
-
-  #menu-btn.open .menu-line:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-
-  #menu-btn.open .menu-line:nth-child(2) {
-    opacity: 0;
-    transform: translateX(10px);
-  }
-
-  #menu-btn.open .menu-line:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.3s ease-out;
-  }
-</style>
 
 <script is:inline>
   (() => {

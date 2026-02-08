@@ -1,23 +1,86 @@
 ---
+import { Schema } from 'astro:schema';
+
 interface Props {
   title: string;
   description: string;
   tag: string;
+  href?: string;
 }
 
-const { title, description, tag } = Astro.props;
+const { title, description, tag, href } = Astro.props;
+
+// Tag color mapping
+const tagColors: Record<string, { bg: string; text: string; border: string }> = {
+  Python: {
+    bg: "bg-gradient-to-r from-blue-500 to-cyan-500",
+    text: "text-white",
+    border: "border-blue-400"
+  },
+  "Web Dev": {
+    bg: "bg-gradient-to-r from-indigo-500 to-purple-500",
+    text: "text-white",
+    border: "border-indigo-400"
+  },
+  JavaScript: {
+    bg: "bg-gradient-to-r from-yellow-500 to-orange-500",
+    text: "text-white",
+    border: "border-yellow-400"
+  },
+  Svelte: {
+    bg: "bg-gradient-to-r from-red-500 to-pink-500",
+    text: "text-white",
+    border: "border-red-400"
+  },
+  Default: {
+    bg: "bg-gray-200 dark:bg-gray-800",
+    text: "text-gray-900 dark:text-gray-100",
+    border: "border-gray-400 dark:border-gray-600"
+  }
+};
+
+const tagStyle = tagColors[tag] || tagColors["Web Dev"];
+const CardWrapper = href ? 'a' : 'div';
 ---
 
 <article
-  class="p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-900/5 dark:from-blue-900/10 dark:to-blue-800/5 border border-blue-100 dark:border-blue-700/20 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1"
+  class="group relative h-full flex flex-col"
 >
-  <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mt-0">
-    {title}
-  </h3>
-  <p class="text-gray-600 dark:text-gray-400 my-2">
-    {description}
-  </p>
-  <span
-    class="inline-block px-3 py-1 rounded-full bg-blue-500 text-white text-sm font-semibold"
-  >{tag}</span>
+  <!-- Hover glow effect -->
+  <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500"></div>
+  
+  <!-- Card content -->
+  <CardWrapper
+    href={href}
+    target={href ? "_blank" : undefined}
+    rel={href ? "noopener noreferrer" : undefined}
+    class="relative flex-1 flex flex-col p-8 rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200 dark:border-gray-800 transition-all duration-500 no-underline"
+  >
+    <!-- Icon/Badge -->
+    <div class="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 text-white shadow-lg">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+      </svg>
+    </div>
+    
+    <!-- Title -->
+    <h3 class="text-2xl font-black text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+      {title}
+    </h3>
+    
+    <!-- Description -->
+    <p class="flex-1 text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+      {description}
+    </p>
+    
+    <!-- Tag -->
+    <div class="flex justify-center">
+      <span
+        class={`inline-flex items-center gap-2 px-4 py-2 rounded-xl ${tagStyle.bg} ${tagStyle.text} text-sm font-bold shadow-md transition-transform duration-300 group-hover:scale-105`}
+      >
+        <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+        {tag}
+      </span>
+    </div>
+  </CardWrapper>
 </article>

@@ -4,159 +4,338 @@ import ProjectCard from "../components/ProjectCard.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION} mainClass="flex flex-col gap-16">
-  <!-- HERO SECTION -->
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION} mainClass="!w-full !max-w-full !p-0 flex flex-col gap-0 overflow-hidden">
+  <!-- HERO SECTION - Enhanced with modern gradients and animations -->
       <section
         id="hero"
-        class="min-h-[60vh] flex items-center justify-center text-center px-4 py-12"
+        class="relative min-h-screen flex items-center justify-center text-center px-4 py-20 overflow-hidden"
       >
-        <div class="hero-content">
+        <!-- Animated background gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-950 dark:to-indigo-950"></div>
+        
+        <!-- Animated circles for visual interest -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 dark:bg-blue-500/20 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-3xl opacity-70 animate-pulse"></div>
+        <div class="absolute top-40 right-10 w-72 h-72 bg-purple-400/20 dark:bg-purple-500/20 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-3xl opacity-70 animate-pulse delay-1000"></div>
+        <div class="absolute -bottom-8 left-1/2 w-72 h-72 bg-indigo-400/20 dark:bg-indigo-500/20 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-3xl opacity-70 animate-pulse delay-2000"></div>
+        
+        <div class="relative z-10 hero-content max-w-5xl mx-auto">
+          
           <h1
             id="hero-title"
-            class="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent"
+            class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent leading-tight"
           >
-            Hi, I'm {SITE_TITLE}
+            Hi, I'm <span class="block mt-2">{SITE_TITLE}</span>
           </h1>
+          
           <p
-            class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto"
+            class="text-xl sm:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto font-light leading-relaxed"
           >
-            
+            Crafting innovative solutions at the intersection of
           </p>
-          <div class="flex gap-4 justify-center flex-wrap">
+          
+          <p class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-12 max-w-3xl mx-auto">
+            <span class="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">Code</span>
+            <span class="text-gray-400 dark:text-gray-500 mx-2">×</span>
+            <span class="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Design</span>
+            <span class="text-gray-400 dark:text-gray-500 mx-2">×</span>
+            <span class="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Innovation</span>
+          </p>
+          
+          <div class="flex gap-4 justify-center flex-wrap mb-8">
             <a
               href="https://github.com/bachboy0"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:shadow-lg hover:-translate-y-0.5"
+              class="group relative inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-500 bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 hover:-translate-y-1 active:scale-95 overflow-hidden"
             >
-              My GitHub
+              <span class="relative z-10">🐙 My GitHub</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
             </a>
             <a
               href="/blog"
-              class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white border-2 border-blue-300 hover:bg-blue-300 hover:text-white hover:-translate-y-0.5"
+              class="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-500 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm text-gray-900 dark:text-white border-2 border-blue-300 dark:border-blue-700 hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 hover:text-white hover:border-transparent hover:shadow-2xl hover:shadow-blue-500/30 hover:scale-105 hover:-translate-y-1 active:scale-95"
             >
-              Read Blog
+              <span>📝 Read Blog</span>
             </a>
             <a
               href="/about"
-              class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-transparent text-blue-500 border-2 border-blue-300 hover:bg-blue-300 hover:text-white"
+              class="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-500 bg-transparent text-blue-600 dark:text-blue-400 border-2 border-blue-400 dark:border-blue-500 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white hover:shadow-2xl hover:shadow-blue-500/30 hover:scale-105 hover:-translate-y-1 active:scale-95"
             >
-              Learn More
+              <span>✨ Learn More</span>
             </a>
           </div>
-          <div class="flex gap-4 justify-center flex-wrap mt-6">
+          
+          <div class="inline-flex items-center gap-2">
             <a
               href="/tourosaka"
-              class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-red-500 to-red-700 hover:shadow-lg hover:-translate-y-0.5 text-white"
+              class="group relative inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-500 bg-gradient-to-r from-red-500 via-pink-500 to-rose-500 text-white hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95 overflow-hidden"
             >
-              Osaka Tourist Info
+              <span class="relative z-10">🏯 Osaka Tourist Info</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-rose-500 via-red-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
             </a>
+          </div>
+          
+          <!-- Scroll indicator -->
+          <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
           </div>
         </div>
       </section>
       <!-- BLOG PREVIEW SECTION -->
-      <section id="blog-preview" class="text-center px-4 py-8">
-        <h2 class="text-3xl font-bold mb-4">Latest Articles</h2>
-        <p class="text-gray-600 dark:text-gray-400 mb-6">
-          Sharing insights on web development, open source, and technology.
-        </p>
-        <p class="mt-6">
-          <a
-            href="/blog"
-            class="inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-gray-200 dark:bg-gray-700 text-blue-700 dark:text-white border-2 border-blue-300 hover:bg-blue-300 hover:-translate-y-0.5"
-          >
-            View All Articles
-          </a>
-        </p>
+      <section id="blog-preview" class="relative px-6 py-24 sm:py-32 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <div class="max-w-7xl mx-auto">
+          <!-- Section header with decorative elements -->
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-950 dark:to-indigo-950 border border-blue-200 dark:border-blue-800">
+              <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"></path>
+                <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
+              </svg>
+              <span class="text-sm font-semibold text-blue-600 dark:text-blue-400">Blog</span>
+            </div>
+            
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 dark:from-gray-100 dark:via-blue-100 dark:to-indigo-100 bg-clip-text text-transparent">
+              Latest Articles
+            </h2>
+            
+            <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Sharing insights on <span class="font-semibold text-gray-900 dark:text-white">web development</span>, 
+              <span class="font-semibold text-gray-900 dark:text-white">open source</span>, and 
+              <span class="font-semibold text-gray-900 dark:text-white">modern technology</span>
+            </p>
+          </div>
+          
+          <!-- CTA with enhanced design -->
+          <div class="flex justify-center">
+            <a
+              href="/blog"
+              class="group relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-500 bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-2xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95 overflow-hidden"
+            >
+              <span class="relative z-10 flex items-center gap-3">
+                <span>View All Articles</span>
+                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </span>
+              <span class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+              
+              <!-- Shine effect -->
+              <span class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></span>
+            </a>
+          </div>
+        </div>
       </section>
 
       <!-- FEATURED PROJECTS SECTION -->
-      <section id="projects" class="px-4 py-8">
-        <h2 class="text-3xl font-bold text-center mb-12">Featured Work</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          <ProjectCard 
-            title="Nginx Log Analyzer"
-            description="Tool for analyzing and visualizing web server logs with real-time insights."
-            tag="Python"
-          />
-          <ProjectCard 
-            title="Monte Carlo Simulation"
-            description="Statistical simulation program using numpy and Matplotlib for probability analysis."
-            tag="Python"
-          />
-          <ProjectCard 
-            title="Korean Learning Platform"
-            description="Educational web platform for Korean language learners with interactive content."
-            tag="Web Dev"
-          />
+      <section id="projects" class="relative px-6 py-24 sm:py-32 bg-white dark:bg-gray-950">
+        <div class="max-w-7xl mx-auto">
+          <!-- Section header -->
+          <div class="text-center mb-20">
+            <div class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-950 dark:to-pink-950 border border-purple-200 dark:border-purple-800">
+              <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm font-semibold text-purple-600 dark:text-purple-400">Projects</span>
+            </div>
+            
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 bg-gradient-to-r from-purple-900 via-pink-900 to-rose-900 dark:from-purple-100 dark:via-pink-100 dark:to-rose-100 bg-clip-text text-transparent">
+              Featured Work
+            </h2>
+            
+            <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              A showcase of my latest projects and experiments in software development
+            </p>
+          </div>
+          
+          <!-- Projects grid with enhanced cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div class="group relative">
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+              <div class="relative bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-200 dark:border-gray-800 transition-all duration-500 hover:border-blue-500 dark:hover:border-blue-400 hover:-translate-y-2 hover:shadow-2xl">
+                <ProjectCard 
+                  title="Nginx Log Analyzer"
+                  description="Tool for analyzing and visualizing web server logs with real-time insights."
+                  tag="Python"
+                />
+              </div>
+            </div>
+            
+            <div class="group relative">
+              <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+              <div class="relative bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-200 dark:border-gray-800 transition-all duration-500 hover:border-purple-500 dark:hover:border-purple-400 hover:-translate-y-2 hover:shadow-2xl">
+                <ProjectCard 
+                  title="Monte Carlo Simulation"
+                  description="Statistical simulation program using numpy and Matplotlib for probability analysis."
+                  tag="Python"
+                />
+              </div>
+            </div>
+            <!-- takubook -->
+             <div class="group relative">
+              <div class="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+              <div class="relative bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-200 dark:border-gray-800 transition-all duration-500 hover:border-yellow-500 dark:hover:border-yellow-400 hover:-translate-y-2 hover:shadow-2xl">
+                <ProjectCard 
+                  title="Takubook"
+                  description="Daily sales tracking made simple. Set goals, monitor progress in real-time with cloud sync via Google/X/Email login. Fully offline-capable PWA."
+                  tag="Svelte"
+                  href="https://takubook.com"
+                />
+              </div>
+            </div>
+          </div>
+          
+          <!-- View all projects link -->
+          <div class="text-center">
+            <a
+              href="https://github.com/bachboy0"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center gap-3 text-lg font-bold text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+            >
+              <span>See all projects on GitHub</span>
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </a>
+          </div>
         </div>
-        <p class="text-center text-lg mt-8">
-          <a
-            href="https://github.com/bachboy0"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-blue-500 font-semibold hover:text-blue-700 transition-colors duration-200"
-          >
-            See all projects →
-          </a>
-        </p>
       </section>
 
       <!-- SKILLS SECTION -->
       <section
         id="skills"
-        class="px-4 py-8 bg-gray-100 dark:bg-gray-800/50 rounded-xl mx-4"
+        class="relative px-6 py-24 sm:py-32 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-blue-950/30 dark:to-indigo-950/30"
       >
-        <h2 class="text-3xl font-bold text-center mb-8">Skills & Expertise</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div>
-            <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mb-4">
-              Languages
-            </h3>
-            <ul class="list-none p-0 m-0">
-              <li class="list-none py-2 text-gray-800 dark:text-gray-200">
-                <span class="text-green-600 font-bold mr-2">✓</span>Python
-              </li>
-              <li class="list-none py-2 text-gray-800 dark:text-gray-200">
-                <span class="text-green-600 font-bold mr-2">✓</span>JavaScript
-              </li>
-            </ul>
+        <div class="max-w-7xl mx-auto">
+          <!-- Section header -->
+          <div class="text-center mb-20">
+            <div class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-indigo-100 to-blue-100 dark:from-indigo-950 dark:to-blue-950 border border-indigo-200 dark:border-indigo-800">
+              <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"></path>
+              </svg>
+              <span class="text-sm font-semibold text-indigo-600 dark:text-indigo-400">Skills & Expertise</span>
+            </div>
+            
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 bg-gradient-to-r from-indigo-900 via-blue-900 to-cyan-900 dark:from-indigo-100 dark:via-blue-100 dark:to-cyan-100 bg-clip-text text-transparent">
+              Technology Stack
+            </h2>
+            
+            <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Leveraging modern tools and frameworks to build exceptional digital experiences
+            </p>
           </div>
-          <div>
-            <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mb-4">
-              Web Development
-            </h3>
-            <ul class="list-none p-0 m-0">
-              <li class="list-none py-2 text-gray-800 dark:text-gray-200">
-                <span class="text-green-600 font-bold mr-2">✓</span>React
-              </li>
-              <li class="list-none py-2 text-gray-800 dark:text-gray-200">
-                <span class="text-green-600 font-bold mr-2">✓</span>Node.js
-              </li>
-              <li class="list-none py-2 text-gray-800 dark:text-gray-200">
-                <span class="text-green-600 font-bold mr-2">✓</span>Next.js
-              </li>
-              <li class="list-none py-2 text-gray-800 dark:text-gray-200">
-                <span class="text-green-600 font-bold mr-2">✓</span>Astro
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-blue-700 dark:text-blue-400 font-bold text-lg mb-4">
-              Tools & Platforms
-            </h3>
-            <ul class="list-none p-0 m-0">
-              <li class="list-none py-2 text-gray-800 dark:text-gray-200">
-                <span class="text-green-600 font-bold mr-2">✓</span>Ubuntu /
-                Windows
-              </li>
-              <li class="list-none py-2 text-gray-800 dark:text-gray-200">
-                <span class="text-green-600 font-bold mr-2">✓</span>VS Code
-              </li>
-              <li class="list-none py-2 text-gray-800 dark:text-gray-200">
-                <span class="text-green-600 font-bold mr-2">✓</span>Git
-              </li>
-            </ul>
+          
+          <!-- Skills grid with enhanced cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Languages Card -->
+            <div class="group relative">
+              <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+              <div class="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 dark:border-gray-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="p-3 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-black text-gray-900 dark:text-white">
+                    Languages
+                  </h3>
+                </div>
+                <ul class="space-y-4">
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg text-white font-bold text-sm">P</span>
+                    <span class="font-medium text-lg">Python</span>
+                  </li>
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg text-white font-bold text-sm">JS</span>
+                    <span class="font-medium text-lg">JavaScript</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Web Development Card -->
+            <div class="group relative">
+              <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+              <div class="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 dark:border-gray-800 hover:border-indigo-400 dark:hover:border-indigo-500 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="p-3 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-black text-gray-900 dark:text-white">
+                    Web Dev
+                  </h3>
+                </div>
+                <ul class="space-y-4">
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg text-white font-bold text-sm">R</span>
+                    <span class="font-medium text-lg">React</span>
+                  </li>
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg text-white font-bold text-sm">N</span>
+                    <span class="font-medium text-lg">Node.js</span>
+                  </li>
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-700 rounded-lg text-white font-bold text-sm">⬢</span>
+                    <span class="font-medium text-lg">Next.js</span>
+                  </li>
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-orange-500 to-red-500 rounded-lg text-white font-bold text-sm">A</span>
+                    <span class="font-medium text-lg">Astro</span>
+                  </li>
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-red-500 to-pink-500 rounded-lg text-white font-bold text-sm">S</span>
+                    <span class="font-medium text-lg">Svelte</span>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Tools & Platforms Card -->
+            <div class="group relative">
+              <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+              <div class="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 dark:border-gray-800 hover:border-purple-400 dark:hover:border-purple-500 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="p-3 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-black text-gray-900 dark:text-white">
+                    Tools
+                  </h3>
+                </div>
+                <ul class="space-y-4">
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-orange-500 to-red-500 rounded-lg text-white font-bold text-sm">🐧</span>
+                    <span class="font-medium text-lg">Ubuntu / Windows</span>
+                  </li>
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-red-500 to-yellow-500 rounded-lg text-white font-bold text-sm">🐧</span>
+                    <span class="font-medium text-lg">Debian</span>
+                  </li>
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-pink-500 to-rose-500 rounded-lg text-white font-bold text-sm">D</span>
+                    <span class="font-medium text-lg">Docker</span>
+                  </li>
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg text-white font-bold text-sm">VS</span>
+                    <span class="font-medium text-lg">VS Code</span>
+                  </li>
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-orange-600 to-red-600 rounded-lg text-white font-bold text-sm">G</span>
+                    <span class="font-medium text-lg">Git</span>
+                  </li>
+                  <li class="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-green-500 to-teal-500 rounded-lg text-white font-bold text-sm">C</span>
+                    <span class="font-medium text-lg">GitHub Copilot</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -164,47 +343,108 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
       <!-- CONTACT / CTA SECTION -->
       <section
         id="contact"
-        class="text-center px-4 py-8 bg-gradient-to-br from-blue-100/50 to-blue-900/5 dark:from-blue-900/15 dark:to-blue-800/5 rounded-xl mx-4"
+        class="relative px-6 py-24 sm:py-32 bg-white dark:bg-gray-950 overflow-hidden"
       >
-        <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
-        <p class="text-gray-700 dark:text-gray-300 mb-6">
-          Interested in collaborating or just want to say hello? Reach out!
-        </p>
-        <ul class="flex justify-center gap-6 p-0 m-0 mt-6 flex-wrap">
-          <li class="list-none">
-            <a
-              href="mailto:rkdeodnr@gmail.com"
-              class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white"
-              >📧 Email</a
-            >
-          </li>
-          <li class="list-none">
-            <a
-              href="https://github.com/bachboy0"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white"
-              >🐙 GitHub</a
-            >
-          </li>
-          <li class="list-none">
-            <a
-              href="https://www.linkedin.com/in/daewook-kang/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white"
-              >💼 LinkedIn</a
-            >
-          </li>
-          <li class="list-none">
-            <a
-              href="https://www.instagram.com/teu_kan1016/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block px-4 py-2 rounded font-semibold transition-all duration-200 hover:bg-blue-500 hover:text-white"
-              >📸 Instagram</a
-            >
-          </li>
-        </ul>
+        <!-- Decorative background -->
+        <div class="absolute inset-0">
+          <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/5 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-3xl"></div>
+          <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 dark:bg-purple-500/5 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-3xl"></div>
+        </div>
+        
+        <div class="relative max-w-5xl mx-auto">
+          <!-- Main content card -->
+          <div class="relative bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-[3rem] p-12 sm:p-16 lg:p-20 shadow-2xl overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+            
+            <div class="relative text-center text-white">
+              <!-- Badge -->
+              <div class="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-white/20 backdrop-blur-sm border border-white/30">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                </svg>
+                <span class="text-sm font-semibold">Get in Touch</span>
+              </div>
+              
+              <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+                <span class="block bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">Get in Touch</span>
+              </h2>
+              
+              <p class="text-xl sm:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+                Feel free to reach out!
+              </p>
+              
+              <!-- Social links grid -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
+                <a
+                  href="mailto:rkdeodnr@gmail.com"
+                  class="group relative bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-white/20 hover:border-white/40"
+                >
+                  <div class="flex flex-col items-center gap-3">
+                    <div class="w-12 h-12 flex items-center justify-center bg-white/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                      <span class="text-2xl">📧</span>
+                    </div>
+                    <span class="font-bold text-base">Email</span>
+                  </div>
+                  <div class="absolute inset-0 bg-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+                
+                <a
+                  href="https://github.com/bachboy0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group relative bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-white/20 hover:border-white/40"
+                >
+                  <div class="flex flex-col items-center gap-3">
+                    <div class="w-12 h-12 flex items-center justify-center bg-white/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                      <span class="text-2xl">🐙</span>
+                    </div>
+                    <span class="font-bold text-base">GitHub</span>
+                  </div>
+                  <div class="absolute inset-0 bg-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+                
+                <a
+                  href="https://www.linkedin.com/in/daewook-kang/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group relative bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-white/20 hover:border-white/40"
+                >
+                  <div class="flex flex-col items-center gap-3">
+                    <div class="w-12 h-12 flex items-center justify-center bg-white/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                      <span class="text-2xl">💼</span>
+                    </div>
+                    <span class="font-bold text-base">LinkedIn</span>
+                  </div>
+                  <div class="absolute inset-0 bg-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+                
+                <a
+                  href="https://www.instagram.com/teu_kan1016/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group relative bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-white/20 hover:border-white/40"
+                >
+                  <div class="flex flex-col items-center gap-3">
+                    <div class="w-12 h-12 flex items-center justify-center bg-white/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                      <span class="text-2xl">📸</span>
+                    </div>
+                    <span class="font-bold text-base">Instagram</span>
+                  </div>
+                  <div class="absolute inset-0 bg-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+              </div>
+              
+              <!-- Additional CTA -->
+              <div class="mt-12 pt-12 border-t border-white/20">
+                <p class="text-blue-100 text-lg mb-4">
+                  ⚡ Response time: Usually within 24 hours
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 </BaseLayout>
