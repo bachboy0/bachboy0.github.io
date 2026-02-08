@@ -2,6 +2,13 @@
 import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 import ThemeIcon from "./ThemeIcon.astro";
+
+const navLinks = [
+  { href: "/", text: "Home" },
+  { href: "/tourosaka", text: "Osaka Info" },
+  { href: "/blog", text: "Blog" },
+  { href: "/about", text: "About" },
+];
 ---
 
 <header class="m-0 px-4 shadow-md">
@@ -18,10 +25,7 @@ import ThemeIcon from "./ThemeIcon.astro";
 
     <!-- Desktop Menu -->
     <div class="hidden md:flex gap-4">
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/tourosaka">Osaka Info</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
+      {navLinks.map(link => <HeaderLink href={link.href}>{link.text}</HeaderLink>)}
     </div>
 
     <!-- Mobile Controls (Right side) -->
@@ -49,10 +53,7 @@ import ThemeIcon from "./ThemeIcon.astro";
     id="mobile-menu"
     class="hidden md:hidden flex flex-col gap-4 py-4 border-t border-gray-200 dark:border-gray-700"
   >
-    <HeaderLink href="/">Home</HeaderLink>
-    <HeaderLink href="/tourosaka">Osaka Info</HeaderLink>
-    <HeaderLink href="/blog">Blog</HeaderLink>
-    <HeaderLink href="/about">About</HeaderLink>
+    {navLinks.map(link => <HeaderLink href={link.href}>{link.text}</HeaderLink>)}
   </div>
 </header>
 
