@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { useTranslations } from "../../i18n/utils";
+
+const t = useTranslations('ko');
+const SITE_TITLE = t('site.title');
+const SITE_DESCRIPTION = t('site.description');
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-4xl font-bold mb-6">소개</h1>
+    <p class="text-lg mb-4">
+      이 페이지는 한국어 버전입니다. 콘텐츠는 영어 버전과 동일하지만 UI는 한국어로 번역되었습니다.
+    </p>
+    <p class="text-lg">
+      자세한 콘텐츠 번역은 향후 업데이트에서 추가될 예정입니다.
+    </p>
+  </div>
+</BaseLayout>

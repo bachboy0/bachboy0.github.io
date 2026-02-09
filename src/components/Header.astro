@@ -2,12 +2,17 @@
 import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 import ThemeIcon from "./ThemeIcon.astro";
+import LanguagePicker from "./LanguagePicker.astro";
+import { getLangFromUrl, useTranslations, getLocalizedPath } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const navLinks = [
-  { href: "/", text: "Home" },
-  { href: "/blog", text: "Blog" },
-  { href: "/about", text: "About" },
-  { href: "https://nakayamaken.com/en/osaka/", text: "Osaka Info" },
+  { href: getLocalizedPath("", lang), text: t("nav.home") },
+  { href: getLocalizedPath("blog", lang), text: t("nav.blog") },
+  { href: getLocalizedPath("about", lang), text: t("nav.about") },
+  { href: "https://nakayamaken.com/en/osaka/", text: t("nav.osaka") },
 ];
 ---
 
@@ -25,13 +30,15 @@ const navLinks = [
     <!-- Desktop Menu -->
     <div class="hidden md:flex gap-1 items-center">
       {navLinks.map((link) => (<HeaderLink href={link.href}>{link.text}</HeaderLink>))}
-      <div class="ml-2 pl-2 border-l border-gray-300 dark:border-gray-600">
+      <div class="ml-2 pl-2 border-l border-gray-300 dark:border-gray-600 flex items-center gap-2">
+        <LanguagePicker />
         <ThemeIcon />
       </div>
     </div>
 
     <!-- Mobile Controls (Right side) -->
     <div class="md:hidden flex items-center gap-3 ml-auto">
+      <LanguagePicker />
       <ThemeIcon />
       <button
         id="menu-btn"

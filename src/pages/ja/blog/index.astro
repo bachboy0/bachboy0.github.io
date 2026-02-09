@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const t = useTranslations('ja');
+const SITE_TITLE = t('site.title');
+const SITE_DESCRIPTION = t('site.description');
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<div class="max-w-[960px] mx-auto">
+		<section>
+		<ul class="flex flex-wrap gap-8 md:gap-8 list-none m-0 p-0">
+			{
+				posts.map((post, index) => (
+					<li class={index === 0 ? "w-full mb-4 text-center" : "w-full md:w-[calc(50%-1rem)]"}>
+						<a href={`/ja/blog/${post.id}/`} class="block no-underline transition-all duration-200 hover:text-blue-500 group">
+							{post.data.heroImage && (
+								<Image 
+									width={720} 
+									height={360} 
+									src={post.data.heroImage} 
+									alt="" 
+									class={`mb-2 rounded-xl group-hover:shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_12px_rgba(0,0,0,0.08)] transition-shadow duration-200 w-full h-auto object-cover ${index === 0 ? 'max-h-[400px]' : 'max-h-[240px]'}`}
+								/>
+							)}
+							<h4 class={`m-0 leading-none text-gray-900 dark:text-white group-hover:text-blue-500 transition-colors duration-200 ${index === 0 ? 'text-[2.369rem]' : 'text-xl'}`}>
+								{post.data.title}
+							</h4>
+							<p class="m-0 text-gray-600 dark:text-gray-400 group-hover:text-blue-500 transition-colors duration-200">
+								<FormattedDate date={post.data.pubDate} />
+							</p>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+	</div>
+</BaseLayout>
