@@ -22,18 +22,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         <Header />
         <main class="w-full px-4 md:px-8">
             <article>
-                <div class="w-full">
+                <div class="prose prose-lg dark:prose-invert max-w-2xl mx-auto py-8 px-4">
                     {heroImage && (
                         <Image 
-                            width={1020} 
-                            height={510} 
+                            width={500} 
+                            height={250} 
                             src={heroImage} 
                             alt={title}
-                            class="w-full rounded-xl shadow-lg mx-auto block"
+                            class="w-full max-h-[500px] object-contain rounded-xl shadow-lg mx-auto block"
                         />
                     )}
-                </div>
-                <div class="prose prose-lg dark:prose-invert max-w-2xl mx-auto py-8 px-4">
                     <div class="text-center mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
                         <div class="text-gray-500 dark:text-gray-400 mb-2">
                             <FormattedDate date={pubDate} />
