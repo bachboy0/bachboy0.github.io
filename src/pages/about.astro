@@ -1,135 +1,254 @@
 ---
-import AboutHeroImage from "../assets/blog-placeholder-about.jpg";
-import Layout from "../layouts/BlogPost.astro";
+import { Image } from 'astro:assets';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AboutHeroImage from "../assets/ogp.png";
 import { SITE_TITLE } from "../consts";
 ---
 
-<Layout
+<BaseLayout
   title="About Me"
   description="Learn more about Daewook Kang, a taxi driver in Osaka with a passion for the automotive industry and open-source projects."
-  pubDate={new Date("2025/11/28")}
-  heroImage={AboutHeroImage}
+  mainClass="!w-full !max-w-7xl"
 >
-  <!-- HERO / QUICK LINKS -->
-  <section id="hero" aria-labelledby="hero-title">
-    <h1 id="hero-title">Hi, I'm {SITE_TITLE}</h1>
-    <p>
-      Taxi driver in Osaka. Passionate about the automotive industry and
-      open-source — building fast, simple web projects and developer tools. Find
-      my work on GitHub.
-    </p>
+  <!-- HERO IMAGE -->
+  <div class="mb-8 -mt-4">
+    <Image 
+      src={AboutHeroImage}
+      alt="About Me"
+      class="w-full max-w-3xl mx-auto rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 transition-all duration-300 hover:shadow-3xl hover:scale-[1.01]"
+      width={800}
+      height={400}
+    />
+  </div>
+
+  <!-- HERO -->
+  <section id="hero" aria-labelledby="hero-title" class="relative mb-12 rounded-2xl bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-950/30 dark:via-indigo-950/30 dark:to-purple-950/30 p-8 md:p-12 backdrop-blur-sm border border-blue-200/50 dark:border-blue-800/50 shadow-xl shadow-blue-500/10 dark:shadow-blue-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 dark:hover:shadow-blue-500/10 hover:scale-[1.01]">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-400/5 via-purple-400/5 to-pink-400/5 dark:from-blue-400/10 dark:via-purple-400/10 dark:to-pink-400/10 rounded-2xl pointer-events-none"></div>
+    <div class="relative z-10">
+      <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent animate-gradient leading-tight">
+        👋 Hi, I'm @bachboy0
+      </h1>
+      <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed font-medium">
+        I'm passionate about <span class="font-bold text-blue-600 dark:text-blue-400">Full-stack Development</span> with a deep interest in the automotive industry and MaaS. I hold a degree in Applied Informatics from Kwansei Gakuin University.
+      </p>
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3 p-4 rounded-xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm border border-blue-200/30 dark:border-blue-800/30 transition-all duration-300 hover:bg-white/80 dark:hover:bg-gray-900/80 hover:scale-[1.02] hover:shadow-lg">
+          <span class="text-2xl flex-shrink-0">🌱</span>
+          <span class="text-gray-700 dark:text-gray-300"><span class="font-semibold text-gray-900 dark:text-white">Currently learning:</span> Python, React, Next.js, Svelte, Linux</span>
+        </li>
+        <li class="flex items-start gap-3 p-4 rounded-xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm border border-purple-200/30 dark:border-purple-800/30 transition-all duration-300 hover:bg-white/80 dark:hover:bg-gray-900/80 hover:scale-[1.02] hover:shadow-lg">
+          <span class="text-2xl flex-shrink-0">🎯</span>
+          <span class="text-gray-700 dark:text-gray-300"><span class="font-semibold text-gray-900 dark:text-white">Career goal:</span> Aspire to secure a technical role that leverages my skills and guarantees a robust, competitive annual income.</span>
+        </li>
+        <li class="flex items-start gap-3 p-4 rounded-xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm border border-indigo-200/30 dark:border-indigo-800/30 transition-all duration-300 hover:bg-white/80 dark:hover:bg-gray-900/80 hover:scale-[1.02] hover:shadow-lg">
+          <span class="text-2xl flex-shrink-0">🔭</span>
+          <span class="text-gray-700 dark:text-gray-300"><span class="font-semibold text-gray-900 dark:text-white">Future interests:</span> Digital nomad lifestyle, microservice operations, or freelance coding</span>
+        </li>
+      </ul>
+    </div>
   </section>
 
-  <!-- ENGLISH PROFILE -->
-  <section id="profile-en" aria-labelledby="profile-en-title">
-    <h2 id="profile-en-title">About me</h2>
-    <h4>🚕 More Than Just a Ride: Bringing Smiles to Osaka's Streets!</h4>
+  <!-- SKILLS -->
+  <section id="skills" aria-labelledby="skills-title" class="mb-12 rounded-2xl bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-emerald-950/30 dark:via-teal-950/30 dark:to-cyan-950/30 p-8 md:p-12 border border-emerald-200/50 dark:border-emerald-800/50 shadow-xl shadow-emerald-500/10 dark:shadow-emerald-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/20 dark:hover:shadow-emerald-500/10">
+    <h2 id="skills-title" class="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-400 bg-clip-text text-transparent">
+      🚀 My Skills
+    </h2>
+    
+    <div class="mb-10 p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-emerald-200/50 dark:border-emerald-800/50 shadow-lg transition-all duration-300 hover:scale-[1.01]">
+      <a href="https://skillicons.dev" target="_blank" rel="noopener noreferrer" class="block">
+        <img
+          alt="My Skills"
+          src="https://skillicons.dev/icons?i=linux,debian,ubuntu,docker,vim,vscode,postgres,nginx,r,py,js,ts,html,css,nodejs,npm,vite,tailwind,react,svelte,astro,nextjs,cloudflare,supabase"
+          class="w-full h-auto transition-all duration-300 hover:scale-105"
+        />
+      </a>
+    </div>
 
-    <p>
-      Driving a taxi in Osaka isn’t just about getting you from point A to point
-      B—it's about creating the ultimate customer experience.
-    </p>
-    <p>
-      I believe that my conduct directly reflects the image of the City of Osaka
-      and the taxi profession. That is why I approach every trip with pride and
-      care.
-    </p>
-    <p>My goal is simple: to delight you.</p>
-    <p>
-      I put my heart into every drive to ensure your journey is safe,
-      comfortable, and memorable, leaving you with a lasting positive impression
-      of this city.
-    </p>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-emerald-200/50 dark:border-emerald-800/50 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        <h3 class="text-xl font-bold mb-4 text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
+          🛠️ Skills & Expertise
+        </h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+            <span class="text-emerald-500 dark:text-emerald-400 font-bold mt-0.5">▹</span>
+            <span><span class="font-semibold text-gray-900 dark:text-white">Environment:</span> Windows 11 + WSL2 (Debian 13, Ubuntu 24.04LTS), Docker Engine</span>
+          </li>
+          <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+            <span class="text-emerald-500 dark:text-emerald-400 font-bold mt-0.5">▹</span>
+            <span><span class="font-semibold text-gray-900 dark:text-white">Programming Languages:</span> Python, JavaScript</span>
+          </li>
+          <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+            <span class="text-emerald-500 dark:text-emerald-400 font-bold mt-0.5">▹</span>
+            <span><span class="font-semibold text-gray-900 dark:text-white">Web Development:</span> Node.js, React, Docusaurus, SvelteKit</span>
+          </li>
+          <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+            <span class="text-emerald-500 dark:text-emerald-400 font-bold mt-0.5">▹</span>
+            <span><span class="font-semibold text-gray-900 dark:text-white">Strengths:</span> Customer service, self-learning & adaptability</span>
+          </li>
+          <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+            <span class="text-emerald-500 dark:text-emerald-400 font-bold mt-0.5">▹</span>
+            <span><span class="font-semibold text-gray-900 dark:text-white">Currently preparing for:</span> Applied Information Technology Engineer Examination</span>
+          </li>
+        </ul>
+      </div>
 
-    <h3>Skills & Expertise</h3>
-    <ul>
-      <li>Programming: Python, JavaScript</li>
-      <li>Web: Node.js; React; Next.js, Astro</li>
-      <li>Tools: Windows 10, Ubuntu 24.04LTS, Visual Studio Code</li>
-      <li>
-        Strengths: visual-spatial thinking, customer service, self-learning,
-        driving
-      </li>
-      <li>
-        Preparing for: Applied Information Technology Engineer Examination
-      </li>
-    </ul>
-
-    <h3>Career</h3>
-    <ul>
-      <li>
-        Taxi Driver (2025-) Full-time in Osaka — honed people skills and driving
-      </li>
-      <li>
-        Contract Employee (2023–2025): AI data annotation at a large venture
-      </li>
-      <li>
-        Taxi Driver (2019–2023): Full-time in Osaka — honed people skills and
-        driving
-      </li>
-    </ul>
-
-    <h3>Featured Projects</h3>
-    <ul>
-      <li>Nginx Log Analyzer (2025)</li>
-      <li>Monte Carlo Simulation Program (2025)</li>
-      <li>Korean Language Learning Website (2024)</li>
-      <li>VR Application (2018)</li>
-      <li>Python Calculator using Tkinter(2018)</li>
-    </ul>
+      <div class="p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-teal-200/50 dark:border-teal-800/50 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        <h3 class="text-xl font-bold mb-4 text-teal-700 dark:text-teal-400 flex items-center gap-2">
+          💼 Career Journey
+        </h3>
+        <ul class="space-y-3">
+          <li class="p-3 rounded-lg bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-teal-950/50 dark:to-cyan-950/50 border-l-4 border-teal-500 dark:border-teal-400 transition-all duration-300 hover:scale-[1.02]">
+            <span class="font-bold text-teal-700 dark:text-teal-400 block mb-1">Taxi Driver (2025-Present)</span>
+            <span class="text-sm text-gray-600 dark:text-gray-400">Full-time taxi driver in Osaka, enhancing people skills and driving expertise</span>
+          </li>
+          <li class="p-3 rounded-lg bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-950/50 dark:to-blue-950/50 border-l-4 border-cyan-500 dark:border-cyan-400 transition-all duration-300 hover:scale-[1.02]">
+            <span class="font-bold text-cyan-700 dark:text-cyan-400 block mb-1">Contract Employee (2023-2025)</span>
+            <span class="text-sm text-gray-600 dark:text-gray-400">Working at a mega-venture company, focusing on AI-related data annotation tasks</span>
+          </li>
+          <li class="p-3 rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 border-l-4 border-blue-500 dark:border-blue-400 transition-all duration-300 hover:scale-[1.02]">
+            <span class="font-bold text-blue-700 dark:text-blue-400 block mb-1">Taxi Driver (2019-2023)</span>
+            <span class="text-sm text-gray-600 dark:text-gray-400">Full-time taxi driver in Osaka, enhancing people skills and driving expertise</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </section>
 
-  <!-- INTERESTS & CONTACT -->
-  <section id="interests" aria-labelledby="interests-title">
-    <h2 id="interests-title">Interests & Contact</h2>
-    <p>
-      Interests: cars (owner of a 2014 Mazda 3 2.2L Diesel, manual),
-      trains/buses/planes (especially sounds), Cities: Skylines, Geoguessr,
-      music (Tropical house, EDM, K-pop, J-pop), long drives between Osaka and
-      Tokyo.
-    </p>
+  <!-- PROJECTS -->
+  <section id="projects" aria-labelledby="projects-title" class="mb-12 rounded-2xl bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-orange-950/30 dark:via-amber-950/30 dark:to-yellow-950/30 p-8 md:p-12 border border-orange-200/50 dark:border-orange-800/50 shadow-xl shadow-orange-500/10 dark:shadow-orange-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-orange-500/10">
+    <h2 id="projects-title" class="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 dark:from-orange-400 dark:via-amber-400 dark:to-yellow-400 bg-clip-text text-transparent">
+      🚀 Projects
+    </h2>
+    <div class="space-y-4">
+      <div class="group p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-orange-200/50 dark:border-orange-800/50 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:border-orange-400 dark:hover:border-orange-600">
+        <h3 class="text-xl font-bold text-orange-700 dark:text-orange-400 mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-300 transition-colors">takubook <span class="text-sm font-normal text-gray-500 dark:text-gray-400">(2025-Present)</span></h3>
+        <p class="text-gray-700 dark:text-gray-300 mb-3">Web app for taxi drivers to manage sales and working hours. Built with SvelteKit 5, TypeScript, Tailwind CSS v4, Supabase. Features real-time goal tracking, offline PWA support, cloud sync via Google/X/Email login.</p>
+        <a href="https://takubook.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 dark:from-orange-600 dark:to-amber-600 text-white font-semibold shadow-lg shadow-orange-500/30 transition-all duration-300 hover:shadow-xl hover:scale-105">
+          Visit takubook.com →
+        </a>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="p-5 rounded-xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm border border-amber-200/50 dark:border-amber-800/50 shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+          <h4 class="font-bold text-amber-700 dark:text-amber-400 mb-1">Nginx Log Analyzer (2025)</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Tool for analyzing web server logs</p>
+        </div>
+        <div class="p-5 rounded-xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm border border-yellow-200/50 dark:border-yellow-800/50 shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+          <h4 class="font-bold text-yellow-700 dark:text-yellow-400 mb-1">Monte Carlo Simulation (2025)</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Statistical simulation using numpy and Matplotlib</p>
+        </div>
+        <div class="p-5 rounded-xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm border border-orange-200/50 dark:border-orange-800/50 shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+          <h4 class="font-bold text-orange-700 dark:text-orange-400 mb-1">VR Application (2018)</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Created using Unity & Oculus SDK</p>
+        </div>
+        <div class="p-5 rounded-xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm border border-amber-200/50 dark:border-amber-800/50 shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+          <h4 class="font-bold text-amber-700 dark:text-amber-400 mb-1">Python Calculator (2018)</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Simple calculator built with Python/Tkinter</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h3>Contact</h3>
-    <ul>
-      <li>Email: <a href="mailto:rkdeodnr@gmail.com">rkdeodnr@gmail.com</a></li>
-      <li>
-        GitHub: <a
+  <!-- INTERESTS & HOBBIES -->
+  <section id="interests" aria-labelledby="interests-title" class="mb-12 rounded-2xl bg-gradient-to-br from-pink-50 via-rose-50 to-red-50 dark:from-pink-950/30 dark:via-rose-950/30 dark:to-red-950/30 p-8 md:p-12 border border-pink-200/50 dark:border-pink-800/50 shadow-xl shadow-pink-500/10 dark:shadow-pink-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-pink-500/20 dark:hover:shadow-pink-500/10">
+    <h2 id="interests-title" class="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-pink-600 via-rose-600 to-red-600 dark:from-pink-400 dark:via-rose-400 dark:to-red-400 bg-clip-text text-transparent">
+      🎮 Interests & Hobbies
+    </h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="group p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-pink-200/50 dark:border-pink-800/50 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105">
+        <div class="text-3xl mb-3 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">🚗</div>
+        <h3 class="font-bold text-pink-700 dark:text-pink-400 mb-2">Automotive</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Interested in practical, normal cars</p>
+      </div>
+      <div class="group p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-rose-200/50 dark:border-rose-800/50 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105">
+        <div class="text-3xl mb-3 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">🚆</div>
+        <h3 class="font-bold text-rose-700 dark:text-rose-400 mb-2">Transportation</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Keen interest in trains, buses, and airplanes, especially their sounds</p>
+      </div>
+      <div class="group p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-red-200/50 dark:border-red-800/50 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105">
+        <div class="text-3xl mb-3 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">🎮</div>
+        <h3 class="font-bold text-red-700 dark:text-red-400 mb-2">Gaming</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Cities: Skylines and Geoguessr</p>
+      </div>
+      <div class="group p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-fuchsia-200/50 dark:border-fuchsia-800/50 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105">
+        <div class="text-3xl mb-3 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">🎵</div>
+        <h3 class="font-bold text-fuchsia-700 dark:text-fuchsia-400 mb-2">Music</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Tropical house, EDM, Western pop (80s-10s), K-pop, J-pop (80s to present)</p>
+      </div>
+      <div class="group p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-pink-200/50 dark:border-pink-800/50 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105 sm:col-span-2 lg:col-span-1">
+        <div class="text-3xl mb-3 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">✈️</div>
+        <h3 class="font-bold text-pink-700 dark:text-pink-400 mb-2">Travel</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Driving 600km trips, mainly Osaka to Tokyo over 6 times annually</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-labelledby="contact-title" class="mb-12 rounded-2xl bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-50 dark:from-violet-950/30 dark:via-purple-950/30 dark:to-fuchsia-950/30 p-8 md:p-12 border border-violet-200/50 dark:border-violet-800/50 shadow-xl shadow-violet-500/10 dark:shadow-violet-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/20 dark:hover:shadow-violet-500/10">
+    <h2 id="contact-title" class="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 dark:from-violet-400 dark:via-purple-400 dark:to-fuchsia-400 bg-clip-text text-transparent">
+      📫 Connect With Me
+    </h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a href="mailto:bachboy0@gmail.com" class="group flex items-center gap-4 p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-violet-200/50 dark:border-violet-800/50 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105 hover:border-violet-400 dark:hover:border-violet-600">
+        <span class="text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">📧</span>
+        <div>
+          <div class="font-semibold text-violet-700 dark:text-violet-400 mb-1">Email</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-violet-600 dark:group-hover:text-violet-300 break-all">bachboy0@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://github.com/bachboy0" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-purple-200/50 dark:border-purple-800/50 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105 hover:border-purple-400 dark:hover:border-purple-600">
+        <span class="text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">💻</span>
+        <div>
+          <div class="font-semibold text-purple-700 dark:text-purple-400 mb-1">GitHub</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-300">github.com/bachboy0</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/daewook-kang/" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-fuchsia-200/50 dark:border-fuchsia-800/50 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105 hover:border-fuchsia-400 dark:hover:border-fuchsia-600 sm:col-span-2 lg:col-span-1">
+        <span class="text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">🔗</span>
+        <div>
+          <div class="font-semibold text-fuchsia-700 dark:text-fuchsia-400 mb-1">LinkedIn</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-300">Daewook Kang</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- GITHUB STATS -->
+  <section id="github-stats" aria-labelledby="github-stats-title" class="rounded-2xl bg-gradient-to-br from-slate-50 via-gray-50 to-zinc-50 dark:from-slate-950/30 dark:via-gray-950/30 dark:to-zinc-950/30 p-8 md:p-12 border border-slate-200/50 dark:border-slate-800/50 shadow-xl shadow-slate-500/10 dark:shadow-slate-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-500/20 dark:hover:shadow-slate-500/10">
+    <h2 id="github-stats-title" class="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-slate-600 via-gray-600 to-zinc-600 dark:from-slate-400 dark:via-gray-400 dark:to-zinc-400 bg-clip-text text-transparent">
+      📊 My GitHub Stats
+    </h2>
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div class="p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-slate-200/50 dark:border-slate-800/50 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+        <a
           href="https://github.com/bachboy0"
           target="_blank"
-          rel="noopener noreferrer">github.com/bachboy0</a>
-      </li>
-      <li>
-        LinkedIn: <a
-          href="https://www.linkedin.com/in/daewook-kang/"
+          rel="noopener noreferrer"
+          class="block transition-transform duration-300 hover:scale-[1.02]"
+        >
+          <img
+            alt="bachboy0's GitHub stats"
+            src="https://github-readme-stats.vercel.app/api?username=bachboy0&show_icons=true&theme=transparent&hide_border=true&title_color=6366f1&icon_color=8b5cf6&text_color=6b7280&bg_color=00000000"
+            class="w-full h-auto"
+          />
+        </a>
+      </div>
+      
+      <div class="p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-slate-200/50 dark:border-slate-800/50 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+        <h3 class="text-xl font-bold mb-4 text-slate-700 dark:text-slate-400">📈 My Language Usage</h3>
+        <a
+          href="https://github.com/bachboy0"
           target="_blank"
-          rel="noopener noreferrer">Daewook Kang</a>
-      </li>
-    </ul>
-
-    <h3>GitHub Stats</h3>
-    <p>
-      <a
-        href="https://github.com/bachboy0"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          alt="bachboy0's GitHub stats"
-          src="https://github-readme-stats.vercel.app/api?username=bachboy0"
-        />
-      </a>
-    </p>
-    <p>
-      <a
-        href="https://github.com/bachboy0"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          alt="Top languages"
-          src="https://github-readme-stats.vercel.app/api/top-langs/?username=bachboy0"
-        />
-      </a>
-    </p>
+          rel="noopener noreferrer"
+          class="block transition-transform duration-300 hover:scale-[1.02]"
+        >
+          <img
+            alt="Top languages"
+            src="https://github-readme-stats.vercel.app/api/top-langs/?username=bachboy0&layout=compact&theme=transparent&hide_border=true&title_color=6366f1&text_color=6b7280&bg_color=00000000"
+            class="w-full h-auto"
+          />
+        </a>
+      </div>
+    </div>
   </section>
-</Layout>
+</BaseLayout>
