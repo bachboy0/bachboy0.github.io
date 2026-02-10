@@ -8,8 +8,7 @@ const currentPath = removeLocalePath(Astro.url.pathname);
 
 <div class="relative language-picker">
   <button
-    id="language-btn"
-    class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+    class="language-picker-btn flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
     aria-label="Select language"
   >
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -19,8 +18,7 @@ const currentPath = removeLocalePath(Astro.url.pathname);
   </button>
   
   <div
-    id="language-menu"
-    class="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden opacity-0 invisible transition-all duration-200 [&.open]:opacity-100 [&.open]:visible z-50"
+    class="language-picker-menu absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden opacity-0 invisible transition-all duration-200 [&.open]:opacity-100 [&.open]:visible z-50"
   >
     {Object.entries(languages).map(([lang, label]) => (
       <a
@@ -36,30 +34,3 @@ const currentPath = removeLocalePath(Astro.url.pathname);
     ))}
   </div>
 </div>
-
-<script is:inline>
-  (() => {
-    // Language menu toggle
-    document.addEventListener('click', (e) => {
-      const target = e.target;
-      const languageBtn = target.closest('#language-btn');
-      const languageMenu = document.getElementById('language-menu');
-      
-      if (languageBtn && languageMenu) {
-        e.stopPropagation();
-        languageMenu.classList.toggle('open');
-        return;
-      }
-      
-      // Close menu on outside click
-      if (languageMenu && !languageMenu.contains(target)) {
-        languageMenu.classList.remove('open');
-      }
-    });
-    
-    // Close language menu on page navigation
-    document.addEventListener('astro:page-load', () => {
-      document.getElementById('language-menu')?.classList.remove('open');
-    });
-  })();
-</script>

@@ -91,6 +91,24 @@ const navLinks = [
         return;
       }
       
+      // Handle language picker click
+      const languageBtn = target.closest('.language-picker-btn');
+      if (languageBtn) {
+        e.stopPropagation();
+        const picker = languageBtn.closest('.language-picker');
+        const menu = picker?.querySelector('.language-picker-menu');
+        
+        if (menu) {
+          // Close all other language menus first
+          document.querySelectorAll('.language-picker-menu.open').forEach(m => {
+            if (m !== menu) m.classList.remove('open');
+          });
+          // Toggle this menu
+          menu.classList.toggle('open');
+        }
+        return;
+      }
+      
       // Close mobile menu on outside click
       const mobileMenu = document.getElementById('mobile-menu');
       const menuButton = document.getElementById('menu-btn');
@@ -100,12 +118,22 @@ const navLinks = [
         menuButton.classList.remove('open');
         mobileMenu.classList.remove('open');
       }
+      
+      // Close language menus on outside click
+      if (!target.closest('.language-picker')) {
+        document.querySelectorAll('.language-picker-menu.open').forEach(menu => {
+          menu.classList.remove('open');
+        });
+      }
     });
     
-    // Close mobile menu on page navigation
+    // Close mobile menu and language menus on page navigation
     document.addEventListener('astro:page-load', () => {
       document.getElementById('menu-btn')?.classList.remove('open');
       document.getElementById('mobile-menu')?.classList.remove('open');
+      document.querySelectorAll('.language-picker-menu').forEach(menu => {
+        menu.classList.remove('open');
+      });
     });
   })();
 </script>
