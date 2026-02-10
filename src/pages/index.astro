@@ -4,6 +4,28 @@ import ProjectCard from "../components/ProjectCard.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
+<script>
+  // クライアントの言語設定に基づいて自動リダイレクト
+  (function() {
+    // セッションストレージをチェック（無限リダイレクトを防ぐ）
+    const hasRedirected = sessionStorage.getItem('lang-redirected');
+    if (hasRedirected) return;
+
+    // ブラウザの言語設定を取得
+    const userLang = navigator.language || navigator.languages?.[0] || '';
+    const langCode = userLang.toLowerCase().split('-')[0];
+
+    // 対応する言語にリダイレクト
+    if (langCode === 'ja') {
+      sessionStorage.setItem('lang-redirected', 'true');
+      window.location.href = '/ja/';
+    } else if (langCode === 'ko') {
+      sessionStorage.setItem('lang-redirected', 'true');
+      window.location.href = '/ko/';
+    }
+  })();
+</script>
+
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION} mainClass="!w-full !max-w-full !p-0 flex flex-col gap-0 overflow-hidden">
   <!-- HERO SECTION - Enhanced with modern gradients and animations -->
       <section

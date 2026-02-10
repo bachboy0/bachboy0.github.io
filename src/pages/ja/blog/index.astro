@@ -9,9 +9,9 @@ const t = useTranslations('ja');
 const SITE_TITLE = t('site.title');
 const SITE_DESCRIPTION = t('site.description');
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection('blog'))
+	.filter(post => post.data.lang === 'ja')
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -21,7 +21,7 @@ const posts = (await getCollection('blog')).sort(
 			{
 				posts.map((post, index) => (
 					<li class={index === 0 ? "w-full mb-4 text-center" : "w-full md:w-[calc(50%-1rem)]"}>
-						<a href={`/ja/blog/${post.id}/`} class="block no-underline transition-all duration-200 hover:text-blue-500 group">
+						<a href={`/ja/blog/${post.id.replace(/ja$/, '')}/`} class="block no-underline transition-all duration-200 hover:text-blue-500 group">
 							{post.data.heroImage && (
 								<Image 
 									width={720} 
