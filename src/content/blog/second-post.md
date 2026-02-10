@@ -3,6 +3,7 @@ title: 'WSL Environment Setup'
 description: 'WSL Environment Setup'
 pubDate: '2026-02-09'
 heroImage: '../../assets/blog-placeholder-4.jpg'
+lang: 'en'
 ---
 
 # WSL Environment Setup Guide

@@ -2,6 +2,7 @@
 title: 'Dark Mode Implementation with Astro 5 + Tailwind CSS 4: Zero Custom CSS Approach'
 description: 'A practical guide to modern dark mode using only Tailwind CSS 4 native features - no inline styles, no custom animations, pure utility classes'
 pubDate: 'Feb 09 2026'
+lang: 'en'
 ---
 
 ## Introduction

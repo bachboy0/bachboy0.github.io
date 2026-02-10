@@ -3,6 +3,7 @@ title: 'Oh My Zsh + Powerlevel10k'
 description: 'Customizing Your Terminal: Oh My Zsh + Powerlevel10k'
 pubDate: '2026-02-09'
 heroImage: '../../assets/blog-placeholder-2.jpg'
+lang: 'en'
 ---
 
 # Customizing Your Terminal: Oh My Zsh + Powerlevel10k
