@@ -2,12 +2,17 @@
 import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 import ThemeIcon from "./ThemeIcon.astro";
+import LanguagePicker from "./LanguagePicker.astro";
+import { getLangFromUrl, useTranslations, getLocalizedPath } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const navLinks = [
-  { href: "/", text: "Home" },
-  { href: "/blog", text: "Blog" },
-  { href: "/about", text: "About" },
-  { href: "https://nakayamaken.com/en/osaka/", text: "Osaka Info" },
+  { href: getLocalizedPath("", lang), text: t("nav.home") },
+  { href: getLocalizedPath("blog", lang), text: t("nav.blog") },
+  { href: getLocalizedPath("about", lang), text: t("nav.about") },
+  { href: "https://nakayamaken.com/en/osaka/", text: t("nav.osaka") },
 ];
 ---
 
@@ -25,13 +30,15 @@ const navLinks = [
     <!-- Desktop Menu -->
     <div class="hidden md:flex gap-1 items-center">
       {navLinks.map((link) => (<HeaderLink href={link.href}>{link.text}</HeaderLink>))}
-      <div class="ml-2 pl-2 border-l border-gray-300 dark:border-gray-600">
+      <div class="ml-2 pl-2 border-l border-gray-300 dark:border-gray-600 flex items-center gap-2">
+        <LanguagePicker />
         <ThemeIcon />
       </div>
     </div>
 
     <!-- Mobile Controls (Right side) -->
     <div class="md:hidden flex items-center gap-3 ml-auto">
+      <LanguagePicker />
       <ThemeIcon />
       <button
         id="menu-btn"
@@ -84,6 +91,24 @@ const navLinks = [
         return;
       }
       
+      // Handle language picker click
+      const languageBtn = target.closest('.language-picker-btn');
+      if (languageBtn) {
+        e.stopPropagation();
+        const picker = languageBtn.closest('.language-picker');
+        const menu = picker?.querySelector('.language-picker-menu');
+        
+        if (menu) {
+          // Close all other language menus first
+          document.querySelectorAll('.language-picker-menu.open').forEach(m => {
+            if (m !== menu) m.classList.remove('open');
+          });
+          // Toggle this menu
+          menu.classList.toggle('open');
+        }
+        return;
+      }
+      
       // Close mobile menu on outside click
       const mobileMenu = document.getElementById('mobile-menu');
       const menuButton = document.getElementById('menu-btn');
@@ -93,12 +118,22 @@ const navLinks = [
         menuButton.classList.remove('open');
         mobileMenu.classList.remove('open');
       }
+      
+      // Close language menus on outside click
+      if (!target.closest('.language-picker')) {
+        document.querySelectorAll('.language-picker-menu.open').forEach(menu => {
+          menu.classList.remove('open');
+        });
+      }
     });
     
-    // Close mobile menu on page navigation
+    // Close mobile menu and language menus on page navigation
     document.addEventListener('astro:page-load', () => {
       document.getElementById('menu-btn')?.classList.remove('open');
       document.getElementById('mobile-menu')?.classList.remove('open');
+      document.querySelectorAll('.language-picker-menu').forEach(menu => {
+        menu.classList.remove('open');
+      });
     });
   })();
 </script>

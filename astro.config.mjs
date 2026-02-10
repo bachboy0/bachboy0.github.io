@@ -11,7 +11,13 @@ export default defineConfig({
   output: 'static',
   site: 'https://bachboy0.github.io',
   integrations: [mdx(), sitemap()],
-
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'ja', 'ko'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
   vite: {
     plugins: [tailwindcss()],
   },

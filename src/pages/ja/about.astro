@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { useTranslations } from "../../i18n/utils";
+
+const t = useTranslations('ja');
+const SITE_TITLE = t('site.title');
+const SITE_DESCRIPTION = t('site.description');
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-4xl font-bold mb-6">について</h1>
+    <p class="text-lg mb-4">
+      このページは日本語版です。コンテンツは英語版と同じですが、UIは日本語に翻訳されています。
+    </p>
+    <p class="text-lg">
+      詳細なコンテンツの翻訳は今後のイテレーションで追加される予定です。
+    </p>
+  </div>
+</BaseLayout>
