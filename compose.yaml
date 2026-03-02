@@ -1,0 +1,33 @@
+services:
+  astro:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bachboy0-astro-dev
+    ports:
+      - "4321:4321"
+    volumes:
+      # Mount source code
+      - .:/app
+      # Use named volume for node_modules for better performance
+      - node_modules:/app/node_modules
+      # ホストの固定パスをコンテナ内の /ssh-agent にマウント
+      - ${HOME}/.ssh/ssh-agent.sock:/ssh-agent
+    environment:
+      - NODE_ENV=development
+      # SSH_AUTH_SOCK 環境変数をコンテナ内で /ssh-agent に設定
+      - SSH_AUTH_SOCK=/ssh-agent
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    networks:
+      - bachboy0-network
+
+volumes:
+  node_modules:
+
+networks:
+  bachboy0-network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1200
