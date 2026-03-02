@@ -77,6 +77,7 @@ Source Files
 ```
 
 **Key integrations** registered in `astro.config.mjs`:
+
 - `@astrojs/mdx` — MDX support for blog posts
 - `@astrojs/sitemap` — Automatic sitemap generation
 - `@tailwindcss/vite` — Tailwind CSS 4 as a Vite plugin (not PostCSS)
@@ -141,6 +142,7 @@ Extends `astro/tsconfigs/base` with `strictNullChecks: true`. No path aliases ar
 ### `src/consts.ts`
 
 Exports two global constants used across the site:
+
 - `SITE_TITLE` — `'Kang Daewook'`
 - `SITE_DESCRIPTION` — `'Welcome to my website!'`
 
@@ -207,7 +209,7 @@ The default page layout used by all non-blog pages.
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body class="bg-gradient-to-b ... dark:bg-gradient-to-b ...">
+  <body class="bg-linear-to-b ... dark:bg-linear-to-b ...">
     <Header />
     <main class="w-[720px] max-w-[calc(100%-2rem)] mx-auto {mainClass}">
       <slot />  ← Page content injected here
@@ -282,9 +284,10 @@ Blog post pages use `getStaticPaths()` to generate routes at build time:
 ```typescript
 // pages/blog/[...slug].astro
 export async function getStaticPaths() {
-  const posts = (await getCollection('blog'))
-    .filter(post => post.data.lang === 'en');
-  return posts.map(post => ({
+  const posts = (await getCollection("blog")).filter(
+    (post) => post.data.lang === "en",
+  );
+  return posts.map((post) => ({
     params: { slug: post.id },
     props: post,
   }));
@@ -292,9 +295,12 @@ export async function getStaticPaths() {
 ```
 
 For Japanese/Korean, the slug is cleaned by removing the locale suffix:
+
 ```typescript
 // pages/ja/blog/[...slug].astro
-params: { slug: post.id.replace(/\.?ja$/, '') }
+params: {
+  slug: post.id.replace(/\.?ja$/, "");
+}
 ```
 
 ### Home Page Language Redirect
@@ -332,6 +338,7 @@ src/i18n/utils.ts (utility functions)
 ### Translation Keys
 
 The `ui` object in `ui.ts` contains keys for:
+
 - Navigation: `nav.home`, `nav.blog`, `nav.about`, `nav.osaka`
 - Site metadata: `site.title`, `site.description`
 - Hero section: `hero.greeting`, `hero.title`, `hero.subtitle`, `hero.description`, `hero.cta`, `hero.blogCta`, `hero.aboutCta`
@@ -339,6 +346,7 @@ The `ui` object in `ui.ts` contains keys for:
 ### Page-Level i18n Pattern
 
 Each locale has its own set of page files (`pages/ja/*.astro`, `pages/ko/*.astro`) that:
+
 1. Import `useTranslations` and `getLangFromUrl` from `src/i18n/utils.ts`
 2. Call `useTranslations('ja')` (or `'ko'`) to get the `t()` function
 3. Use `t('key')` for UI strings
@@ -354,15 +362,16 @@ This is a **manual file-based approach** — not Astro's dynamic middleware-base
 
 ```typescript
 const blog = defineCollection({
-  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    lang: z.enum(['en', 'ja', 'ko']).default('en'),
-  }),
+  loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      pubDate: z.coerce.date(),
+      updatedDate: z.coerce.date().optional(),
+      heroImage: image().optional(),
+      lang: z.enum(["en", "ja", "ko"]).default("en"),
+    }),
 });
 ```
 
@@ -375,11 +384,11 @@ const blog = defineCollection({
 
 ### Multilingual Blog Post Convention
 
-| File | Language | ID |
-| --- | --- | --- |
-| `second-post.md` | English | `second-post` |
+| File                | Language | ID               |
+| ------------------- | -------- | ---------------- |
+| `second-post.md`    | English  | `second-post`    |
 | `second-post.ja.md` | Japanese | `second-post.ja` |
-| `second-post.ko.md` | Korean | `second-post.ko` |
+| `second-post.ko.md` | Korean   | `second-post.ko` |
 
 - Default language posts have no locale suffix
 - Translated posts use `{slug}.{locale}.md` naming
@@ -402,6 +411,7 @@ The project uses **Tailwind CSS 4** with the new Vite plugin approach (not PostC
 ```
 
 Key differences from Tailwind CSS 3:
+
 - `@import "tailwindcss"` replaces `@tailwind base/components/utilities`
 - `@plugin` replaces `plugins: [...]` in config
 - `@variant` replaces `darkMode: 'class'` in config
@@ -467,6 +477,7 @@ The site ships **zero framework runtime JavaScript**. All client scripts use van
 | `pages/index.astro` | Browser language detection and redirect | `sessionStorage` guard, `navigator.language` check |
 
 All scripts are `is:inline` meaning they:
+
 - Are not bundled or processed by Astro/Vite
 - Execute immediately in the browser
 - Cannot import modules
@@ -535,11 +546,11 @@ Job: deploy
 
 ### Branch Strategy
 
-| Branch | Purpose |
-| --- | --- |
-| `main` | Production — triggers deployment |
-| `develop` | Active development |
-| `feature/*` | Feature branches off `develop` |
+| Branch      | Purpose                          |
+| ----------- | -------------------------------- |
+| `main`      | Production — triggers deployment |
+| `develop`   | Active development               |
+| `feature/*` | Feature branches off `develop`   |
 
 ---
 
@@ -580,6 +591,7 @@ Job: deploy
 ### Why File-Based i18n Instead of Dynamic Routing?
 
 Each locale has its own set of page files rather than using Astro's dynamic i18n middleware. This approach:
+
 - Keeps each page self-contained and independently editable
 - Avoids middleware complexity for a static site
 - Allows locale-specific content differences beyond simple string translation
@@ -588,6 +600,7 @@ Each locale has its own set of page files rather than using Astro's dynamic i18n
 ### Why No Frontend Framework?
 
 The site uses zero React/Vue/Svelte/Solid components:
+
 - All content is static and rendered at build time
 - Interactive features (theme toggle, mobile menu) are simple enough for vanilla JS
 - Eliminates framework runtime overhead entirely
