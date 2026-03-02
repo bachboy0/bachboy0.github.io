@@ -4,6 +4,12 @@
 
 This is a personal website and blog built with **Astro 5**, Tailwind CSS 4, and deployed to GitHub Pages. The site features a blog with MDX support, dark mode, and responsive design.
 
+## Output and Execution Constraints (Strict)
+
+- **Language:** Write **all responses and all generated documentation in English only** (including headings, tables, comments, and file contents). Do not include Japanese anywhere.
+- **No parallelism claims:** Never say or imply you will do tasks _in parallel_, _concurrently_, _asynchronously_, _in the background_, or _while you wait_ (e.g., “I will do them in parallel”).
+  - If multiple tasks are requested, handle them **sequentially** and present results in the required order.
+
 ## Tech Stack
 
 - **Astro 5.16+** - Static site generator (refer to [Astro Documentation](https://docs.astro.build/))
@@ -14,6 +20,7 @@ This is a personal website and blog built with **Astro 5**, Tailwind CSS 4, and 
 ## Important: Always Refer to Astro Documentation
 
 When working with this project, **always consult the official Astro documentation** for:
+
 - Component syntax and patterns
 - Content Collections API
 - Routing conventions
@@ -118,12 +125,14 @@ const { title } = Astro.props;
 ## Common Patterns
 
 ### Importing Content
+
 ```typescript
-import { getCollection } from 'astro:content';
-const posts = await getCollection('blog');
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
 ```
 
 ### Using Layouts
+
 ```astro
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -134,6 +143,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ```
 
 ### Responsive Images
+
 ```astro
 ---
 import { Image } from 'astro:assets';

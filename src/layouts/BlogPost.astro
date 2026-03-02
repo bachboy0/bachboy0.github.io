@@ -1,57 +1,65 @@
 ---
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import CodeCopyButton from '../components/CodeCopyButton.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
-import { getLangFromUrl } from '../i18n/utils';
-import '../styles/global.css';
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import CodeCopyButton from "../components/CodeCopyButton.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Header from "../components/Header.astro";
+import { getLangFromUrl } from "../i18n/utils";
+import "../styles/global.css";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 ---
 
 <html lang={lang}>
-    <head>
-        <BaseHead title={title} description={description} />
-    </head>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
 
-    <body class="font-['Atkinson',sans-serif] m-0 p-0 text-left bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 break-words text-gray-700 dark:text-gray-300 text-base leading-7 transition-colors duration-300">
-        <Header />
-        <main class="w-full px-4 md:px-8">
-            <article>
-                <div class="prose prose-lg dark:prose-invert max-w-2xl mx-auto py-8 px-4">
-                    {heroImage && (
-                        <Image 
-                            width={500} 
-                            height={250} 
-                            src={heroImage} 
-                            alt={title}
-                            class="w-full max-h-[500px] object-contain rounded-xl shadow-lg mx-auto block"
-                        />
-                    )}
-                    <div class="text-center mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
-                        <div class="text-gray-500 dark:text-gray-400 mb-2">
-                            <FormattedDate date={pubDate} />
-                            {
-                                updatedDate && (
-                                    <div class="italic text-sm mt-2">
-                                        Last updated on <FormattedDate date={updatedDate} />
-                                    </div>
-                                )
-                            }
-                        </div>
-                        <h1 class="text-4xl font-bold mb-4">{title}</h1>
-                    </div>
-                    <slot />
-                </div>
-            </article>
-        </main>
-        <Footer />
-        <CodeCopyButton />
-    </body>
+  <body
+    class="font-['Atkinson',sans-serif] m-0 p-0 text-left bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 break-words text-gray-700 dark:text-gray-300 text-base leading-7 transition-colors duration-300"
+  >
+    <Header />
+    <main class="w-full px-4 md:px-8">
+      <article>
+        <div
+          class="prose prose-lg dark:prose-invert max-w-2xl mx-auto py-8 px-4"
+        >
+          {
+            heroImage && (
+              <Image
+                width={500}
+                height={250}
+                src={heroImage}
+                alt={title}
+                class="w-full max-h-[500px] object-contain rounded-xl shadow-lg mx-auto block"
+              />
+            )
+          }
+          <div
+            class="text-center mb-8 pb-4 border-b border-gray-200 dark:border-gray-700"
+          >
+            <div class="text-gray-500 dark:text-gray-400 mb-2">
+              <FormattedDate date={pubDate} />
+              {
+                updatedDate && (
+                  <div class="italic text-sm mt-2">
+                    Last updated on <FormattedDate date={updatedDate} />
+                  </div>
+                )
+              }
+            </div>
+            <h1 class="text-4xl font-bold mb-4">{title}</h1>
+          </div>
+          <slot />
+        </div>
+      </article>
+    </main>
+    <Footer />
+    <CodeCopyButton />
+  </body>
 </html>

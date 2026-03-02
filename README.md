@@ -29,22 +29,33 @@ Personal website and blog for **Kang Daewook**, built with [Astro 5](https://ast
 
 ## Getting Started
 
-### Prerequisites
+### Option A — Dev Container (recommended)
 
-- [Node.js](https://nodejs.org/) 18+ (LTS recommended)
-- npm
+Requires [Docker](https://docs.docker.com/get-docker/) and VS Code with the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 
-### Installation
+1. Clone the repo and open it in VS Code.
+2. When prompted, click **Reopen in Container** (or run **Dev Containers: Reopen in Container** from the Command Palette).
+3. VS Code installs dependencies automatically via `postCreateCommand`.
+4. Start the dev server inside the container:
+
+```bash
+npm run dev        # Dev server accessible at localhost:4321
+```
+
+Alternatively, start the full Docker Compose stack from the host:
+
+```bash
+docker compose up  # Starts the astro service; dev server at localhost:4321
+```
+
+### Option B — Local Node.js
+
+Prerequisites: [Node.js](https://nodejs.org/) 18+ (LTS recommended) and npm.
 
 ```bash
 git clone https://github.com/bachboy0/bachboy0.github.io.git
 cd bachboy0.github.io
 npm install
-```
-
-### Development
-
-```bash
 npm run dev        # Start dev server at localhost:4321
 ```
 
@@ -57,12 +68,12 @@ npm run preview    # Preview the build locally
 
 ## Commands
 
-| Command | Action |
-| --- | --- |
-| `npm run dev` | Start local development server at `localhost:4321` |
-| `npm run build` | Build production site to `./dist/` |
-| `npm run preview` | Preview your build locally before deploying |
-| `npm run astro` | Run Astro CLI commands |
+| Command           | Action                                             |
+| ----------------- | -------------------------------------------------- |
+| `npm run dev`     | Start local development server at `localhost:4321` |
+| `npm run build`   | Build production site to `./dist/`                 |
+| `npm run preview` | Preview your build locally before deploying        |
+| `npm run astro`   | Run Astro CLI commands                             |
 
 ## Project Structure
 
@@ -110,11 +121,11 @@ npm run preview    # Preview the build locally
 
 The site supports three languages using file-based routing:
 
-| Language | URL Prefix | Example |
-| --- | --- | --- |
-| English (default) | none | `/`, `/blog`, `/about` |
-| Japanese | `/ja` | `/ja/`, `/ja/blog`, `/ja/about` |
-| Korean | `/ko` | `/ko/`, `/ko/blog`, `/ko/about` |
+| Language          | URL Prefix | Example                         |
+| ----------------- | ---------- | ------------------------------- |
+| English (default) | none       | `/`, `/blog`, `/about`          |
+| Japanese          | `/ja`      | `/ja/`, `/ja/blog`, `/ja/about` |
+| Korean            | `/ko`      | `/ko/`, `/ko/blog`, `/ko/about` |
 
 Translation strings are defined in `src/i18n/ui.ts`. Blog posts use a `lang` field in frontmatter and a naming convention of `{slug}.{locale}.md` for translated versions.
 
@@ -124,11 +135,11 @@ Create a new `.md` or `.mdx` file in `src/content/blog/`:
 
 ```markdown
 ---
-title: 'My New Post'
-description: 'A brief description'
-pubDate: 'Feb 10 2026'
-heroImage: './optional-hero.jpg'
-lang: 'en'
+title: "My New Post"
+description: "A brief description"
+pubDate: "Feb 10 2026"
+heroImage: "./optional-hero.jpg"
+lang: "en"
 ---
 
 Your content here...

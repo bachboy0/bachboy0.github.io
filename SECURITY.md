@@ -6,10 +6,10 @@ This is a **static website** hosted on GitHub Pages. It contains no server-side 
 
 ## Supported Versions
 
-| Version | Supported |
-| --- | --- |
-| Latest (main branch) | Yes |
-| Older versions | No |
+| Version              | Supported |
+| -------------------- | --------- |
+| Latest (main branch) | Yes       |
+| Older versions       | No        |
 
 ## Security Measures
 
@@ -19,9 +19,11 @@ The site implements CSP via `<meta http-equiv>` tags in `BaseHead.astro`:
 
 - `default-src 'self'` — Only allow resources from the same origin
 - `script-src 'self' 'unsafe-inline'` — Scripts restricted to same origin and inline (required for theme/menu scripts)
-- `style-src 'self' 'unsafe-inline'` — Styles restricted to same origin and inline (required for Tailwind)
+- `style-src 'self'` — Styles restricted to same origin only; Tailwind CSS 4 generates all styles at build time into an external stylesheet, so `'unsafe-inline'` is not required
 - `img-src 'self' data: https:` — Images from same origin, data URIs, and HTTPS sources
 - `font-src 'self'` — Self-hosted fonts only
+- `connect-src 'self'` — Fetch/XHR restricted to same origin
+- `frame-ancestors 'none'` — CSP-level equivalent of `X-Frame-Options: DENY` for broader browser compatibility
 
 ### Additional Headers
 
