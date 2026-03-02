@@ -1,59 +1,101 @@
 # Security Policy
 
-## Overview
+## Supported versions
 
-This is a **static website** hosted on GitHub Pages. It contains no server-side code, databases, authentication systems, or user data collection. The attack surface is inherently minimal.
+| Version scope                         | Supported        |
+| ------------------------------------- | ---------------- |
+| `main` branch (latest deployed state) | Yes              |
+| Older commits/tags                    | Best effort only |
 
-## Supported Versions
+Maintenance policy: best effort for a personal static site repository.
 
-| Version              | Supported |
-| -------------------- | --------- |
-| Latest (main branch) | Yes       |
-| Older versions       | No        |
+## Reporting a vulnerability
 
-## Security Measures
+Please avoid opening public issues for unpatched vulnerabilities.
 
-### Content Security Policy (CSP)
+Preferred channels:
 
-The site implements CSP via `<meta http-equiv>` tags in `BaseHead.astro`:
+1. GitHub Security Advisories (private report)
+2. Direct contact through repository owner GitHub profile
 
-- `default-src 'self'` — Only allow resources from the same origin
-- `script-src 'self' 'unsafe-inline'` — Scripts restricted to same origin and inline (required for theme/menu scripts)
-- `style-src 'self'` — Styles restricted to same origin only; Tailwind CSS 4 generates all styles at build time into an external stylesheet, so `'unsafe-inline'` is not required
-- `img-src 'self' data: https:` — Images from same origin, data URIs, and HTTPS sources
-- `font-src 'self'` — Self-hosted fonts only
-- `connect-src 'self'` — Fetch/XHR restricted to same origin
-- `frame-ancestors 'none'` — CSP-level equivalent of `X-Frame-Options: DENY` for broader browser compatibility
+Expected response targets (best effort):
 
-### Additional Headers
+- Acknowledgement: within 7 days
+- Triage update: within 30 days
 
-- **X-Frame-Options**: `DENY` — Prevents clickjacking via iframe embedding
-- **X-Content-Type-Options**: `nosniff` — Prevents MIME type sniffing
-- **Referrer-Policy**: `strict-origin-when-cross-origin` — Limits referrer leakage
-- **Permissions-Policy**: `camera=(), microphone=(), geolocation=()` — Disables unnecessary browser APIs
+## Security model
 
-### Limitations
+### Threats considered
 
-These headers are implemented as `<meta http-equiv>` tags, which are **less effective** than HTTP response headers. GitHub Pages does not allow custom HTTP headers, so meta tags are the best available mechanism for this hosting platform.
+- Content/script injection in delivered pages
+- Clickjacking and framing abuse
+- Supply-chain risk from npm dependencies
+- Accidental secret disclosure in repository history
 
-### Other Measures
+### Trust boundaries
 
-- **No external scripts**: No analytics, tracking, or third-party JavaScript
-- **Self-hosted fonts**: No requests to external font services
-- **Minimal client-side JS**: Only vanilla JavaScript for theme toggle, mobile menu, language detection, and code copy
-- **No user input handling**: No forms, APIs, or data processing
+- Trusted: repository source, local build process, GitHub Actions workflow definitions
+- Semi-trusted: npm dependency ecosystem
+- Untrusted: browsers, networks, external request origins
 
-## Reporting a Vulnerability
+## Secrets management
 
-If you discover a security issue with this site, please report it through one of the following channels:
+Current site operation does not require application secrets in repo configuration.
 
-1. **GitHub Security Advisories**: Use the [Security tab](https://github.com/bachboy0/bachboy0.github.io/security/advisories) to privately report a vulnerability
-2. **Email**: Contact the repository owner through their [GitHub profile](https://github.com/bachboy0)
+Rules:
 
-Please **do not** open a public issue for security vulnerabilities.
+- Never commit credentials, private keys, or tokens
+- Keep `.env*` files out of Git (already covered by ignore rules)
+- Rotate credentials immediately if leaked
 
-### What to Expect
+ASSUMPTION: if future integrations need secrets, use GitHub Actions secrets for CI/CD and local `.env` files excluded from version control.
 
-- Acknowledgment within 7 days
-- Assessment and response within 30 days
-- Given the static nature of this site, most security concerns will be limited to the CSP configuration or dependency vulnerabilities
+## Dependency management
+
+- Package manager: npm with `package-lock.json`
+- Core dependencies: Astro, Tailwind CSS, Astro integrations, Sharp
+- Update cadence: best effort, with preference for periodic updates and security patches
+
+Recommended baseline:
+
+- Run `npm audit` during maintenance windows
+- Keep lockfile changes reviewed in pull requests
+
+## CI security checks
+
+Current CI (`.github/workflows/deploy.yml`) focuses on build and deploy. There are no dedicated security scanning jobs configured.
+
+Recommended minimum baseline additions:
+
+- Dependency vulnerability scan (e.g., `npm audit` or equivalent)
+- Code scanning / static analysis workflow
+- Branch protection with required status checks
+
+## Secure defaults and hardening
+
+### Implemented
+
+- Content Security Policy via `<meta http-equiv="Content-Security-Policy">` in `src/components/BaseHead.astro`
+  - Dev and production policies differ to support local tooling
+- `Referrer-Policy` via `<meta name="referrer" content="strict-origin-when-cross-origin">`
+- Self-hosted fonts under `public/fonts`
+- Minimal client-side scripts and no server-side runtime
+
+### Not currently implemented or not applicable
+
+- Custom HTTP response headers (hosting constraints in current setup)
+- CORS policy (no API endpoints to configure)
+- Rate limiting (no backend request handlers)
+- Authentication/authorization layer (not part of this project)
+
+Input validation posture:
+
+- Content frontmatter is validated at build time by `src/content.config.ts`
+
+## Data protection
+
+- No user account system
+- No application database
+- No documented collection of personal user-submitted data
+
+PII handling and retention: not applicable based on current repository evidence.

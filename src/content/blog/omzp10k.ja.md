@@ -1,6 +1,6 @@
 ---
-title: "Revised Guide: Oh My Zsh + Powerlevel10k"
-description: "Customizing Your Terminal: Oh My Zsh + Powerlevel10k"
+title: "Oh My Zsh + Powerlevel10k 設定ガイド"
+description: "Oh My Zsh + Powerlevel10k を使用してターミナルをカスタマイズする方法"
 pubDate: "2026-03-03"
 heroImage: "../../assets/p10kterminal.jpg"
 lang: "ja"
