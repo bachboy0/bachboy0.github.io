@@ -88,10 +88,15 @@ Source Files
 
 ```
 /
+├── .devcontainer/
+│   └── devcontainer.json           # VS Code Dev Containers / Codespaces configuration
 ├── .github/
+│   ├── .prompts/                   # Reusable Copilot prompt files
 │   ├── copilot-instructions.md     # AI pair programming guidelines
 │   └── workflows/
 │       └── deploy.yml              # GitHub Actions deployment workflow
+├── Dockerfile                      # Container image (node:lts base, installs deps, builds)
+├── compose.yaml                    # Docker Compose: dev service, port forwarding, SSH agent socket
 ├── public/
 │   ├── fonts/                      # Self-hosted Atkinson font files
 │   └── robots.txt                  # Crawler directives
@@ -129,6 +134,7 @@ Source Files
 | --- | --- | --- |
 | `output` | `'static'` | Full static site generation (SSG) |
 | `site` | `'https://bachboy0.github.io'` | Canonical site URL for sitemap, RSS, OGP |
+| `server.host` | `true` | Bind dev server to `0.0.0.0` (required for Docker port forwarding) |
 | `integrations` | `[mdx(), sitemap()]` | MDX content support + auto sitemap |
 | `i18n.defaultLocale` | `'en'` | English as the default language |
 | `i18n.locales` | `['en', 'ja', 'ko']` | Supported languages |
@@ -513,7 +519,7 @@ Security headers are implemented as `<meta http-equiv>` tags in `BaseHead.astro`
 
 | Header | Value | Purpose |
 | --- | --- | --- |
-| Content-Security-Policy | `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'` | Restrict resource loading origins |
+| Content-Security-Policy | `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'` | Restrict resource loading origins |
 | X-Frame-Options | `DENY` | Prevent embedding in iframes |
 | X-Content-Type-Options | `nosniff` | Prevent MIME type sniffing |
 | Referrer-Policy | `strict-origin-when-cross-origin` | Control referrer information |

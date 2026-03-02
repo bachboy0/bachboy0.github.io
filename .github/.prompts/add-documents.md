@@ -1,86 +1,115 @@
-You are an expert software architect and technical writer. Your task is to update and align the repository documentation so it accurately reflects the current codebase and operational reality.
+You are an expert software architect and technical writer. Your task is to update and align repository documentation so it accurately reflects the current codebase and operational reality.
 
-FILES TO UPDATE (must update all):
+LANGUAGE POLICY (strict)
+
+- Write ALL outputs in English only (including headings, tables, comments, and file contents).
+- Do not include any Japanese text anywhere in the output.
+
+SCOPE: Update and output these files (must output all listed files; if a file does not exist, create it with correct content):
 
 1. ARCHITECTURE.md
 2. README.md
 3. SECURITY.md
-4. DECISIONS/ADR-0000.md (Architecture Decision Record index / baseline)
+4. DECISIONS/ADR.md (master list/index of ALL ADRs)
+5. DECISIONS/ADR.template.md (template for future ADRs)
+6. DECISIONS/ADR-000X.md (ONLY if creation/update criteria are met; see ADR POLICY)
 
-WORKFLOW (strict): A. Repository scan
+SOURCE CONTROL
 
-- Read the existing versions of the four files.
-- Inspect the repository structure (directories, key modules, configs, CI, IaC if any).
-- Identify the actual stack, runtime, deployment model, and security posture from code and configs. Do not invent technologies; infer only from evidence.
+- Source control is Git. Do not mention other VCS tools.
+- Assume Git-based workflows (clone, branch, commit, PR) but do not invent a branching model unless evidenced in the repo.
 
-B. Gap analysis
+WORKFLOW (strict) A) Repository scan
 
-- List mismatches between docs and reality (outdated, missing, contradictory).
-- Identify what needs to be added/removed/clarified.
+- Read existing versions of the above files (if present).
+- Inspect repository structure (directories, key modules, configs, CI, IaC, scripts).
+- Identify stack, runtime, deployment model, and security posture from code/config evidence.
+- Do not invent technologies. Infer only from evidence.
 
-C. Produce updates as ready-to-commit patches
+B) Gap analysis
 
-- Output each file in full, as final markdown content (not a diff).
+- List doc-to-repo mismatches: outdated, missing, contradictory, unclear.
+- Identify major architectural/security decisions that are clearly evidenced in the repo.
+
+C) ADR POLICY (strict, reusable prompt)
+
+- Default behavior: DO NOT create new numbered ADR files.
+- You may create new ADR-000X.md ONLY if at least one of these conditions is true: (1) A major architectural/security decision is clearly evidenced in the repo AND is NOT documented anywhere else in the repo docs. (2) The repo already uses ADRs (existing DECISIONS/ADR-000\*.md present) AND there is a clearly evidenced new decision since the latest ADR. (3) There is a high-risk security or deployment decision that requires explicit record to avoid future regressions, and evidence exists in the repo.
+- If conditions are NOT met, create/update only:
+  - DECISIONS/ADR.md (index with zero or more ADR entries)
+  - DECISIONS/ADR.template.md
+  - (and update existing numbered ADRs if they already exist and are inaccurate)
+- If you do create new ADR(s):
+  - Number sequentially after the highest existing ADR number (ADR-0001, ADR-0002, ADR-0003…).
+  - Each ADR must include: Title, Status, Context, Decision, Consequences, Alternatives Considered (brief), Evidence (file paths / config names / repo clues).
+  - Status must be one of: Accepted | Proposed | Deprecated | Superseded. Use Accepted only when evidence is strong.
+
+D) Produce updates as ready-to-commit full file contents
+
+- Output each file in full markdown content (not a diff).
 - Keep headings stable where possible; improve structure only if it increases clarity.
-- Ensure the four files are consistent with each other (same naming, ports, env vars, commands, deployment steps, assumptions).
-- No marketing fluff. Crisp, factual, reproducible.
+- Ensure consistency across all docs (same naming, ports, env vars, commands, deployment steps, assumptions).
 
-D. Minimal questions policy
+E) Minimal questions policy
 
-- If something is truly unknowable from the repo, do NOT stop. Make the smallest reasonable assumption, label it clearly as an ASSUMPTION, and continue.
+- If something is truly unknowable from the repo, do NOT stop. Make the smallest reasonable assumption, label it clearly as “ASSUMPTION:” inline, and continue.
 - Ask at most 3 questions at the end, only if they materially change security or deployment guidance.
 
 CONTENT REQUIREMENTS
 
 1. ARCHITECTURE.md Include:
 
-- System overview (what problem it solves, boundaries, non-goals)
-- High-level architecture diagram (ASCII or Mermaid)
+- System overview (problem, boundaries, non-goals)
+- High-level architecture diagram (Mermaid preferred; otherwise ASCII)
 - Components and responsibilities (frontend, backend, DB, workers, external services)
 - Data model overview (key entities; no full schema unless present)
-- API overview (major endpoints or modules; auth method)
+- API overview (major endpoints/modules; auth method)
 - Runtime/deployment architecture (environments, secrets, config, ports)
-- Observability (logging, metrics, tracing) if present; otherwise note what’s missing
-- Local development workflow (how to run, prerequisites, common commands)
-- Known constraints and scaling notes (what breaks first, bottlenecks)
+- Observability (logging, metrics, tracing) if present; otherwise explicitly state what is missing
+- Local development workflow (prereqs, how to run, common commands)
+- Constraints & scaling notes (bottlenecks, failure modes)
 - Security overview (tie to SECURITY.md)
 
 2. README.md Include:
 
 - What this repo is and is not
 - Quickstart (exact commands to run locally)
-- Configuration (env vars; how to create .env safely; example with placeholders)
+- Configuration (env vars; safe .env guidance; example with placeholders)
 - Common tasks (test, lint, format, build, run)
+- Git-oriented workflow (only what is evidenced; otherwise add “Suggested workflow (ASSUMPTION)”)
 - Deployment overview (high-level; link to ARCHITECTURE.md for details)
-- Troubleshooting section (top 5 likely issues from repo setup)
-- Contributing (small, practical)
+- Troubleshooting (top 5 likely issues)
+- Contributing (small, practical; Git-oriented)
 - License (only if present; otherwise state “No license file found”)
-- Git workflow (only what is evidenced): default branch name, how to create feature branches, how to run checks before committing, and how changes are merged (PRs, direct commits, etc.). If not evidenced, include a minimal “Suggested workflow (ASSUMPTION)” subsection.
 
 3. SECURITY.md Include:
 
 - Supported versions / maintenance policy (even if “best effort”)
 - How to report vulnerabilities (process + expected response)
 - Security model (threats considered, trust boundaries)
-- Secrets management (what must never be committed; how to rotate)
+- Secrets management (what must never be committed; rotation)
 - Dependency management (update cadence; lockfiles)
-- CI security checks if present (SAST, dependency scans); otherwise recommend minimal baseline
-- Secure defaults and hardening steps (headers, CORS, auth, rate limiting, input validation)
-- Data protection (PII handling, retention) if relevant; otherwise explicitly “Not applicable / unknown”
+- CI security checks if present; otherwise recommend minimal baseline
+- Secure defaults & hardening (headers, CORS, auth, rate limiting, input validation)
+- Data protection (PII handling, retention) if relevant; otherwise “Not applicable / unknown”
 
-4. DECISIONS/ADR-0000.md This is the baseline ADR / index. Include:
+4. DECISIONS/ADR.md (master list)
 
-- Purpose of ADRs + how to add a new ADR
-- A table of decisions (at least the current baseline ones inferred from the repo): language/runtime, framework, DB choice, hosting/deployment approach, auth strategy, CI approach
-- For each baseline decision: Context, Decision, Status (Accepted), Consequences (tradeoffs)
-- If some decisions aren’t visible in the repo, write them as “Proposed” and explain what evidence is missing.
+- A short intro explaining ADRs in this repo and how to add a new one using the template.
+- A table listing ALL ADRs (existing + any newly created).
+- If no ADRs exist, include the table with no entries and a note: “No ADRs have been recorded yet.”
+
+5. DECISIONS/ADR.template.md
+
+- A minimal, high-quality template for future ADRs matching this repo’s ADR format.
+- Include instructions in HTML comments on how to fill it out.
 
 STYLE RULES
 
 - Prefer concrete commands and filenames.
-- Prefer tables for env vars and decision indexes.
+- Prefer tables for env vars and ADR indexes.
 - Use consistent terminology across all docs.
-- Avoid speculative claims. When assuming, tag with “ASSUMPTION:” inline.
+- Avoid speculative claims. If you cannot confirm a fact from the repo, either tag it as ASSUMPTION or omit it. Never present assumptions as facts.
 
 OUTPUT FORMAT (strict)
 
@@ -89,7 +118,11 @@ OUTPUT FORMAT (strict)
   1. ARCHITECTURE.md
   2. README.md
   3. SECURITY.md
-  4. DECISIONS/ADR-0000.md
+  4. DECISIONS/ADR.md
+  5. DECISIONS/ADR.template.md
+  6. Any updated/created numbered ADR files (only if ADR POLICY conditions are met), in numeric order.
 - After that, list up to 3 questions (if any). If none, write “Questions: none”.
+
+REMINDER: Output must be English only.
 
 Now proceed.
