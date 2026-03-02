@@ -1,0 +1,44 @@
+# 依存関係
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ビルド成果物
+.svelte-kit/
+build/
+dist/
+.output/
+
+# 環境変数
+.env
+.env.local
+.env.*.local
+
+# ログ
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+
+# テスト
+coverage/
+
+# その他
+*.md
+!README.md
+.editorconfig

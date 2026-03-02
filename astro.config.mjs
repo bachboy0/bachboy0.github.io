@@ -10,6 +10,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   output: 'static',
   site: 'https://bachboy0.github.io',
+  server: {
+    host: true,
+  },
   integrations: [mdx(), sitemap()],
   i18n: {
     defaultLocale: 'en',
