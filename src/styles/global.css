@@ -11,6 +11,45 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Atkinson";
+  src: url("/fonts/atkinson-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-family-sans: "Atkinson", sans-serif;
+  --font-sans: "Atkinson", sans-serif;
+
+  /* Custom entrance animation */
+  --animate-fade-in-up: fade-in-up 0.8s ease-out both;
+
+  /* Floating animation for particles */
+  --animate-float: float 4s ease-in-out infinite;
+
+  /* Slow-spin for decorative rings */
+  --animate-spin-slow: spin 15s linear infinite;
+  --animate-spin-slow-reverse: spin 20s linear infinite reverse;
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
 }

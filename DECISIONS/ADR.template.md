@@ -1,27 +1,30 @@
-# ADR-XXXX: [Short noun-phrase title of the decision]
+# ADR-000X: <Decision title>
 
-<!-- Replace XXXX with the next sequential number (e.g. 0002).
-     Keep the title concise — one line, written as a noun phrase, not a question. -->
+<!--
+Instructions:
+- Replace 000X with the next sequential number.
+- Keep the title short and specific.
+- Use one of these status values only: Accepted | Proposed | Deprecated | Superseded.
+- Base claims on repository evidence (files, configs, workflows, code paths).
+-->
 
-**Date:** YYYY-MM-DD **Status:** Proposed <!-- Proposed | Accepted | Deprecated | Superseded by ADR-XXXX -->
-
----
+**Date:** YYYY-MM-DD  
+**Status:** Proposed
 
 ## Context
 
-<!-- Describe the situation that makes this decision necessary.
-     Include relevant constraints, forces, and background.
-     Write in present tense. Keep it factual — no opinions here. -->
+<!--
+Describe the problem, constraints, and forces that made this decision necessary.
+Keep this factual and evidence-based.
+-->
 
 ## Decision
 
-<!-- State the decision clearly and directly, starting with "We will …".
-     Explain the reasoning: why this option over the alternatives. -->
+<!--
+State the decision clearly, ideally beginning with: "We will ...".
+-->
 
 ## Consequences
-
-<!-- List the outcomes — both positive and negative — of this decision.
-     Use bullet points. Be honest about trade-offs. -->
 
 ### Positive
 
@@ -31,20 +34,19 @@
 
 -
 
----
-
-<!-- Optional sections — delete any that are not needed. -->
-
 ## Alternatives Considered
 
-<!-- List other options that were evaluated and briefly explain why each was rejected. -->
+<!-- Briefly list realistic alternatives and why they were not selected. -->
 
-| Option | Reason not chosen |
-| ------ | ----------------- |
-|        |                   |
+| Option | Why not chosen |
+| ------ | -------------- |
+|        |                |
 
-## References
+## Evidence
 
-<!-- Links to docs, issues, PRs, or external resources that informed this decision. -->
+<!--
+List repository evidence that supports this ADR.
+Use concrete paths, config names, or workflow files.
+-->
 
 -
