@@ -6,7 +6,8 @@ Personal website and blog built with Astro 5, Tailwind CSS 4, and Markdown/MDX c
 
 ## What this repository is
 
-- A static multilingual personal site (`en`, `ja`, `ko`)
+- A static multilingual personal site (`en`, `ja`, `ko`) — each locale served at `/{locale}/`
+- A language-selection landing page at `/`
 - A blog powered by Astro Content Collections
 - A GitHub Pages deployment target via GitHub Actions
 
@@ -106,8 +107,9 @@ For architecture details, see `ARCHITECTURE.md`.
    - Check production behavior with `npm run build && npm run preview`.
 
 3. **Blog route slug looks unexpected**
-   - Route slug comes from `post.id` logic in `src/pages/**/[...slug].astro`.
-   - Review locale suffix handling in each locale route file.
+   - Route slug comes from `post.id` with locale suffix stripped in `src/pages/{en,ja,ko}/blog/[...slug].astro`.
+   - Review locale suffix handling (`post.id.replace(/${locale}$/, '')`) in each locale route file.
+   - See ADR-0005 for the locales-all-prefixed routing policy.
 
 4. **Build fails on content schema**
    - Validate frontmatter fields against `src/content.config.ts`.

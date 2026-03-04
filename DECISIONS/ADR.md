@@ -17,3 +17,4 @@ How to add a new ADR:
 | [ADR-0002](./ADR-0002.md) | Meta-delivered CSP strategy for static hosting constraints | 2026-03-02 | Accepted |
 | [ADR-0003](./ADR-0003.md) | Containerized development environment with Docker/Dev Container | 2026-03-02 | Accepted |
 | [ADR-0004](./ADR-0004.md) | GitHub Copilot-oriented documentation and prompt workflow | 2026-03-02 | Accepted |
+| [ADR-0005](./ADR-0005.md) | Explicit `/en/` URL prefix for all locales and standalone root landing page | 2026-03-04 | Accepted |
