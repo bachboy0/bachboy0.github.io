@@ -1,31 +1,400 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import HomeContent from "../components/HomeContent.astro";
-import { useTranslations } from "../i18n/utils";
-
-const t = useTranslations("en");
+import "../styles/global.css";
 ---
 
-<script>
-  (function () {
-    const hasRedirected = sessionStorage.getItem("lang-redirected");
-    if (hasRedirected) return;
-    const userLang = navigator.language || navigator.languages?.[0] || "";
-    const langCode = userLang.toLowerCase().split("-")[0];
-    if (langCode === "ja") {
-      sessionStorage.setItem("lang-redirected", "true");
-      window.location.href = "/ja/";
-    } else if (langCode === "ko") {
-      sessionStorage.setItem("lang-redirected", "true");
-      window.location.href = "/ko/";
-    }
-  })();
-</script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>Kang Daewook</title>
+    <meta
+      name="description"
+      content="Personal website of Kang Daewook — Full-stack developer based in Osaka, Japan."
+    />
+    <meta name="robots" content="index, follow" />
 
-<BaseLayout
-  title={t("site.title")}
-  description={t("site.description")}
-  mainClass="!w-full !max-w-full !p-0 flex flex-col gap-0 overflow-hidden"
->
-  <HomeContent lang="en" />
-</BaseLayout>
+    <!--
+      FOUC Prevention #1 — Theme (dark / light)
+      Runs synchronously before first paint.
+      Reads localStorage; falls back to OS prefers-color-scheme.
+    -->
+    <script is:inline>
+      (function () {
+        var s = localStorage.getItem("theme");
+        var t =
+          s ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        if (t === "dark") document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", t);
+      })();
+    </script>
+
+    <!--
+      FOUC Prevention #2 — Name animation initial state
+      names 2 & 3 start at opacity:0 via the @keyframes 0% rule.
+      This <style> block in <head> ensures that rule is parsed before
+      any paint, so the names never flash visible before animation runs.
+    -->
+    <style>
+      /* ── Name-cycling keyframes ────────────────────────────────── */
+      /* 9 s loop · each name occupies a 3 s slot
+         0 – 0.35 s : fade in from below
+         0.35 – 2.65 s : hold
+         2.65 – 3.0 s : fade out upward
+         3.0 – 9.0 s : invisible, repositioned below for next cycle   */
+      @keyframes name-cycle {
+        0% {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        3.89% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        29.44% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        33.33% {
+          opacity: 0;
+          transform: translateY(-28px);
+        }
+        33.34% {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+      }
+
+      .name-slot {
+        position: absolute;
+        inset-inline: 0;
+      }
+      .name-1 {
+        animation: name-cycle 9s cubic-bezier(0.4, 0, 0.2, 1) infinite 0s both;
+      }
+      .name-2 {
+        animation: name-cycle 9s cubic-bezier(0.4, 0, 0.2, 1) infinite 3s both;
+        opacity: 0;
+      }
+      .name-3 {
+        animation: name-cycle 9s cubic-bezier(0.4, 0, 0.2, 1) infinite 6s both;
+        opacity: 0;
+      }
+
+      /* ── Progress bar under each dot ───────────────────────────── */
+      @keyframes dot-fill {
+        0%,
+        3.89% {
+          width: 0%;
+        }
+        29.44% {
+          width: 100%;
+        }
+        33.33%,
+        100% {
+          width: 0%;
+        }
+      }
+      .dot-1 {
+        animation: dot-fill 9s linear infinite 0s both;
+      }
+      .dot-2 {
+        animation: dot-fill 9s linear infinite 3s both;
+      }
+      .dot-3 {
+        animation: dot-fill 9s linear infinite 6s both;
+      }
+
+      /* ── Glowing orb pulse ──────────────────────────────────────── */
+      @keyframes orb-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.22;
+        }
+        50% {
+          transform: scale(1.12);
+          opacity: 0.42;
+        }
+      }
+
+      /* ── Language card shine sweep ──────────────────────────────── */
+      @keyframes shine-sweep {
+        from {
+          transform: translateX(-130%) skewX(-15deg);
+        }
+        to {
+          transform: translateX(290%) skewX(-15deg);
+        }
+      }
+      .lang-card:hover .card-shine {
+        animation: shine-sweep 0.55s ease forwards;
+      }
+
+      /* ── Entrance fade-up ────────────────────────────────────────── */
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .enter-1 {
+        animation: fade-up 0.7s ease-out 0.1s both;
+      }
+      .enter-2 {
+        animation: fade-up 0.7s ease-out 0.3s both;
+      }
+      .enter-3 {
+        animation: fade-up 0.7s ease-out 1.6s both;
+      }
+    </style>
+  </head>
+
+  <body
+    class="font-['Atkinson',sans-serif] m-0 p-0
+           h-dvh overflow-hidden flex flex-col
+           bg-slate-950 text-white
+           selection:bg-indigo-500/30"
+  >
+    <!-- ════════════════════════════════════════════════════════════════
+         HERO  ·  upper ~55 % of viewport
+    ════════════════════════════════════════════════════════════════════ -->
+    <section
+      class="relative flex-1 min-h-0 flex flex-col items-center justify-center overflow-hidden"
+      aria-label="Hero"
+    >
+      <!-- Decorative glowing orbs (aria-hidden: purely visual) -->
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div
+          class="absolute top-1/4 left-[18%] w-72 h-72 rounded-full blur-3xl bg-blue-600/30"
+          style="animation: orb-pulse 7s ease-in-out infinite 0s;"
+        >
+        </div>
+        <div
+          class="absolute top-[35%] right-[16%] w-56 h-56 rounded-full blur-3xl bg-purple-600/25"
+          style="animation: orb-pulse 9s ease-in-out infinite 2.5s;"
+        >
+        </div>
+        <div
+          class="absolute bottom-[12%] left-1/2 -translate-x-1/2 w-64 h-32 rounded-full blur-3xl bg-indigo-500/20"
+          style="animation: orb-pulse 6s ease-in-out infinite 1.2s;"
+        >
+        </div>
+        <!-- Subtle dot-grid overlay -->
+        <div
+          class="absolute inset-0 opacity-[0.035]"
+          style="background-image: radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 36px 36px;"
+        >
+        </div>
+      </div>
+
+      <!-- Text content -->
+      <div class="relative z-10 text-center px-6 max-w-4xl mx-auto w-full">
+        <!-- Eyebrow -->
+        <p
+          class="enter-1 text-xs md:text-sm uppercase tracking-[0.25em] text-slate-400 mb-4"
+        >
+          Hello, I&apos;m
+        </p>
+
+        <!-- Animated name block -->
+        <div
+          class="enter-2 relative flex items-center justify-center
+                 h-14 sm:h-18 md:h-22 lg:h-26
+                 overflow-hidden mb-4"
+          style="height: clamp(3.25rem, 8vw, 7rem);"
+          aria-label="Kang Daewook"
+        >
+          <span
+            class="name-slot name-1 text-center font-extrabold tracking-tight
+                   bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400
+                   bg-clip-text text-transparent
+                   text-[clamp(2.25rem,7vw,5.5rem)]"
+            >Kang Daewook</span
+          >
+
+          <span
+            class="name-slot name-2 text-center font-extrabold tracking-tight
+                   bg-linear-to-r from-rose-400 via-pink-400 to-orange-400
+                   bg-clip-text text-transparent
+                   text-[clamp(2.25rem,7vw,5.5rem)]"
+            >강 대욱</span
+          >
+
+          <span
+            class="name-slot name-3 text-center font-extrabold tracking-tight
+                   bg-linear-to-r from-emerald-400 via-teal-400 to-cyan-400
+                   bg-clip-text text-transparent
+                   text-[clamp(2.25rem,7vw,5.5rem)]"
+            >姜 待旭</span
+          >
+        </div>
+
+        <!-- Progress dots -->
+        <div
+          class="flex items-center justify-center gap-2 mb-5"
+          aria-hidden="true"
+        >
+          <div
+            class="relative w-8 h-[3px] rounded-full bg-slate-700 overflow-hidden"
+          >
+            <div
+              class="dot-1 bg-indigo-400 absolute left-0 top-0 h-full rounded-full"
+            >
+            </div>
+          </div>
+          <div
+            class="relative w-8 h-[3px] rounded-full bg-slate-700 overflow-hidden"
+          >
+            <div
+              class="dot-2 bg-rose-400 absolute left-0 top-0 h-full rounded-full"
+            >
+            </div>
+          </div>
+          <div
+            class="relative w-8 h-[3px] rounded-full bg-slate-700 overflow-hidden"
+          >
+            <div
+              class="dot-3 bg-emerald-400 absolute left-0 top-0 h-full rounded-full"
+            >
+            </div>
+          </div>
+        </div>
+
+        <!-- Subtitle -->
+        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+          Full-stack developer &middot; Osaka, Japan
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         GRADIENT DIVIDER
+         Blends hero background into language CTA background.
+    ════════════════════════════════════════════════════════════════════ -->
+    <div
+      class="relative flex-shrink-0 h-14 md:h-16 pointer-events-none"
+      aria-hidden="true"
+    >
+      <!-- Glow line at top edge -->
+      <div
+        class="absolute inset-x-0 top-0 h-px
+               bg-linear-to-r from-transparent via-indigo-500/50 to-transparent"
+      >
+      </div>
+      <!-- Colour-wash gradient slate-950 → slate-900 with indigo tint -->
+      <div
+        class="absolute inset-0
+               bg-linear-to-b from-slate-950 via-indigo-950/25 to-slate-900"
+      >
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         LANGUAGE SELECTION CTA  ·  lower ~40 % of viewport
+    ════════════════════════════════════════════════════════════════════ -->
+    <section
+      class="flex-shrink-0 flex flex-col items-center justify-center gap-4 md:gap-5
+             bg-slate-900 px-4"
+      style="padding-bottom: max(1.75rem, env(safe-area-inset-bottom));"
+      aria-label="Language selection"
+    >
+      <p class="enter-3 text-[11px] uppercase tracking-[0.22em] text-slate-500">
+        Select Language
+      </p>
+
+      <div class="enter-3 flex gap-3 md:gap-5 flex-wrap justify-center">
+        <!-- English -->
+        <a
+          href="/en/"
+          class="lang-card group relative overflow-hidden rounded-2xl
+                 px-6 py-4 md:px-10 md:py-5
+                 bg-slate-800 border border-slate-700
+                 hover:border-blue-500/70
+                 hover:shadow-xl hover:shadow-blue-500/20
+                 hover:scale-105 active:scale-95
+                 transition-all duration-300 text-center min-w-[108px]
+                 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+        >
+          <div
+            class="card-shine absolute inset-0 w-1/4 bg-linear-to-r from-transparent via-white/10 to-transparent"
+          >
+          </div>
+          <div class="font-bold text-white text-base md:text-lg leading-none">
+            English
+          </div>
+          <div
+            class="text-slate-500 text-[11px] mt-[3px] group-hover:text-blue-400 transition-colors duration-200"
+          >
+            EN
+          </div>
+        </a>
+
+        <!-- Japanese -->
+        <a
+          href="/ja/"
+          class="lang-card group relative overflow-hidden rounded-2xl
+                 px-6 py-4 md:px-10 md:py-5
+                 bg-slate-800 border border-slate-700
+                 hover:border-rose-400/70
+                 hover:shadow-xl hover:shadow-rose-500/20
+                 hover:scale-105 active:scale-95
+                 transition-all duration-300 text-center min-w-[108px]
+                 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-400"
+        >
+          <div
+            class="card-shine absolute inset-0 w-1/4 bg-linear-to-r from-transparent via-white/10 to-transparent"
+          >
+          </div>
+          <div class="font-bold text-white text-base md:text-lg leading-none">
+            日本語
+          </div>
+          <div
+            class="text-slate-500 text-[11px] mt-[3px] group-hover:text-rose-400 transition-colors duration-200"
+          >
+            JA
+          </div>
+        </a>
+
+        <!-- Korean -->
+        <a
+          href="/ko/"
+          class="lang-card group relative overflow-hidden rounded-2xl
+                 px-6 py-4 md:px-10 md:py-5
+                 bg-slate-800 border border-slate-700
+                 hover:border-emerald-400/70
+                 hover:shadow-xl hover:shadow-emerald-500/20
+                 hover:scale-105 active:scale-95
+                 transition-all duration-300 text-center min-w-[108px]
+                 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+        >
+          <div
+            class="card-shine absolute inset-0 w-1/4 bg-linear-to-r from-transparent via-white/10 to-transparent"
+          >
+          </div>
+          <div class="font-bold text-white text-base md:text-lg leading-none">
+            한국어
+          </div>
+          <div
+            class="text-slate-500 text-[11px] mt-[3px] group-hover:text-emerald-400 transition-colors duration-200"
+          >
+            KO
+          </div>
+        </a>
+      </div>
+    </section>
+  </body>
+</html>

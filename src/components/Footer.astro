@@ -1,27 +1,53 @@
 ---
-import InstagramIcon from '../assets/icons/instagram-glyph-black.svg';
-import GitHubIcon from '../assets/icons/github-mark.svg';
+import InstagramIcon from "../assets/icons/instagram-glyph-black.svg";
+import GitHubIcon from "../assets/icons/github-mark.svg";
+import ThreadsIcon from "../assets/icons/threads.svg";
 const today = new Date();
 ---
 
-<footer class="m-0 py-8 px-4 pb-24 md:pb-24 text-center shadow-[0_-2px_8px_rgba(17,24,39,0.05)]">
-	&copy; {today.getFullYear()} Kang Daewook. All rights reserved.
-    <div class="flex justify-center gap-4 md:gap-4 mt-4 items-center">
-        <a 
-            href="https://www.instagram.com/teu_kan1016/" 
-            target="_blank"
-            class="no-underline inline-flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-[180ms] ease-out hover:-translate-y-0.5 focus:-translate-y-0.5"
-        >
-            <span class="sr-only">Follow Me on Instagram</span>
-            <InstagramIcon width="32" height="32" astro-icon="social/instagram" class="block fill-current" />
-		</a>
-		<a 
-            href="https://github.com/bachboy0" 
-            target="_blank"
-            class="no-underline inline-flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-[180ms] ease-out hover:-translate-y-0.5 focus:-translate-y-0.5"
-        >
-			<span class="sr-only">Go to My GitHub repo</span>
-            <GitHubIcon width="32" height="32" astro-icon="social/github" class="block fill-current" />
-		</a>
-	</div>
+<footer
+  class="m-0 py-8 px-4 pb-24 md:pb-24 text-center shadow-[0_-2px_8px_rgba(17,24,39,0.05)]"
+>
+  &copy; {today.getFullYear()} Kang Daewook. All rights reserved.
+  <div class="flex justify-center gap-4 md:gap-4 mt-4 items-center">
+    <a
+      href="https://www.instagram.com/teu_kan1016/"
+      target="_blank"
+      class="no-underline inline-flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-[180ms] ease-out hover:-translate-y-0.5 focus:-translate-y-0.5"
+    >
+      <span class="sr-only">Follow Me on Instagram</span>
+      <InstagramIcon
+        width="32"
+        height="32"
+        astro-icon="social/instagram"
+        class="block fill-current"
+      />
+    </a>
+    <a
+      href="https://github.com/bachboy0"
+      target="_blank"
+      class="no-underline inline-flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-[180ms] ease-out hover:-translate-y-0.5 focus:-translate-y-0.5"
+    >
+      <span class="sr-only">Go to My GitHub repo</span>
+      <GitHubIcon
+        width="32"
+        height="32"
+        astro-icon="social/github"
+        class="block fill-current"
+      />
+    </a>
+    <a
+      href="https://www.threads.com/@teu_kan1016"
+      target="_blank"
+      class="no-underline inline-flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-[180ms] ease-out hover:-translate-y-0.5 focus:-translate-y-0.5"
+    >
+      <span class="sr-only">Go to My Threads profile</span>
+      <ThreadsIcon
+        width="32"
+        height="32"
+        astro-icon="social/threads"
+        class="block fill-current"
+      />
+    </a>
+  </div>
 </footer>

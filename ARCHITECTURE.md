@@ -25,13 +25,14 @@ flowchart TD
 
 | Area | Path | Responsibility |
 | --- | --- | --- |
-| Head/meta | `src/components/BaseHead.astro` | SEO tags, canonical, OG/Twitter metadata, CSP meta, referrer policy, font preloads |
-| Layout shell | `src/layouts/BaseLayout.astro` | Shared document/frame for standard pages |
+| Landing page | `src/pages/index.astro` | Standalone HTML LP (no BaseLayout); animated hero, language-selection CTA. Imports `global.css` directly; includes its own `<head>` with inline FOUC-prevention script and keyframe CSS. |
+| Head/meta | `src/components/BaseHead.astro` | SEO tags, canonical, OG/Twitter metadata, CSP meta, referrer policy, font preloads (used by all pages except the root LP) |
+| Layout shell | `src/layouts/BaseLayout.astro` | Shared document/frame for standard locale pages |
 | Blog layout | `src/layouts/BlogPost.astro` | Blog article framing, dates, hero image rendering |
-| Navigation/footer | `src/components/Header.astro`, `Footer.astro`, `LanguagePicker.astro` | Site navigation, locale switch, footer links |
+| Navigation/footer | `src/components/Header.astro`, `Footer.astro`, `LanguagePicker.astro` | Site navigation, locale switch, footer links (Instagram, GitHub, Threads) |
 | Blog content | `src/content/blog/*.{md,mdx}` | Localized post sources |
 | Content schema | `src/content.config.ts` | Frontmatter validation (`title`, `description`, dates, optional image, `lang`) |
-| Routing | `src/pages/**` | File-based route definitions for `en`, `ja`, `ko`, plus RSS endpoint |
+| Routing | `src/pages/**` | File-based route definitions for all three locale trees (`en/`, `ja/`, `ko/`) plus RSS endpoint |
 | i18n helpers | `src/i18n/ui.ts`, `src/i18n/utils.ts` | UI strings and path/locale utility functions |
 
 ## Data model overview
@@ -49,8 +50,11 @@ There are no authenticated backend APIs.
 
 | Endpoint/module | File | Notes |
 | --- | --- | --- |
-| RSS feed endpoint | `src/pages/rss.xml.js` | Build/runtime endpoint returning RSS XML |
-| Dynamic blog routes | `src/pages/blog/[...slug].astro`, `src/pages/ja/blog/[...slug].astro`, `src/pages/ko/blog/[...slug].astro` | `getStaticPaths()` resolves localized post routes |
+| Root landing page | `src/pages/index.astro` | Returns the language-selection LP; no API calls |
+| RSS feed endpoint | `src/pages/rss.xml.js` | Build/runtime endpoint returning RSS XML; post links use `/{lang}/blog/{slug}/` |
+| Dynamic blog routes | `src/pages/en/blog/[...slug].astro`, `src/pages/ja/blog/[...slug].astro`, `src/pages/ko/blog/[...slug].astro` | `getStaticPaths()` filters posts by `lang` field and strips locale suffix from slug |
+| Locale index pages | `src/pages/{en,ja,ko}/index.astro` | Home page per locale |
+| About pages | `src/pages/{en,ja,ko}/about.astro` | About page per locale |
 
 Auth method: **Not applicable** (no auth layer).
 
@@ -115,7 +119,7 @@ npm run preview
 - Static-site model scales well for read-heavy traffic but requires rebuild/redeploy for content changes.
 - No server runtime means low operational complexity but no dynamic per-request personalization.
 - Localized routes are file-based; adding locales increases page count and build size linearly.
-- `getStaticPaths()` slug handling for locale variants is currently asymmetric (`en` uses raw `post.id`; `ja/ko` strip suffix patterns).
+- All three locale blog routes use consistent slug suffix-stripping: `post.id.replace(/${locale}$/, '')`; see ADR-0005.
 
 Potential failure modes:
 

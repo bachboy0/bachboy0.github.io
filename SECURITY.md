@@ -75,8 +75,9 @@ Recommended minimum baseline additions:
 
 ### Implemented
 
-- Content Security Policy via `<meta http-equiv="Content-Security-Policy">` in `src/components/BaseHead.astro`
+- Content Security Policy via `<meta http-equiv="Content-Security-Policy">` in `src/components/BaseHead.astro` (used by all locale pages)
   - Dev and production policies differ to support local tooling
+  - The root landing page (`src/pages/index.astro`) embeds its own inline FOUC-prevention script and a matching `is:inline` script; this page does not use `BaseHead`
 - `Referrer-Policy` via `<meta name="referrer" content="strict-origin-when-cross-origin">`
 - Self-hosted fonts under `public/fonts`
 - Minimal client-side scripts and no server-side runtime
