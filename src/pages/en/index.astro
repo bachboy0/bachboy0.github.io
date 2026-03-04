@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HomeContent from "../../components/HomeContent.astro";
+import { useTranslations } from "../../i18n/utils";
+
+const t = useTranslations("en");
+---
+
+<BaseLayout
+  title={t("site.title")}
+  description={t("site.description")}
+  mainClass="!w-full !max-w-full !p-0 flex flex-col gap-0 overflow-hidden"
+>
+  <HomeContent lang="en" />
+</BaseLayout>
